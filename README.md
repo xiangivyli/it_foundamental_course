@@ -112,3 +112,63 @@ var post2 = {content: "This is my boring post", likes: 20, shares:0}
 person.posts = [post1, post2]
 ```
 
+### 1.1.3 Arrays
+- Array is an ordered list of values
+- Arrays are **zero-indexed**
+
+```javascript
+var friends = ["person1", "person2"]
+
+// access the value based on the index
+friends[0]
+
+// getting the array size
+friends.length
+
+// add a new element
+friends[friends.length] = "person3"
+
+// remove last element
+friends.pop()
+```
+
+### 1.1.4 Loops
+- Looping is a basic programming concept
+- One of the **main building blocks** of programming, which controls the flow of the program (like if / else statement)
+
+```javascript
+var post1 = {
+content: "This is my super post", 
+likes: 300, 
+shares:20
+}
+var post2 = {
+    content: "This is my boring post", 
+    likes: 20, 
+    shares:0
+    }
+
+var facebookUser = {
+    userName: "IvyLi",
+    password: "secret",
+    email: "myemail@gmai.com",
+    profileImage: "reference-image",
+    friends: ["person1", "person2", "person3"],
+    posts: [post1, post2]
+}
+
+// go through each post and add new pair
+var posts = [post1, post2]
+for (index in posts) {
+    // do something
+    console.log(posts[index])
+}
+// for of loop grabs values directly while for in loop grabs index
+for (post of posts) {
+    // replace likes to reactions
+    console.log(post.likes)
+    post.reactions = post.likes
+    delete post.likes
+}
+```
+
