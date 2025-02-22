@@ -12,6 +12,7 @@
         - 1.1.4 [Loops](#114-loops)
         - 1.1.5 [Built-in Functions](#115-built-in-functions)
             - 1.1.5.1 [Built-in Functions in Data Types](#1151-built-in-functions-on-different-data-types)
+            - 1.1.5.2 [Examples about date objects and boolean var](#1152-examples-to-transform-with-functions)
 
 
 
@@ -235,8 +236,9 @@ var fullName = "Ivy Li"
 // split the full name into first name and last name
 fullName.split(/\s+/) // match any white space
 ```
-#### 1.1.5.2 An example to transform with functions
+#### 1.1.5.2 Examples to transform with functions
 
+1. Example1: Get an array of objects with splitted names
 ```javascript
 var fullNames = ["John Doe", "Jane Doe", "John Smith", "Jane Smith"];
 var firstAndLastNames = [] //Get an array of objects with splitted names
@@ -250,6 +252,26 @@ for (fullName of fullNames) {
 }
 ```
 
+2. Example2: Calculate the age based on users' birthdate
+- You can use the Date object and its methods to **work with dates and times**
+- It's not a real built-in data type of JavaScript
+```javascript
+function getAge(birthDateString) {
+    var today = new Date()
+    var birthDate = new Date(birthDateString)
+    var age = today.getFullYear() - birthDate.getFullYear()
 
+    var isSameMonth = today.getMonth() == birthDate.getMonth() // boolean object
+    var birthdayMonthInFuture = today.getMonth() < birthDate.getMonth()
+    var sameMonthDateInFuture = isSameMonth && today.getDate() < birthDate.getDate()
+
+    if (birthdayMonthInFuture || (sameMonthDateInFuture)) {
+        age--
+    }
+
+    // return the calculated age
+    return age // return also exits the function and is the end of the function
+}
+```
 
 
