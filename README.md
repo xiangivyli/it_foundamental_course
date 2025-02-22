@@ -13,6 +13,7 @@
         - 1.1.5 [Built-in Functions](#115-built-in-functions)
             - 1.1.5.1 [Built-in Functions in Data Types](#1151-built-in-functions-on-different-data-types)
             - 1.1.5.2 [Examples about date objects and boolean var](#1152-examples-to-transform-with-functions)
+    - 1.2 [HTML](#12-html)
 
 
 
@@ -274,4 +275,35 @@ function getAge(birthDateString) {
 }
 ```
 
+## 1.2 HTML
 
+- HTML stands for **H**yper **T**ext **M**arkup **L**anguage
+- Describe the **structure** of a website
+- HTML is the most basic building block!
+
+### 1.2.1 HTML Elements
+- HTML consists of different HTML elements, which I enclose or "mark up" the website content
+- These HTML elements are set off from other text by "tags", which is element name surrounded by "<" and ">"
+- HTML element is defined by a start tag, some content and an end tag
+
+1. `<div>`
+- Defines a **division or section** in an HTML document
+- Used as a **container** for other HTML elements
+
+2. `<b>`
+- Makes the text **bold**
+
+3. `<button>`
+- Defines a clickable button
+
+
+
+```html
+
+```
+
+
+## 1.3 CSS
+
+- CSS stands for **C**ascading **S**tyle **S**heets
+- Describe the **style** of a website

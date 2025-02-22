@@ -1,18 +1,12 @@
-<script>    
-function getAge(birthDateString) {
-    var today = new Date()
-    var birthDate = new Date(birthDateString)
-    var age = today.getFullYear() - birthDate.getFullYear()
-
-    var isSameMonth = today.getMonth() == birthDate.getMonth() // boolean object
-    var birthdayMonthInFuture = today.getMonth() < birthDate.getMonth()
-    var sameMonthDateInFuture = isSameMonth && today.getDate() < birthDate.getDate()
-
-    if (birthdayMonthInFuture || (sameMonthDateInFuture)) {
-        age--
-    }
-}
-</script>
 <body>
-    <div id="test"></div>
+    <div>
+        <b>WELCOME TO MY WEBSITE</b>
+    </div>
+    <div>
+        <button>log in</button>
+        Name of the list
+        <div>
+            1,2,3,4,5
+        </div>     
+    </div>
 </body>
