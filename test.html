@@ -1,0 +1,19 @@
+<script>    
+    var fullNames = ["John Doe", "Jane Doe", "John Smith", "Jane Smith"];
+    var firstAndLastNames = []
+    for (fullName of fullNames) {
+        var names = fullName.split(/\s+/)
+        var firstAndLastName = {
+            firstName: names[0],
+            lastName: names[1]
+        }
+        firstAndLastNames.push(firstAndLastName)
+        
+    }
+
+    console.log(firstAndLastNames)
+
+</script>
+<body>
+    <div id="test"></div>
+</body>

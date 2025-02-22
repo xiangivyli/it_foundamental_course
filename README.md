@@ -8,6 +8,10 @@
             - 1.1.1.4 [logical operators (&, ||, !)](#1114-logical-operators)
         - 1.1.2 [Objects](#112-objects-in-javascript)
             - 1.1.2.1 [Acess and Modify Objects](#1121-access-and-modify-objects)
+        - 1.1.3 [Array](#113-arrays)
+        - 1.1.4 [Loops](#114-loops)
+        - 1.1.5 [Built-in Functions](#115-built-in-functions)
+            - 1.1.5.1 [Built-in Functions in Data Types](#1151-built-in-functions-on-different-data-types)
 
 
 
@@ -135,6 +139,7 @@ friends.pop()
 ### 1.1.4 Loops
 - Looping is a basic programming concept
 - One of the **main building blocks** of programming, which controls the flow of the program (like if / else statement)
+- **Nested Loop**
 
 ```javascript
 var post1 = {
@@ -158,17 +163,93 @@ var facebookUser = {
 }
 
 // go through each post and add new pair
-var posts = [post1, post2]
-for (index in posts) {
+for (index in facebookUser.posts) {
     // do something
     console.log(posts[index])
 }
 // for of loop grabs values directly while for in loop grabs index
-for (post of posts) {
+for (post of facebookUser.posts) {
     // replace likes to reactions
     console.log(post.likes)
     post.reactions = post.likes
     delete post.likes
 }
 ```
+
+### 1.1.5 Built-in Functions
+
+- Custom Functions
+- Built-in Functions: functions **built into** JavaScript
+    - Standalone (global) functions
+    - functions (methods) on objects
+
+
+```javascript
+// global function
+function replaceLikesWithReactions(user) {
+    for (post of user.posts) {
+        post.reactions = post.likes
+        delete post.likes
+    }
+}
+
+// call the function directly
+var users = [facebookUserOne, facebookUserTwo]
+for (user of users) {
+    user.interests = []
+    replaceLikesWithReactions(user)
+}
+
+
+// functions attached to objects
+var facebookUserOne = {
+    userName: "Ivy",
+    password: "secret",
+    email: "myemail@gmail.com",
+    profileImage: "reference-image",
+    friends: ["person1", "person2", "person3"]
+    posts: [post1, post2],
+    greet: function() {
+        console.log("Hello Ivy")
+    }
+}
+// call the function from the object
+facebookUserOne.greet()
+```
+
+#### 1.1.5.1 Built-in Functions on different Data Types
+
+- **Array**
+```javascript
+var friends = ["North", "Berth", "Lily"]
+friends.pop()
+friends.push("newFriend")
+```
+
+- **String**
+```javascript
+var someText = "When I type this sentence, the weather is great"
+someText.replace(/great/g, "sunny") //regex for the first parameter
+
+var fullName = "Ivy Li"
+// split the full name into first name and last name
+fullName.split(/\s+/) // match any white space
+```
+#### 1.1.5.2 An example to transform with functions
+
+```javascript
+var fullNames = ["John Doe", "Jane Doe", "John Smith", "Jane Smith"];
+var firstAndLastNames = [] //Get an array of objects with splitted names
+for (fullName of fullNames) {
+    var names = fullName.split(/\s+/)
+    var firstAndLastName = {
+        firstName: names[0],
+        lastName: names[1]
+    }
+    firstAndLastNames.push(firstAndLastName)    
+}
+```
+
+
+
 
