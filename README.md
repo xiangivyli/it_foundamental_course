@@ -15,8 +15,9 @@
             - 1.1.5.2 [Examples about date objects and boolean var](#1152-examples-to-transform-with-functions)
     - 1.2 [HTML](#12-html)
         - 1.2.1 [HTML Elements](#121-html-elements)
-            - 1.2.1.1 [HTML Inline Elements](#1211-html-inline-elements)
-            - 1.2.1.2 [HTML Block Elements](#1212-html-block-elements)
+            - 1.2.1.1 [HTML Attribute](#1211-html-attributes)
+            - 1.2.1.2 [HTML Inline Elements](#1212-html-inline-elements)
+            - 1.2.1.3 [HTML Block Elements](#1213-html-block-elements)
     - 1.3 [CSS](#13-css)
 
 
@@ -290,12 +291,16 @@ function getAge(birthDateString) {
 - These HTML elements are set off from other text by "tags", which is element name surrounded by "<" and ">"
 - HTML element is defined by a start tag, some content and an end tag
 
-**HTML Attributes**
+#### 1.2.1.1 HTML Attributes
 - All HTML elements can have attributes
 - Attributes usually have **name/value pairs**
 - Provide **additional info** about HTML elements
 
-#### 1.2.1.1 HTML Inline Elements
+1. **id Attribute**
+- Used to specify a **unique id** for an HTML element
+- Only 1 element with the same id can exist in an HTML document
+
+#### 1.2.1.2 HTML Inline Elements
 - Only take up as much width as necessary
 
 1. `<b>` `<i>`
@@ -321,7 +326,6 @@ function getAge(birthDateString) {
 - **placeholder attribute** specifies **short hint** that describes teh expected value
 
 
-
 5. `<a>`
 - Defines a **hyperlink**, used to link from one page to another
 - **href attribute** specifies the URL of the page the link goes to
@@ -331,7 +335,7 @@ function getAge(birthDateString) {
     - Other protocols (like https://, ftp://, mailto:, file:, etc)
     - A script (like href="javascript:alert('Hello');")
 
-#### 1.2.1.2 HTML Block Elements
+#### 1.2.1.3 HTML Block Elements
 - Take up full width
 
 1. `<div>`
@@ -398,3 +402,26 @@ function getAge(birthDateString) {
 
 - CSS stands for **C**ascading **S**tyle **S**heets
 - Describe the **style** of a website
+
+### 1.3.1 `<style>` Element
+- Used to define style (CSS) information for a document
+
+Step 1 WHICH element you want to style?
+Step 2 HOW to style it?
+
+Each declaration includes a CSS property **name** and **value**
+1. `color: grey;` `font-size: 10px;`
+
+2. for `div`
+    - `border: 1px solid black;`shorthand syntax for border-width, border-style, border-color
+    - `padding: 10px;` adds space inside the border
+    - `margin: 10px;` adds space outside the border
+        - `margin-left`
+        - `margin-right`
+        - `margin-bottom`
+        - `margin-top`
+
+3. id Attribute 
+- Defined in the HTML elements
+- Use # to locate it in style
+
