@@ -444,6 +444,9 @@ Each declaration includes a CSS property **name** and **value**
 5. padding Attribute
 - Used to create space around an element's content inside of any defined borders
 
+6. text-align Attribute
+- Define the **horizontal alignment** of the text in an element
+
 ### 1.3.2 Class Selector
 
 **Class Attribute**

@@ -5,12 +5,14 @@
 
 <!-- Main Content -->
 <body>
-    <div id="login-search-section">
-        <div id="logo-user-container">
-            <img id="logo-ai" src="ai.jpg"/>
-            <input type="text" placeholder="Search..."/>
+    <div id="login-search-wrapper">
+        <div id="login-search-section">
+            <div id="logo-user-container">
+                <img id="logo-ai" src="ai.jpg"/>
+                <input type="text" placeholder="Search..."/>
+            </div>
+            <button>Log In</button>
         </div>
-        <button>Log In</button>
     </div>
 
     <!-- List Information -->
@@ -99,14 +101,19 @@
         margin: 8px 20px;
     }
 
+    #login-search-wrapper {
+        background-color: white;
+        margin: 0;
+    }
+
     #login-search-section {
         display: flex;
         align-items: center;
-        justify-content: right;
-        width: 100%;
+        justify-content: space-between;
+        width: 80%;
         height: 60px;
-        background-color: white;
         padding: 0%;
+        margin: auto;
     }
 
     #logo-user-container {
@@ -119,20 +126,25 @@
     #logo-ai {
         width: 50px;
         max-width: 10%;
+        height: auto;
     }
 
     #login-search-section input {
         width: 85%;
         height: 70%;
         margin-left: 10px;
+        font-size: 20px;
+        border: 1px solid black;
+        border-radius: 5px;
     }
 
     #login-search-section button {
-        width: 10%;
+        font-size: 25px;  
         background-color: skyblue;
+        border:0cap;
         color: white;
-        border: none;
         align-self: center;
+        padding: 5px 10px;
     }
 
     #author-info {
