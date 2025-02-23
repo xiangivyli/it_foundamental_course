@@ -14,6 +14,10 @@
             - 1.1.5.1 [Built-in Functions in Data Types](#1151-built-in-functions-on-different-data-types)
             - 1.1.5.2 [Examples about date objects and boolean var](#1152-examples-to-transform-with-functions)
     - 1.2 [HTML](#12-html)
+        - 1.2.1 [HTML Elements](#121-html-elements)
+            - 1.2.1.1 [HTML Inline Elements](#1211-html-inline-elements)
+            - 1.2.1.2 [HTML Block Elements](#1212-html-block-elements)
+    - 1.3 [CSS](#13-css)
 
 
 
@@ -286,22 +290,109 @@ function getAge(birthDateString) {
 - These HTML elements are set off from other text by "tags", which is element name surrounded by "<" and ">"
 - HTML element is defined by a start tag, some content and an end tag
 
+**HTML Attributes**
+- All HTML elements can have attributes
+- Attributes usually have **name/value pairs**
+- Provide **additional info** about HTML elements
+
+#### 1.2.1.1 HTML Inline Elements
+- Only take up as much width as necessary
+
+1. `<b>` `<i>`
+- `<b>` makes the text **bold**
+- `<i>` display text in *italic*
+
+
+2. `<button>`
+- Defines a clickable button
+
+3. `<img/>`
+- Embed images
+- **Self-Closing** Tags
+- **src attribute** specifies the URL of the image
+    - An absolute URL
+    - A relative url - points to a file within a web site (like src="image.gif")
+
+4. `<input/>`
+- Specifies an input field where **user can enter data**
+- Depending on type attribute the element is **displayed in different ways**
+- **type attribute**
+    - default type is "text"
+- **placeholder attribute** specifies **short hint** that describes teh expected value
+
+
+
+5. `<a>`
+- Defines a **hyperlink**, used to link from one page to another
+- **href attribute** specifies the URL of the page the link goes to
+    - An absolute URL
+    - A relative URL (like href="default.htm")
+    - Link to an element with a specified id within the page (href="#section2")
+    - Other protocols (like https://, ftp://, mailto:, file:, etc)
+    - A script (like href="javascript:alert('Hello');")
+
+#### 1.2.1.2 HTML Block Elements
+- Take up full width
+
 1. `<div>`
 - Defines a **division or section** in an HTML document
 - Used as a **container** for other HTML elements
 
-2. `<b>`
-- Makes the text **bold**
+2. `<h1>` - `<h6>` 
+- Used to define HTML headings
+- `<h1>` is most important heading, `<h6>` is the least 
 
-3. `<button>`
-- Defines a clickable button
+3. `<p>`
+- To define a paragraph
+- Browsers automatically add a single blank line before and after each `<p>` element
 
-
+4. `<ul>` `<ol>` `<li>`
+- `<ul>` to define an **unordered** list
+- `<ol>` to define an **ordered** list
+- `<li>` to define a **list item**, used inside ordered or unordered list
 
 ```html
+<!-- Header Section -->
+<header>
+    <h1><b>WELCOME TO MY WEBSITE</b></h1>
+</header>
 
+<!-- Main Content -->
+<body>
+    <input type="text" placeholder="Enter username"/>
+    <button>Log In</button>
+
+    <!-- List Information -->
+    <div>
+        <h2>Name of the list</h2>
+        <h3><i>Short information on the list</i></h3>
+        <p><i>Written by Ivy</i> | <i>Date: Today</i></p>
+    </div>
+
+    <!-- Content Section -->
+    <div>
+        <img src="anime_time.jpg" width="200" height="200"/>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+
+        <!-- Subsection -->
+        <div>
+            <h4>Section Header</h4>
+            <p>Paragraph to introduce this section</p>
+
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+
+            <p>Paragraph to conclude this section</p>
+            <a href="https://xiangivyli.com">Click to see article</a>
+        </div>
+    </div>
+
+</body>
 ```
-
 
 ## 1.3 CSS
 
