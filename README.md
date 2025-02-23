@@ -494,5 +494,187 @@ The flex container properties are:
 - background-color Attribute
 - Colors are specified with predefined color names or RGB, HEX and some other values
 
+```css
+<!-- Header Section -->
+<header>
+    <h1><b>WELCOME TO MY WEBSITE</b></h1>
+</header>
+
+<!-- Main Content -->
+<body>
+    <div id="login-search-section">
+        <div id="logo-user-container">
+            <img id="logo-ai" src="ai.jpg"/>
+            <input type="text" placeholder="Search..."/>
+        </div>
+        <button>Log In</button>
+    </div>
+
+    <!-- List Information -->
+    <div id="author-info">
+        <h2>Name of the list</h2>
+        <h3><i>Short information on the list</i></h3>
+        <p class="article-info"><i>Written by Ivy</i> | <i>Date: Today</i></p>
+        <p class="article-info"><i>Department: UWE</i></p>
+    </div>
+
+    <!-- Content Section -->
+    <div id="main-section-container">
+        <div id="article-section">
+        <!-- Section 1 -->
+            <div>
+                <img id="anime-time" src="anime_time.jpg"/>
+                <p>Paragraph 1</p>
+                <p>Paragraph 2</p>
+            </div>
+
+        <!-- Subsection -->
+            <div>
+                <h4>Section Header</h4>
+                <p>Paragraph to introduce this section</p>
+
+                <ul>
+                    <li>Item 1</li>
+                    <p>item 1 has some features</p>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+
+                <p>Paragraph to conclude this section</p>
+                <a href="https://xiangivyli.com">Click to see article</a>
+            </div>
+        </div>
+
+        <div id="aside-section">
+            <!-- Aside Section -->
+            <h4>Aside Section</h4>
+            <p>Filter</p>
+
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Footer Section at the end of the page</p>
+    </footer>
 
 
+</body>
+
+<style>
+    header {
+        background-color: rgb(71, 125, 71);
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin: 1% auto;
+    }
+
+    body {
+        background-color: lightgrey;
+        margin: 0;
+
+    }
+
+    p {
+        color: black;
+    }
+
+    a {
+        color: blue;
+        font-size: 10px;
+    }
+
+    div {
+        border: 1px dotted black;
+        padding: 10px;
+        margin: 8px 20px;
+    }
+
+    #login-search-section {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        width: 100%;
+        height: 60px;
+        background-color: white;
+        padding: 0%;
+    }
+
+    #logo-user-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 80%;
+    }
+
+    #logo-ai {
+        width: 50px;
+        max-width: 10%;
+    }
+
+    #login-search-section input {
+        width: 85%;
+        height: 70%;
+        margin-left: 10px;
+    }
+
+    #login-search-section button {
+        width: 10%;
+        background-color: skyblue;
+        color: white;
+        border: none;
+        align-self: center;
+    }
+
+    #author-info {
+        text-align: center;
+        width: 80%;
+        margin: 10px auto;
+        background-color: white;
+    }
+
+    .article-info {
+        color: skyblue;
+        font-size: 20px;
+    }
+
+    #main-section-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        width: 80%;
+        margin: auto;
+    }
+
+    #article-section {
+        width: 70%;
+        background-color: white;
+        padding: 10px;
+    } 
+
+    #anime-time {
+        width: 30%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    #aside-section {
+        width: 30%;
+        background-color: white;
+        padding: 0% 5%;
+        margin-left: auto;
+    }
+
+    footer {
+        background-color: rgb(71, 125, 71);
+        text-align: center;
+        padding: 10px;
+    }
+</style>
+```
