@@ -19,7 +19,11 @@
             - 1.2.1.2 [HTML Inline Elements](#1212-html-inline-elements)
             - 1.2.1.3 [HTML Block Elements](#1213-html-block-elements)
     - 1.3 [CSS](#13-css)
-
+        - 1.3.1 [`<style>` elements](#131-style-element)
+        - 1.3.2 [Class Selector](#132-class-selector)
+        - 1.3.3 [Website Layout](#133-website-layout)
+            - 1.3.3.1 [Flexbox Positioning](#1331-flexbox-positioning)
+        - 1.3.4 [Background Colors](#134-background-colors)
 
 
 # 1. Web Development with HTML, CSS and JavaScript
@@ -423,5 +427,72 @@ Each declaration includes a CSS property **name** and **value**
 
 3. id Attribute 
 - Defined in the HTML elements
-- Use # to locate it in style
+- Use `#` to locate it in style
+
+4. CSS Units 
+- CSS has several different units for expressiing a length
+- **Absolute Units**
+    - Most import one: px
+    - Fixed, meaning not responsive to screen size changes
+- **Relative Units**
+    - Most important one: %
+    - More dynamic
+
+    - Responsive Web design
+        - The goal is to make web pages render well on a variety of devices and window or screen sizes
+        - When a website is responsive, it means it **automatically adjusts for different screem sizes**
+5. padding Attribute
+- Used to create space around an element's content inside of any defined borders
+
+### 1.3.2 Class Selector
+
+**Class Attribute**
+- Used to specify a name for an HTML element
+- Multiple elements can share the same class
+- Use `.` to locate it in style
+
+### 1.3.3 Website Layout
+There are many different layouts, but the following structure is very common
+- Header
+- Navigation
+- Main Section / Content / Aside
+- Footer
+
+There are 2 common methods
+- **Flexbox** Layout
+    - Work with a flex **container** and flex **items**
+    - Makes it easier to deign flexible responsive designs
+
+- **Grid** Layout
+    - Grid-based layout system, with rows and columns
+    - Also makes it easier to design flexible web pages
+
+
+#### 1.3.3.1 Flexbox Positioning
+
+**Attributes for the parent container**
+The flex container properties are:
+- flex-direction
+- flex-wrap
+- flex-flow
+- justify-content
+    - align flex items horizontally
+- align-items
+- align-content
+
+**Attributes for flex items**
+- order
+- flex-grow
+    - Defines **how much space** it should take **relative to the rest** of the flex items
+    - Value is a number, default is 0
+- flex-shrink
+- flex-basis
+- flex
+- align-self
+
+### 1.3.4 Background Colors
+- background-color Attribute
+- Colors are specified with predefined color names or RGB, HEX and some other values
+
+
 
