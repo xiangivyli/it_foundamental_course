@@ -511,13 +511,15 @@ The flex container properties are:
 ### 1.3.6 Comprehensive Template
   
 ```css
-<!-- Header Section -->
-<header>
-    <h1><b>WELCOME TO MY WEBSITE</b></h1>
-</header>
-
 <!-- Main Content -->
 <body>
+
+    <!-- Header Section -->
+    <header>
+    <h1><b>WELCOME TO MY WEBSITE</b></h1>
+    </header>
+
+    <!--Search Log Section -->
     <div id="login-search-wrapper">
         <div id="login-search-section">
             <div id="logo-user-container">
