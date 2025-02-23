@@ -24,6 +24,8 @@
         - 1.3.3 [Website Layout](#133-website-layout)
             - 1.3.3.1 [Flexbox Positioning](#1331-flexbox-positioning)
         - 1.3.4 [Background Colors](#134-background-colors)
+        - 1.3.5 [Semantic Elements](#135-semantic-elements)
+        - 1.3.6 [Comprehensive Template](#136-comprehensive-template)
 
 
 # 1. Web Development with HTML, CSS and JavaScript
@@ -497,6 +499,17 @@ The flex container properties are:
 - background-color Attribute
 - Colors are specified with predefined color names or RGB, HEX and some other values
 
+### 1.3.5 Semantic Elements
+- Elements with a meaning
+- `<header>` Element
+    - Represents container for introductory content or navigational links 
+- `<article>` Element
+    - Should make sense on its own. Examples: forum, blog post, news story etc
+- `<aside>` Element
+    - Defines content aside from the page content
+
+### 1.3.6 Comprehensive Template
+  
 ```css
 <!-- Header Section -->
 <header>
@@ -505,12 +518,14 @@ The flex container properties are:
 
 <!-- Main Content -->
 <body>
-    <div id="login-search-section">
-        <div id="logo-user-container">
-            <img id="logo-ai" src="ai.jpg"/>
-            <input type="text" placeholder="Search..."/>
+    <div id="login-search-wrapper">
+        <div id="login-search-section">
+            <div id="logo-user-container">
+                <img id="logo-ai" src="ai.jpg"/>
+                <input type="text" placeholder="Search..."/>
+            </div>
+            <button>Log In</button>
         </div>
-        <button>Log In</button>
     </div>
 
     <!-- List Information -->
@@ -523,7 +538,7 @@ The flex container properties are:
 
     <!-- Content Section -->
     <div id="main-section-container">
-        <div id="article-section">
+        <article>
         <!-- Section 1 -->
             <div>
                 <img id="anime-time" src="anime_time.jpg"/>
@@ -546,9 +561,9 @@ The flex container properties are:
                 <p>Paragraph to conclude this section</p>
                 <a href="https://xiangivyli.com">Click to see article</a>
             </div>
-        </div>
+        </article>
 
-        <div id="aside-section">
+        <aside>
             <!-- Aside Section -->
             <h4>Aside Section</h4>
             <p>Filter</p>
@@ -558,7 +573,7 @@ The flex container properties are:
                 <li>Item 2</li>
                 <li>Item 3</li>
             </ul>
-        </div>
+        </aside>
     </div>
 
     <!-- Footer Section -->
@@ -599,14 +614,19 @@ The flex container properties are:
         margin: 8px 20px;
     }
 
+    #login-search-wrapper {
+        background-color: white;
+        margin: 0;
+    }
+
     #login-search-section {
         display: flex;
         align-items: center;
-        justify-content: right;
-        width: 100%;
+        justify-content: space-between;
+        width: 80%;
         height: 60px;
-        background-color: white;
         padding: 0%;
+        margin: auto;
     }
 
     #logo-user-container {
@@ -619,20 +639,25 @@ The flex container properties are:
     #logo-ai {
         width: 50px;
         max-width: 10%;
+        height: auto;
     }
 
     #login-search-section input {
         width: 85%;
         height: 70%;
         margin-left: 10px;
+        font-size: 20px;
+        border: 1px solid black;
+        border-radius: 5px;
     }
 
     #login-search-section button {
-        width: 10%;
+        font-size: 25px;  
         background-color: skyblue;
+        border:0cap;
         color: white;
-        border: none;
         align-self: center;
+        padding: 5px 10px;
     }
 
     #author-info {
@@ -655,7 +680,7 @@ The flex container properties are:
         margin: auto;
     }
 
-    #article-section {
+    article {
         width: 70%;
         background-color: white;
         padding: 10px;
@@ -667,17 +692,19 @@ The flex container properties are:
         height: auto;
     }
 
-    #aside-section {
+    aside {
         width: 30%;
         background-color: white;
         padding: 0% 5%;
-        margin-left: auto;
+        margin-left: 10px;
     }
 
-    footer {
+    footer p{
         background-color: rgb(71, 125, 71);
         text-align: center;
+        color: white;
         padding: 10px;
+        margin: 1% auto;
     }
 </style>
 ```
