@@ -1,200 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <!-- Head Section -->
+    <head>
+        <title>My First Website</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+        <link rel="icon" type="image/png" href="favicon/favicon-96x96.png">
+        <meta name="description" content="This is a test website">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Ivy">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
 
+    <!-- Main Content -->
+    <body>
 
-<!-- Main Content -->
-<body>
+        <!-- Header Section -->
+        <header>
+        <h1><b>WELCOME TO MY WEBSITE</b></h1>
+        </header>
 
-    <!-- Header Section -->
-    <header>
-    <h1><b>WELCOME TO MY WEBSITE</b></h1>
-    </header>
-
-    <!--Search Log Section -->
-    <div id="login-search-wrapper">
-        <div id="login-search-section">
-            <div id="logo-user-container">
-                <img id="logo-ai" src="ai.jpg"/>
-                <input type="text" placeholder="Search..."/>
+        <!--Search Log Section -->
+        <div id="login-search-wrapper">
+            <div id="login-search-section">
+                <div id="logo-user-container">
+                    <img id="logo-ai" src="ai.jpg"/>
+                    <input type="text" placeholder="Search..."/>
+                </div>
+                <button>Log In</button>
             </div>
-            <button>Log In</button>
         </div>
-    </div>
 
-    <!-- List Information -->
-    <div id="author-info">
-        <h2>Name of the list</h2>
-        <h3><i>Short information on the list</i></h3>
-        <p class="article-info"><i>Written by Ivy</i> | <i>Date: Today</i></p>
-        <p class="article-info"><i>Department: UWE</i></p>
-    </div>
+        <!-- List Information -->
+        <div id="author-info">
+            <h2>Name of the list</h2>
+            <h3><i>Short information on the list</i></h3>
+            <p class="article-info"><i>Written by Ivy</i> | <i>Date: Today</i></p>
+            <p class="article-info"><i>Department: UWE</i></p>
+        </div>
 
-    <!-- Content Section -->
-    <div id="main-section-container">
-        <article>
-        <!-- Section 1 -->
-            <div>
-                <img id="anime-time" src="anime_time.jpg"/>
-                <p>Paragraph 1</p>
-                <p>Paragraph 2</p>
-            </div>
+        <!-- Content Section -->
+        <div id="main-section-container">
+            <article>
+            <!-- Section 1 -->
+                <div>
+                    <img id="anime-time" src="anime_time.jpg"/>
+                    <p>Paragraph 1</p>
+                    <p>Paragraph 2</p>
+                </div>
 
-        <!-- Subsection -->
-            <div>
-                <h4>Section Header</h4>
-                <p>Paragraph to introduce this section</p>
+            <!-- Subsection -->
+                <div>
+                    <h4>Section Header</h4>
+                    <p>Paragraph to introduce this section</p>
+
+                    <ul>
+                        <li>Item 1</li>
+                        <p>item 1 has some features</p>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+
+                    <p>Paragraph to conclude this section</p>
+                    <a href="https://xiangivyli.com">Click to see article</a>
+                </div>
+            </article>
+
+            <aside>
+                <!-- Aside Section -->
+                <h4>Aside Section</h4>
+                <p>Filter</p>
 
                 <ul>
                     <li>Item 1</li>
-                    <p>item 1 has some features</p>
                     <li>Item 2</li>
                     <li>Item 3</li>
                 </ul>
+            </aside>
+        </div>
 
-                <p>Paragraph to conclude this section</p>
-                <a href="https://xiangivyli.com">Click to see article</a>
-            </div>
-        </article>
-
-        <aside>
-            <!-- Aside Section -->
-            <h4>Aside Section</h4>
-            <p>Filter</p>
-
-            <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-            </ul>
-        </aside>
-    </div>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>Footer Section at the end of the page</p>
-    </footer>
+        <!-- Footer Section -->
+        <footer>
+            <p>Footer Section at the end of the page</p>
+        </footer>
 
 
-</body>
+    </body>
 
-<style>
-    header {
-        background-color: rgb(71, 125, 71);
-        color: white;
-        text-align: center;
-        padding: 10px;
-        margin: 1% auto;
-    }
-
-    body {
-        background-color: lightgrey;
-        margin: 0;
-
-    }
-
-    p {
-        color: black;
-    }
-
-    a {
-        color: blue;
-        font-size: 10px;
-    }
-
-    div {
-        border: 1px dotted black;
-        padding: 10px;
-        margin: 8px 20px;
-    }
-
-    #login-search-wrapper {
-        background-color: white;
-        margin: 0;
-    }
-
-    #login-search-section {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 80%;
-        height: 60px;
-        padding: 0%;
-        margin: auto;
-    }
-
-    #logo-user-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        width: 80%;
-    }
-
-    #logo-ai {
-        width: 50px;
-        max-width: 10%;
-        height: auto;
-    }
-
-    #login-search-section input {
-        width: 85%;
-        height: 70%;
-        margin-left: 10px;
-        font-size: 20px;
-        border: 1px solid black;
-        border-radius: 5px;
-    }
-
-    #login-search-section button {
-        font-size: 25px;  
-        background-color: skyblue;
-        border:0cap;
-        color: white;
-        align-self: center;
-        padding: 5px 10px;
-    }
-
-    #author-info {
-        text-align: center;
-        width: 80%;
-        margin: 10px auto;
-        background-color: white;
-    }
-
-    .article-info {
-        color: skyblue;
-        font-size: 20px;
-    }
-
-    #main-section-container {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        width: 80%;
-        margin: auto;
-    }
-
-    article {
-        width: 70%;
-        background-color: white;
-        padding: 10px;
-    } 
-
-    #anime-time {
-        width: 30%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    aside {
-        width: 30%;
-        background-color: white;
-        padding: 0% 5%;
-        margin-left: 10px;
-    }
-
-    footer p{
-        background-color: rgb(71, 125, 71);
-        text-align: center;
-        color: white;
-        padding: 10px;
-        margin: 1% auto;
-    }
-</style>
+</html>

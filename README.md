@@ -25,7 +25,8 @@
             - 1.3.3.1 [Flexbox Positioning](#1331-flexbox-positioning)
         - 1.3.4 [Background Colors](#134-background-colors)
         - 1.3.5 [Semantic Elements](#135-semantic-elements)
-        - 1.3.6 [Comprehensive Template](#136-comprehensive-template)
+        - 1.3.6 [Comprehensive Template for the main body](#136-comprehensive-template)
+    - 1.4 [HTML head tags](#14-html-head-tags)
 
 
 # 1. Web Development with HTML, CSS and JavaScript
@@ -409,6 +410,11 @@ function getAge(birthDateString) {
 - CSS stands for **C**ascading **S**tyle **S**heets
 - Describe the **style** of a website
 
+It is common to put `<style>` section in a seperate CSS file, the benefits of external CSS file:
+1. Better overview
+2. External CSS files could be reused for different HTML pages, in case of same styling
+3. External CSS files can be cached by the browser, which increases performance of the website
+
 ### 1.3.1 `<style>` Element
 - Used to define style (CSS) information for a document
 
@@ -510,7 +516,7 @@ The flex container properties are:
 
 ### 1.3.6 Comprehensive Template
   
-```css
+```html
 <!-- Main Content -->
 <body>
 
@@ -710,3 +716,93 @@ The flex container properties are:
     }
 </style>
 ```
+
+## 1.4 HTML head tags
+
+1. `<head>`
+- A container for metadata about the website
+
+2. `<title>`
+- Defines a title name for the webpage
+- Shown in: the browser's title bar or when added to favorites
+- Very important for search engine optimization (SEO)
+- Use descriptive title, not just a list of words
+
+
+3. `<link>` 
+- Used to define a link to an external resource
+- `rel=` specifies the relation of a linked resource
+    - alternate
+    - author
+    - dns-prefetch
+    - help
+    - icon
+    - license
+    - next
+    - pingback
+    - preconnect
+    - prefetch
+    - preload
+    - prerender
+    - prev
+    - search
+    - stylesheet
+        - can be my own stylesheet
+        - Or use publicly available ones
+- `href=` specifies the location of the linked document
+- `type=` define the **media type** of the linked document/resource
+    - if I don't specify the attribute, the brower will look at the `rel` attribute to guess the correct type
+
+**Bootstrap**
+**A free CSS framework and it contains HTML, CSS and JS-based design templates, which I can use in my own website**
+
+4. Favicon
+- Short for "favorite icon"
+- It's a small 16*16 pixel icon
+- An icon associated with a particular website used on web browsers
+
+5. `<meta>`
+- Used to specify the character set, page description, keywords, author of the document, and viewport settings
+- Will not be displayed on the page, but is used by browsers (how to display content or reload page), by seach engines (keywords)
+
+    - Define the character set used
+    - Define keywords for search engine
+    - Define a description of the web page
+    - Define the author of a page
+    - Refresh document every 30 seconds
+    - Set the viewport to make my website look good on all devices
+
+6. `<html>` element
+- The **root element**, holding all the content of an HTML document
+- Tip: including the lang attribute to define the language of the web page (for search engine)
+
+7. `<!DOCTYPE>`
+- All HTML documents must start with it
+- Tell browser that this is an HTML document including which **HTML version**
+    - HTML
+    - HTML+
+    - HTML 2.0
+    - HTML 3.2
+    - HTML 4.01
+    - HTML5
+
+```html
+<!DOCTYPE html>
+<html>
+    <!-- Head Section -->
+    <head>
+        <title>My First Website</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+        <link rel="icon" type="image/png" href="favicon/favicon-96x96.png">
+        <meta name="description" content="This is a test website">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Ivy">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <!-- Main Content -->
+    <body>
+    </body>
+</html>

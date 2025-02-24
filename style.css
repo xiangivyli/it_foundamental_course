@@ -1,0 +1,121 @@
+header {
+    background-color: rgb(71, 125, 71);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 1% auto;
+}
+
+body {
+    background-color: lightgrey;
+    margin: 0;
+
+}
+
+p {
+    color: black;
+}
+
+a {
+    color: blue;
+    font-size: 10px;
+}
+
+div {
+    border: 1px dotted black;
+    padding: 10px;
+    margin: 8px 20px;
+}
+
+#login-search-wrapper {
+    background-color: white;
+    margin: 0;
+}
+
+#login-search-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 60px;
+    padding: 0%;
+    margin: auto;
+}
+
+#logo-user-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+}
+
+#logo-ai {
+    width: 50px;
+    max-width: 10%;
+    height: auto;
+}
+
+#login-search-section input {
+    width: 85%;
+    height: 70%;
+    margin-left: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#login-search-section button {
+    font-size: 25px;  
+    background-color: skyblue;
+    border:0cap;
+    color: white;
+    align-self: center;
+    padding: 5px 10px;
+}
+
+#author-info {
+    text-align: center;
+    width: 80%;
+    margin: 10px auto;
+    background-color: white;
+}
+
+.article-info {
+    color: skyblue;
+    font-size: 20px;
+}
+
+#main-section-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 80%;
+    margin: auto;
+}
+
+article {
+    width: 70%;
+    background-color: white;
+    padding: 10px;
+} 
+
+#anime-time {
+    width: 30%;
+    max-width: 300px;
+    height: auto;
+}
+
+aside {
+    width: 30%;
+    background-color: white;
+    padding: 0% 5%;
+    margin-left: 10px;
+}
+
+footer p{
+    background-color: rgb(71, 125, 71);
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin: 1% auto;
+}
