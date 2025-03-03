@@ -36,8 +36,8 @@ div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
-    height: 60px;
+    width: 90%;
+    height: 80%;
     padding: 0%;
     margin: auto;
 }
@@ -46,7 +46,7 @@ div {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 80%;
+    width: 90%;
 }
 
 #logo-ai {
@@ -56,7 +56,7 @@ div {
 }
 
 #login-search-section input {
-    width: 85%;
+    width: 80%;
     height: 70%;
     margin-left: 10px;
     font-size: 20px;
@@ -64,13 +64,36 @@ div {
     border-radius: 5px;
 }
 
-#login-search-section button {
-    font-size: 25px;  
-    background-color: skyblue;
-    border:0cap;
-    color: white;
-    align-self: center;
-    padding: 5px 10px;
+button {
+    font-size: 20px;  
+    background-color: white;
+    border:1px splid black;
+    color: blue;
+    padding: 10px 5px;
+    border-radius: 5px;
+}
+
+#hide-btn {
+    color: darkred;
+    border: 1px solid darkred;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(71, 125, 71);
+}
+
+#post-form-container {
+    max-width: 300px;
+    padding: 10px;
+    margin: auto;
+    display: none;
+}
+
+#post-form-container input, textarea{
+    width: 100%;
+    margin: 5px 0 20px 0;
+    padding: 10px;
 }
 
 #author-info {

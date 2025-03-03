@@ -27,6 +27,13 @@
         - 1.3.5 [Semantic Elements](#135-semantic-elements)
         - 1.3.6 [Comprehensive Template for the main body](#136-comprehensive-template)
     - 1.4 [HTML head tags](#14-html-head-tags)
+    - 1.5 [Add JavaScript to HTML](#15-add-javascript-to-html)
+        - 1.5.1 [OnClick Event](#151-onclick-event)
+            - 1.5.1.1 [Write Create Post Form](#1511-write-create-post-form)
+            - 1.5.1.2 [Add buttons to the Form](#1512-add-buttons-to-the-form)
+        - 1.5.2 [Style Button on Hover](#152-style-button-on-hover)
+        - 1.5.3 [DOM - Document Object Model](#153-dom---document-object-model)
+        - 1.5.4 [Extract JS code into own JS file](#154-extract-js-code-into-own-js-file)
 
 
 # 1. Web Development with HTML, CSS and JavaScript
@@ -806,3 +813,110 @@ The flex container properties are:
     <body>
     </body>
 </html>
+```
+
+## 1.5 Add javascript to html
+- add `<script>` in the `<head>`
+- **Function invocation**
+    - The code inside a function **executes only when "something" involes (calls) the function**
+    - 1. When it is invoked from JS code
+    - 2. When an **event occurs (like a user clicks on a button)**
+        - Events are **things that happen** to HTML elements
+            - Something **the brower does**
+            - Something **a user does**
+            - And JavaScript can "react" on those events
+
+
+### 1.5.1 onclick Event
+The event occurs when the user clicks on the element
+
+#### 1.5.1.1 Write "Create Post" Form
+The form element is a **container for different types of input elements**
+`<form>`
+- `<input>`
+    - Associate the `<label>` with the `<input>`
+    - To tie the elements together: `for` attribute in label, `id` attribute of input field
+    - if type is "email" or "password", the input should fit the format like @ or the password will be masked
+    - [HTML input types](https://www.w3schools.com/html/html_form_input_types.asp)
+
+- `<textarea>`
+    - Define a multi-line text input field
+    - Usually used to collect user input like comments or reviews
+```html
+<textarea type="text" placeholder="Your Content..." required></textarea>
+```
+
+- `<label>`
+    - Defines a text label for the `<input>` tag
+- `<select>`
+- `<option>`
+
+Some attributes for `<form>`
+- required attribute: a boolean attribute, when present, it specifies that input field **must be filled out** before submitting the form
+
+Some attributes for `<form>` style
+- max-width: define the maximum width of an element, if content is larger, then max-width applies, if smaller, then the max-width has no effect
+
+#### 1.5.1.2 Add buttons to the Form
+
+
+### 1.5.2 Style Button on Hover
+:hover Selector
+- Used to select elements when you mouse over them
+
+In the style.css file, the following code achieves 
+
+1. the cursor becomes a pointer when hovering on the button
+2. the background of the button become green when hovering on the button
+```css
+#login-search-section button:hover {
+    cursor: pointer;
+    background-color: rgb(71, 125, 71);
+}
+```
+
+### 1.5.3 DOM - Document Object Model
+
+**Document Object**
+- Each HTML document that gets loaded into a window becomes a document object
+- It's the root node of the HTML document, containing the contents of the page
+
+**Document Object Method**
+- With it I can access and modify all document content
+
+1. `document.getElementById("author-info")`
+get div part from the whole document object
+
+1.1 `document.getElementById("author-info").style`
+
+1.2 `document.getElementById("post-form-container").style.display = "block"`
+can put it in the function and invoke it with button, change the display from "none" to "block"
+
+```html
+<script>
+    function handleCreatePost() {
+        document.getElementById("post-form-container").style.display = "block";
+    }
+</script>
+
+<div id="login-search-wrapper">
+            <div id="login-search-section">
+                ...
+                <button onClick="handleCreatePost()">Create Post</button>
+            </div>
+        </div>
+```
+
+
+2. `document.getElementByTagName("h4")`
+get an array of this tag and can get the element by index
+
+3. `document.createElement("p")`
+
+4. `document.createTextNode("some text")`
+
+### 1.5.4 Extract JS code into own JS file
+
+```html
+<script src="javascript/app.js"></script>
+```
