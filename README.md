@@ -1,4 +1,9 @@
 # Table of Contents
+0. [Backlog and Scrum Board in Jira](#0-backlog-and-scrum-board-in-jira)
+    - 0.1 [Issue](#01-issue)
+        - 0.1.1 [Child Issue](#011-child-issues)
+    - 0.2 [UI Mock](#02-ui-mock)
+    - 0.3 [Backlog to Sprint](#03-backlog-to-sprint)
 1. [Web Development with HTML, CSS, and JavaScript](#1-web-development-with-html-css-and-javascript)
     - 1.1 [JavaScript](#11-javascript)
         - 1.1.1 [Conditionals & Comparators](#111-conditionals--comparators)
@@ -35,6 +40,37 @@
         - 1.5.3 [DOM - Document Object Model](#153-dom---document-object-model)
         - 1.5.4 [Extract JS code into own JS file](#154-extract-js-code-into-own-js-file)
 
+# 0. Backlog and Scrum Board in Jira
+<div style="text-align: center;">
+    <img src="./src/agile_scrum.png" alt="agile_scrum">
+</div>
+
+## 0.1 Issue
+- Unit of work
+- Will be traced through the workflow from creation to completion
+
+Types:
+- story: also called "user story", requirement expressed using **non-technical language**, and it is usually a larger parent work item, which is broken down to smaller tasks
+- Task: a more technical description, more specific, describing a single unit of work
+- Bug: a problem, which prevents product from function correctly
+
+### 0.1.1 Child Issues
+- Child issue **sits below** another issue e.g. a subtask
+
+## 0.2 UI Mock
+- A realistic representation or **visual draft** of the design of a website
+- Reflects the app's design elements, like color scheme, images, typography, buttons
+
+## 0.3 Backlog to Sprint
+- Backlog collects all user stories or tasks or bugs, then review the list to prioritise the first 3
+- Create Sprint to set timeline, plan the sprint and set the goal which is going to be done in the Sprint
+- Development team decides how many tasks they can implement in 1 sprint
+
+Jira Sprint and Backlog demo
+
+<div style="text-align: center;">
+    <img src="./src/jira_sprint_demo.png" alt="jira_sprint_demo">
+</div>
 
 # 1. Web Development with HTML, CSS and JavaScript
 ## 1.1 JavaScript
