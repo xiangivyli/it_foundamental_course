@@ -308,7 +308,7 @@ for (fullName of fullNames) {
 }
 ```
 
-2. Example2: Calculate the age based on users' birthdate
+2. Example2: Calculate the age based on users' birthdate   
 **Date object**
 - You can use the Date object and its methods to **work with dates and times**
 - It's not a real built-in data type of JavaScript
