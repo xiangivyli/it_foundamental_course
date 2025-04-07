@@ -379,6 +379,7 @@ function getAge(birthDateString) {
 
 
 5. `<a>`
+- a means "anchor"
 - Defines a **hyperlink**, used to link from one page to another
 - **href attribute** specifies the URL of the page the link goes to
     - An absolute URL
@@ -406,6 +407,10 @@ function getAge(birthDateString) {
 - `<ul>` to define an **unordered** list
 - `<ol>` to define an **ordered** list
 - `<li>` to define a **list item**, used inside ordered or unordered list
+
+<div style="text-align: center;">
+    <img src="./src/HTML.png" alt="html sample">
+</div>
 
 ```html
 <!-- Header Section -->
@@ -460,7 +465,7 @@ It is common to put `<style>` section in a seperate CSS file, the benefits of ex
 2. External CSS files could be reused for different HTML pages, in case of same styling
 3. External CSS files can be cached by the browser, which increases performance of the website
 
-### 1.3.1 `<style>` Element
+### 1.3.1 `<style>` Element inline and internal
 - Used to define style (CSS) information for a document
 
 Step 1 WHICH element you want to style?
@@ -506,6 +511,10 @@ Each declaration includes a CSS property **name** and **value**
 - Used to specify a name for an HTML element
 - Multiple elements can share the same class
 - Use `.` to locate it in style
+
+<div style="text-align: center;">
+    <img src="./src/CSS_Selector.png">
+</div>
 
 ### 1.3.3 Website Layout
 There are many different layouts, but the following structure is very common
