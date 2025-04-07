@@ -366,11 +366,13 @@ function getAge(birthDateString) {
 - Only take up as much width as necessary
 
 1. Text Element (Typography)  
+
 `<b>` `<i>`
 - `<b>` makes the text **bold**
 - `<i>` display text in *italic*
 
 2. Links  
+
 `<a>`
 - a means "anchor"
 - Defines a **hyperlink**, used to link from one page to another
@@ -382,6 +384,7 @@ function getAge(birthDateString) {
     - A script (like href="javascript:alert('Hello');")
 
 3. Image and Media  
+
 `<img/>`
 - Embed images
 - **Self-Closing** Tags
@@ -390,6 +393,7 @@ function getAge(birthDateString) {
     - A relative url - points to a file within a web site (like src="image.gif")
 
 4. Forms and Input  
+
 `<button>`
 - Defines a clickable button
 
