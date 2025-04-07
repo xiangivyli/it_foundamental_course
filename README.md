@@ -25,23 +25,21 @@
             - 1.2.1.3 [HTML Block Elements](#1213-html-block-elements)
         - 1.2.2 [HTML head tags](#122-html-head-tags)
     - 1.3 [CSS](#13-css)
-        - 1.3.1 [`<style>` elements](#131-style-element)
-        - 1.3.2 [Class Selector](#132-class-selector)
-        - 1.3.3 [Website Layout](#133-website-layout)
-            - 1.3.3.1 [Flexbox Positioning](#1331-flexbox-positioning)
-        - 1.3.4 [Background Colors](#134-background-colors)
-        - 1.3.5 [Semantic Elements](#135-semantic-elements)
-        - 1.3.6 [Comprehensive Template for the main body](#136-comprehensive-template)
-  
-
-  
-    - 1.5 [Add JavaScript to HTML](#15-add-javascript-to-html)
-        - 1.5.1 [OnClick Event](#151-onclick-event)
-            - 1.5.1.1 [Write Create Post Form](#1511-write-create-post-form)
-            - 1.5.1.2 [Add buttons to the Form](#1512-add-buttons-to-the-form)
-        - 1.5.2 [Style Button on Hover](#152-style-button-on-hover)
-        - 1.5.3 [DOM - Document Object Model](#153-dom---document-object-model)
-        - 1.5.4 [Extract JS code into own JS file](#154-extract-js-code-into-own-js-file)
+        - 1.3.1 [`<style>` elements for Inline and Internal](#131-style-element-inline-and-internal)
+            - 1.3.1.1 [Selector](#1311-selector)
+            - 1.3.1.2 [CSS Properties](#1312-css-properties)
+        - 1.3.2 [Website Layout](#132-website-layout)
+            - 1.3.2.1 [Flexbox Positioning](#1321-flexbox-positioning)
+        - 1.3.3 [Background Colors](#133-background-colors)
+        - 1.3.4 [Semantic Elements](#134-semantic-elements)
+        - 1.3.5 [Comprehensive Template for the main body](#135-comprehensive-template)
+    - 1.4 [Add JavaScript to HTML](#14-add-javascript-to-html)
+        - 1.4.1 [OnClick Event](#141-onclick-event)
+            - 1.4.1.1 [Write Create Post Form](#1411-write-create-post-form)
+            - 1.4.1.2 [Add buttons to the Form](#1412-add-buttons-to-the-form)
+        - 1.4.2 [Style Button on Hover](#142-style-button-on-hover)
+        - 1.4.3 [DOM - Document Object Model](#143-dom---document-object-model)
+        - 1.4.4 [Extract JS code into own JS file](#144-extract-js-code-into-own-js-file)
 
 # 0. Backlog and Scrum Board in Jira
 <div style="text-align: center;">
@@ -575,34 +573,55 @@ function getAge(birthDateString) {
 - CSS stands for **C**ascading **S**tyle **S**heets
 - Describe the **style** of a website
 
+Three ways to apply CSS
+1. Inline CSS 
+- Applied directly to an HTML element using the style attribute.  
+`<h1 style="color: blue; font-size: 2em;">Hello Ivy!</h1>`
+
+2. Internal CSS
+- Defined within a `<style>` tag inside the <head> of an HTML
+```css
+<style>
+    h1 {
+        color: blue;
+        font-size: 2em;
+    }
+</style>
+```
+
+3. External CSS
+- Written in a seperate .css file and linked to the HTML document using a `<link>` tag.  
+`<link rel="stylesheet" href="style.css">`
+
 It is common to put `<style>` section in a seperate CSS file, the benefits of external CSS file:
 1. Better overview
 2. External CSS files could be reused for different HTML pages, in case of same styling
 3. External CSS files can be cached by the browser, which increases performance of the website
 
-### 1.3.1 `<style>` Element inline and internal
+
+### 1.3.1 `<style>` Element Inline and Internal
 - Used to define style (CSS) information for a document
 
 Step 1 WHICH element you want to style?
 Step 2 HOW to style it?
 
+#### 1.3.1.1 Selector 
+
+<div style="text-align: center;">
+    <img src="./src/CSS_Selector.png">
+</div>
+
+#### 1.3.1.2 CSS Properties
+
+<div style="text-align: center;">
+    <img src="./src/CSS_Styling.png">
+</div>
+
 Each declaration includes a CSS property **name** and **value**
+
+**Text Styling**
 1. `color: grey;` `font-size: 10px;`
-
-2. for `div`
-    - `border: 1px solid black;`shorthand syntax for border-width, border-style, border-color
-    - `padding: 10px;` adds space inside the border
-    - `margin: 10px;` adds space outside the border
-        - `margin-left`
-        - `margin-right`
-        - `margin-bottom`
-        - `margin-top`
-
-3. id Attribute 
-- Defined in the HTML elements
-- Use `#` to locate it in style
-
-4. CSS Units 
+2. CSS Units 
 - CSS has several different units for expressiing a length
 - **Absolute Units**
     - Most import one: px
@@ -614,33 +633,42 @@ Each declaration includes a CSS property **name** and **value**
     - Responsive Web design
         - The goal is to make web pages render well on a variety of devices and window or screen sizes
         - When a website is responsive, it means it **automatically adjusts for different screem sizes**
-5. padding Attribute
-- Used to create space around an element's content inside of any defined borders
 
-6. text-align Attribute
+
+**Box Model**
+1. for `div`
+    - `border: 1px solid black;`shorthand syntax for border-width, border-style, border-color
+    - `padding: 10px;` adds space inside the border (Used to create space around an element's content inside of any defined borders)
+    - `margin: 10px;` adds space outside the border
+        - `margin-left`
+        - `margin-right`
+        - `margin-bottom`
+        - `margin-top`
+
+**Display and Positioning**
+- Display and positioning properties control how elements are laid out on the page (1.3.2 address it)
 - Define the **horizontal alignment** of the text in an element
+```css
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+```
 
-<div style="text-align: center;">
-    <img src="./src/CSS_Styling.png">
-</div>
-
-### 1.3.2 Class Selector
-
-**Class Attribute**
-- Used to specify a name for an HTML element
-- Multiple elements can share the same class
-- Use `.` to locate it in style
-
-<div style="text-align: center;">
-    <img src="./src/CSS_Selector.png">
-</div>
-
-### 1.3.3 Website Layout
+### 1.3.2 Website Layout
 There are many different layouts, but the following structure is very common
 - Header
 - Navigation
 - Main Section / Content / Aside
 - Footer
+
+These properties determine whether elements are block or inline, how they flow in relation to other elements, and where they are positioned in their container.
 
 There are 2 common methods
 - **Flexbox** Layout
@@ -652,7 +680,7 @@ There are 2 common methods
     - Also makes it easier to design flexible web pages
 
 
-#### 1.3.3.1 Flexbox Positioning
+#### 1.3.2.1 Flexbox Positioning
 
 **Attributes for the parent container**
 The flex container properties are:
@@ -674,11 +702,11 @@ The flex container properties are:
 - flex
 - align-self
 
-### 1.3.4 Background Colors
+### 1.3.3 Background Colors
 - background-color Attribute
 - Colors are specified with predefined color names or RGB, HEX and some other values
 
-### 1.3.5 Semantic Elements
+### 1.3.4 Semantic Elements
 - Elements with a meaning
 - `<header>` Element
     - Represents container for introductory content or navigational links 
@@ -687,7 +715,7 @@ The flex container properties are:
 - `<aside>` Element
     - Defines content aside from the page content
 
-### 1.3.6 Comprehensive Template
+### 1.3.5 Comprehensive Template
   
 ```html
 <!-- Main Content -->
@@ -891,7 +919,7 @@ The flex container properties are:
 ```
 
 
-## 1.5 Add javascript to html
+## 1.4 Add javascript to html
 - add `<script>` in the `<head>`
 - **Function invocation**
     - The code inside a function **executes only when "something" involes (calls) the function**
@@ -903,10 +931,10 @@ The flex container properties are:
             - And JavaScript can "react" on those events
 
 
-### 1.5.1 onclick Event
+### 1.4.1 onclick Event
 The event occurs when the user clicks on the element
 
-#### 1.5.1.1 Write "Create Post" Form
+#### 1.4.1.1 Write "Create Post" Form
 The form element is a **container for different types of input elements**
 `<form>`
 - `<input>`
@@ -933,10 +961,10 @@ Some attributes for `<form>`
 Some attributes for `<form>` style
 - max-width: define the maximum width of an element, if content is larger, then max-width applies, if smaller, then the max-width has no effect
 
-#### 1.5.1.2 Add buttons to the Form
+#### 1.4.1.2 Add buttons to the Form
 
 
-### 1.5.2 Style Button on Hover
+### 1.4.2 Style Button on Hover
 :hover Selector
 - Used to select elements when you mouse over them
 
@@ -951,7 +979,7 @@ In the style.css file, the following code achieves
 }
 ```
 
-### 1.5.3 DOM - Document Object Model
+### 1.4.3 DOM - Document Object Model
 
 **Document Object**
 - Each HTML document that gets loaded into a window becomes a document object
@@ -991,7 +1019,7 @@ get an array of this tag and can get the element by index
 
 4. `document.createTextNode("some text")`
 
-### 1.5.4 Extract JS code into own JS file
+### 1.4.4 Extract JS code into own JS file
 
 ```html
 <script src="javascript/app.js"></script>
