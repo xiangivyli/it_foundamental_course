@@ -365,12 +365,12 @@ function getAge(birthDateString) {
 #### 1.2.1.2 HTML Inline Elements
 - Only take up as much width as necessary
 
-1. Text Element (Typography)
+1. Text Element (Typography)  
 `<b>` `<i>`
 - `<b>` makes the text **bold**
 - `<i>` display text in *italic*
 
-2. Links
+2. Links  
 `<a>`
 - a means "anchor"
 - Defines a **hyperlink**, used to link from one page to another
@@ -381,7 +381,7 @@ function getAge(birthDateString) {
     - Other protocols (like https://, ftp://, mailto:, file:, etc)
     - A script (like href="javascript:alert('Hello');")
 
-3. Image and Media
+3. Image and Media  
 `<img/>`
 - Embed images
 - **Self-Closing** Tags
@@ -389,7 +389,7 @@ function getAge(birthDateString) {
     - An absolute URL
     - A relative url - points to a file within a web site (like src="image.gif")
 
-4. Forms and Input
+4. Forms and Input  
 `<button>`
 - Defines a clickable button
 
@@ -404,7 +404,7 @@ function getAge(birthDateString) {
 #### 1.2.1.3 HTML Block Elements
 - Take up full width
 
-1. Text Element (Typography)
+1. Text Element (Typography)  
 `<h1>` - `<h6>` 
 - Used to define HTML headings
 - `<h1>` is most important heading, `<h6>` is the least 
@@ -413,22 +413,22 @@ function getAge(birthDateString) {
 - To define a paragraph
 - Browsers automatically add a single blank line before and after each `<p>` element
 
-2. Lists
+2. Lists  
 `<ul>` `<ol>` `<li>`
 - `<ul>` to define an **unordered** list
 - `<ol>` to define an **ordered** list
 - `<li>` to define a **list item**, used inside ordered or unordered list
 
-3. Layout
+3. Layout  
 `<div>`
 - Defines a **division or section** in an HTML document
 - Used as a **container** for other HTML elements
 
-4. Semantic Elements
-`<nav>`
-`<main>`
-`<article>`
-`<aside>`
+4. Semantic Elements  
+`<nav>`  
+`<main>`  
+`<article>`  
+`<aside>`  
 
 ```html
 <!-- Main Content -->
