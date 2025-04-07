@@ -343,7 +343,11 @@ function getAge(birthDateString) {
 - These HTML elements are set off from other text by "tags", which is element name surrounded by "<" and ">"
 - HTML element is defined by a start tag, some content and an end tag
 
-#### 1.2.1.1 HTML Attributes
+<div style="text-align: center;">
+    <img src="./src/HTML.png" alt="html sample">
+</div>
+
+#### 1.2.1.1 HTML Common Attributes
 - All HTML elements can have attributes
 - Attributes usually have **name/value pairs**
 - Provide **additional info** about HTML elements
@@ -352,33 +356,22 @@ function getAge(birthDateString) {
 - Used to specify a **unique id** for an HTML element
 - Only 1 element with the same id can exist in an HTML document
 
+2. **class Attribute**
+- Used to specify a name for an HTML element
+- Multiple elements can share the same class
+- Use `.` to locate it in style for CSS
+
 #### 1.2.1.2 HTML Inline Elements
 - Only take up as much width as necessary
 
-1. `<b>` `<i>`
+1. Text Element (Typography)
+`<b>` `<i>`
 - `<b>` makes the text **bold**
 - `<i>` display text in *italic*
 
 
-2. `<button>`
-- Defines a clickable button
-
-3. `<img/>`
-- Embed images
-- **Self-Closing** Tags
-- **src attribute** specifies the URL of the image
-    - An absolute URL
-    - A relative url - points to a file within a web site (like src="image.gif")
-
-4. `<input/>`
-- Specifies an input field where **user can enter data**
-- Depending on type attribute the element is **displayed in different ways**
-- **type attribute**
-    - default type is "text"
-- **placeholder attribute** specifies **short hint** that describes teh expected value
-
-
-5. `<a>`
+2. Links
+`<a>`
 - a means "anchor"
 - Defines a **hyperlink**, used to link from one page to another
 - **href attribute** specifies the URL of the page the link goes to
@@ -387,6 +380,27 @@ function getAge(birthDateString) {
     - Link to an element with a specified id within the page (href="#section2")
     - Other protocols (like https://, ftp://, mailto:, file:, etc)
     - A script (like href="javascript:alert('Hello');")
+
+
+3. Image and Media
+`<img/>`
+- Embed images
+- **Self-Closing** Tags
+- **src attribute** specifies the URL of the image
+    - An absolute URL
+    - A relative url - points to a file within a web site (like src="image.gif")
+
+4. Forms and Input
+`<button>`
+- Defines a clickable button
+
+`<input/>`
+- Specifies an input field where **user can enter data**
+- Depending on type attribute the element is **displayed in different ways**
+- **type attribute**
+    - default type is "text"
+- **placeholder attribute** specifies **short hint** that describes teh expected value
+
 
 #### 1.2.1.3 HTML Block Elements
 - Take up full width
@@ -408,9 +422,6 @@ function getAge(birthDateString) {
 - `<ol>` to define an **ordered** list
 - `<li>` to define a **list item**, used inside ordered or unordered list
 
-<div style="text-align: center;">
-    <img src="./src/HTML.png" alt="html sample">
-</div>
 
 ```html
 <!-- Header Section -->
@@ -504,6 +515,10 @@ Each declaration includes a CSS property **name** and **value**
 
 6. text-align Attribute
 - Define the **horizontal alignment** of the text in an element
+
+<div style="text-align: center;">
+    <img src="./src/CSS_Styling.png">
+</div>
 
 ### 1.3.2 Class Selector
 
