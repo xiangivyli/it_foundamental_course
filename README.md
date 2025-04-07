@@ -20,9 +20,10 @@
             - 1.1.5.2 [Examples about date objects and boolean var](#1152-examples-to-transform-with-functions)
     - 1.2 [HTML](#12-html)
         - 1.2.1 [HTML Elements](#121-html-elements)
-            - 1.2.1.1 [HTML Attribute](#1211-html-attributes)
+            - 1.2.1.1 [HTML Common Attributes](#1211-html-common-attributes)
             - 1.2.1.2 [HTML Inline Elements](#1212-html-inline-elements)
             - 1.2.1.3 [HTML Block Elements](#1213-html-block-elements)
+        - 1.2.2 [HTML head tags](#122-html-head-tags)
     - 1.3 [CSS](#13-css)
         - 1.3.1 [`<style>` elements](#131-style-element)
         - 1.3.2 [Class Selector](#132-class-selector)
@@ -31,7 +32,9 @@
         - 1.3.4 [Background Colors](#134-background-colors)
         - 1.3.5 [Semantic Elements](#135-semantic-elements)
         - 1.3.6 [Comprehensive Template for the main body](#136-comprehensive-template)
-    - 1.4 [HTML head tags](#14-html-head-tags)
+  
+
+  
     - 1.5 [Add JavaScript to HTML](#15-add-javascript-to-html)
         - 1.5.1 [OnClick Event](#151-onclick-event)
             - 1.5.1.1 [Write Create Post Form](#1511-write-create-post-form)
@@ -369,7 +372,6 @@ function getAge(birthDateString) {
 - `<b>` makes the text **bold**
 - `<i>` display text in *italic*
 
-
 2. Links
 `<a>`
 - a means "anchor"
@@ -380,7 +382,6 @@ function getAge(birthDateString) {
     - Link to an element with a specified id within the page (href="#section2")
     - Other protocols (like https://, ftp://, mailto:, file:, etc)
     - A script (like href="javascript:alert('Hello');")
-
 
 3. Image and Media
 `<img/>`
@@ -405,32 +406,42 @@ function getAge(birthDateString) {
 #### 1.2.1.3 HTML Block Elements
 - Take up full width
 
-1. `<div>`
-- Defines a **division or section** in an HTML document
-- Used as a **container** for other HTML elements
-
-2. `<h1>` - `<h6>` 
+1. Text Element (Typography)
+`<h1>` - `<h6>` 
 - Used to define HTML headings
 - `<h1>` is most important heading, `<h6>` is the least 
 
-3. `<p>`
+`<p>`
 - To define a paragraph
 - Browsers automatically add a single blank line before and after each `<p>` element
 
-4. `<ul>` `<ol>` `<li>`
+2. Lists
+`<ul>` `<ol>` `<li>`
 - `<ul>` to define an **unordered** list
 - `<ol>` to define an **ordered** list
 - `<li>` to define a **list item**, used inside ordered or unordered list
 
+3. Layout
+`<div>`
+- Defines a **division or section** in an HTML document
+- Used as a **container** for other HTML elements
+
+4. Semantic Elements
+`<nav>`
+`<main>`
+`<article>`
+`<aside>`
 
 ```html
-<!-- Header Section -->
-<header>
-    <h1><b>WELCOME TO MY WEBSITE</b></h1>
-</header>
-
 <!-- Main Content -->
 <body>
+
+    <!-- Header Section -->
+    <header>
+        <h1><b>WELCOME TO MY WEBSITE</b></h1>
+    </header>
+
+    <!-- Input Section -->
     <input type="text" placeholder="Enter username"/>
     <button>Log In</button>
 
@@ -465,6 +476,99 @@ function getAge(birthDateString) {
 
 </body>
 ```
+
+### 1.2.2 HTML head tags
+
+1. `<head>`
+- A container for metadata about the website
+
+2. `<title>`
+- Defines a title name for the webpage
+- Shown in: the browser's title bar or when added to favorites
+- Very important for search engine optimization (SEO)
+- Use descriptive title, not just a list of words
+
+
+3. `<link>` 
+- Used to define a link to an external resource
+- `rel=` specifies the relation of a linked resource
+    - alternate
+    - author
+    - dns-prefetch
+    - help
+    - icon
+    - license
+    - next
+    - pingback
+    - preconnect
+    - prefetch
+    - preload
+    - prerender
+    - prev
+    - search
+    - stylesheet
+        - can be my own stylesheet
+        - Or use publicly available ones
+- `href=` specifies the location of the linked document
+- `type=` define the **media type** of the linked document/resource
+    - if I don't specify the attribute, the brower will look at the `rel` attribute to guess the correct type
+
+**Bootstrap**
+**A free CSS framework and it contains HTML, CSS and JS-based design templates, which I can use in my own website**
+
+4. Favicon
+- Short for "favorite icon"
+- It's a small 16*16 pixel icon
+- An icon associated with a particular website used on web browsers
+`<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">`
+
+5. `<meta>`
+- Used to specify the character set, page description, keywords, author of the document, and viewport settings
+- Will not be displayed on the page, but is used by browsers (how to display content or reload page), by seach engines (keywords)
+
+    - Define the character set used
+    - Define keywords for search engine
+    - Define a description of the web page
+    - Define the author of a page
+    - Refresh document every 30 seconds
+    - Set the viewport to make my website look good on all devices
+
+6. `<html>` element
+- The **root element**, holding all the content of an HTML document
+- Tip: including the lang attribute to define the language of the web page (for search engine)
+
+7. `<!DOCTYPE>`
+- All HTML documents must start with it
+- Tell browser that this is an HTML document including which **HTML version**
+    - HTML
+    - HTML+
+    - HTML 2.0
+    - HTML 3.2
+    - HTML 4.01
+    - HTML5
+
+```html
+<!DOCTYPE html>
+<html>
+    <!-- Head Section -->
+    <head>
+        <title>My First Website</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+        <link rel="icon" type="image/png" href="favicon/favicon-96x96.png">
+        <meta name="description" content="This is a test website">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Ivy">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <!-- Main Content -->
+    <body>
+    </body>
+</html>
+```
+
 
 ## 1.3 CSS
 
@@ -786,96 +890,6 @@ The flex container properties are:
 </style>
 ```
 
-## 1.4 HTML head tags
-
-1. `<head>`
-- A container for metadata about the website
-
-2. `<title>`
-- Defines a title name for the webpage
-- Shown in: the browser's title bar or when added to favorites
-- Very important for search engine optimization (SEO)
-- Use descriptive title, not just a list of words
-
-
-3. `<link>` 
-- Used to define a link to an external resource
-- `rel=` specifies the relation of a linked resource
-    - alternate
-    - author
-    - dns-prefetch
-    - help
-    - icon
-    - license
-    - next
-    - pingback
-    - preconnect
-    - prefetch
-    - preload
-    - prerender
-    - prev
-    - search
-    - stylesheet
-        - can be my own stylesheet
-        - Or use publicly available ones
-- `href=` specifies the location of the linked document
-- `type=` define the **media type** of the linked document/resource
-    - if I don't specify the attribute, the brower will look at the `rel` attribute to guess the correct type
-
-**Bootstrap**
-**A free CSS framework and it contains HTML, CSS and JS-based design templates, which I can use in my own website**
-
-4. Favicon
-- Short for "favorite icon"
-- It's a small 16*16 pixel icon
-- An icon associated with a particular website used on web browsers
-
-5. `<meta>`
-- Used to specify the character set, page description, keywords, author of the document, and viewport settings
-- Will not be displayed on the page, but is used by browsers (how to display content or reload page), by seach engines (keywords)
-
-    - Define the character set used
-    - Define keywords for search engine
-    - Define a description of the web page
-    - Define the author of a page
-    - Refresh document every 30 seconds
-    - Set the viewport to make my website look good on all devices
-
-6. `<html>` element
-- The **root element**, holding all the content of an HTML document
-- Tip: including the lang attribute to define the language of the web page (for search engine)
-
-7. `<!DOCTYPE>`
-- All HTML documents must start with it
-- Tell browser that this is an HTML document including which **HTML version**
-    - HTML
-    - HTML+
-    - HTML 2.0
-    - HTML 3.2
-    - HTML 4.01
-    - HTML5
-
-```html
-<!DOCTYPE html>
-<html>
-    <!-- Head Section -->
-    <head>
-        <title>My First Website</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
-        <link rel="icon" type="image/png" href="favicon/favicon-96x96.png">
-        <meta name="description" content="This is a test website">
-        <meta name="keywords" content="HTML, CSS, JavaScript">
-        <meta name="author" content="Ivy">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-
-    <!-- Main Content -->
-    <body>
-    </body>
-</html>
-```
 
 ## 1.5 Add javascript to html
 - add `<script>` in the `<head>`
