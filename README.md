@@ -409,6 +409,7 @@ function getAge(birthDateString) {
 - Take up full width
 
 1. Text Element (Typography)  
+
 `<h1>` - `<h6>` 
 - Used to define HTML headings
 - `<h1>` is most important heading, `<h6>` is the least 
@@ -418,17 +419,20 @@ function getAge(birthDateString) {
 - Browsers automatically add a single blank line before and after each `<p>` element
 
 2. Lists  
+
 `<ul>` `<ol>` `<li>`
 - `<ul>` to define an **unordered** list
 - `<ol>` to define an **ordered** list
 - `<li>` to define a **list item**, used inside ordered or unordered list
 
 3. Layout  
+
 `<div>`
 - Defines a **division or section** in an HTML document
 - Used as a **container** for other HTML elements
 
 4. Semantic Elements  
+
 `<nav>`  
 `<main>`  
 `<article>`  
