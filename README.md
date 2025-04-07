@@ -200,9 +200,9 @@ friends.pop()
 
 ```javascript
 var post1 = {
-content: "This is my super post", 
-likes: 300, 
-shares:20
+    content: "This is my super post", 
+    likes: 300, 
+    shares:20
 }
 var post2 = {
     content: "This is my boring post", 
@@ -286,11 +286,11 @@ friends.push("newFriend")
 - **String**
 ```javascript
 var someText = "When I type this sentence, the weather is great"
-someText.replace(/great/g, "sunny") //regex for the first parameter
+someText.replace(/great/g, "sunny") //regex for the first parameter, g means global - find all matches
 
 var fullName = "Ivy Li"
 // split the full name into first name and last name
-fullName.split(/\s+/) // match any white space
+fullName.split(/\s+/) // match any white space (\s), even one or more (+)
 ```
 #### 1.1.5.2 Examples to transform with functions
 
@@ -309,6 +309,7 @@ for (fullName of fullNames) {
 ```
 
 2. Example2: Calculate the age based on users' birthdate
+**Date object**
 - You can use the Date object and its methods to **work with dates and times**
 - It's not a real built-in data type of JavaScript
 ```javascript
