@@ -687,18 +687,35 @@ There are 2 common methods
     - Grid-based layout system, with rows and columns
     - Also makes it easier to design flexible web pages
 
+The typical layout for a website
+<div style="text-align: center;">
+    <img src="./src/typical_layout.png">
+</div>
 
 #### 1.3.2.1 Flexbox Positioning
 
-**Attributes for the parent container**
+**Parent container**
+The `<div>` is a flexible container
+
+**Flex items (child elements)**
 The flex container properties are:
-- flex-direction
-- flex-wrap
-- flex-flow
+- flex-direction: horizontally (by default) or vertically (row, column, row-reverse, column-reverse)
+- flex-wrap (nowrap, wrap)
+- align-content
+    - align flex items vertically
 - justify-content
     - align flex items horizontally
-- align-items
-- align-content
+- align-items (center, flex-start, flex-end, stretch, baseline)
+
+```css
+#id-name {
+    display: flex;
+}
+```
+
+<div style="text-align: center;">
+    <img src="./src/google_chrome_flex_editor.png">
+</div>
 
 **Attributes for flex items**
 - order
