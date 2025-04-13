@@ -757,20 +757,31 @@ The event occurs when the user clicks on the element
 #### 1.4.1.1 Write "Create Post" Form
 The form element is a **container for different types of input elements**  
 `<form>`
+- `<label>`
+    - Defines a text label for the `<input>` tag
+
 - `<input>`
     - Associate the `<label>` with the `<input>`
     - To tie the elements together: `for` attribute in label, `id` attribute of input field
-    - if type is "email" or "password", the input should fit the format like @ or the password will be masked
+    - if type is "email" or "password", the input should fit the format like @ or the password will be masked  
+    `<input type="email">`
+    `<input type="password">`
     - [HTML input types](https://www.w3schools.com/html/html_form_input_types.asp)
 
-- `<textarea>`
+- `<textarea>` can wrap text 
     - Define a multi-line text input field
     - Usually used to collect user input like comments or reviews
 
-- `<label>`
-    - Defines a text label for the `<input>` tag
 - `<select>`
+    - Creates a drop-down list
 - `<option>`
+```html
+<select name="category" id="category">
+                    <option value="category1">Category 1</option>
+                    <option value="category2">Category 2</option>
+                    <option value="category3">Category 3</option>
+                </select>
+```
 
 Some attributes for `<form>`
 - required attribute: a boolean attribute, when present, it specifies that input field **must be filled out** before submitting the form
@@ -779,9 +790,9 @@ Some attributes for `<form>`
 <div id="post-form-container">
     <form>
         <label for="title"><b>Title</b></label>
-        <input name="title" type="text" placeholder="Enter Title" required>
+        <input id="title" name="title of post" type="text" placeholder="Enter Title" required>
         <label for="description"><b>Description</b></label>
-        <input name="description" type="text" placeholder="Add Description">
+        <input id="description" name="description of post" type="text" placeholder="Add Description">
         <label><b>Post</b></label>
         <textarea type="text" placeholder="Your Content..." required></textarea>
         <button id="hide-btn" onclick="hidePostForm()">Hide form</button>
