@@ -1,4 +1,36 @@
+ * {
+    margin: 10px;
+    padding: 0px;
+    box-sizing: border-box
+ }
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+
+}
+
+.content {
+    min-height: 80vh;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    margin: auto;
+    width: 30%;
+}
+
 #background-image {
-    width: 20%;
+    display: block;
+    width: 70%;
     height: auto;
+    margin: 20px 10px;
+}
+
+
+
+hr {
+    margin: 5px 0px 20px 0px;
+    width: 300px;
+    border: 1px solid gray;
 }
