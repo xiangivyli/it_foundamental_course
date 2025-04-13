@@ -26,7 +26,7 @@
         <div id="logo-search-wrapper-wide">
             <div id="logo-search-create">
                 <div id="logo-search-group">
-                    <img id="logo-ai" src="ai.jpg"/>
+                    <img id="logo-ai" src="images/ai.jpg"/>
                     <input type="text" placeholder="Search..."/>
                 </div>
                 <button onClick="handleCreatePost()">Create Post</button>
@@ -49,8 +49,8 @@
                     <option value="category3">Category 3</option>
                 </select>
                 
-                <button id="hide-btn" onclick="hidePostForm()">Hide form</button>
-                <button id="save-btn">Save form</button>
+                <button id="hide-btn" type="button" onclick="hidePostFormAndShowMain()">Hide form</button>
+                <button id="save-btn" type="submit">Save form</button>
             </form>
         </div>
 
@@ -67,7 +67,7 @@
             <article>
             <!-- Section 1 -->
                 <div>
-                    <img id="anime-time" src="anime_time.jpg"/>
+                    <img id="anime-time" src="images/anime_time.jpg" alt="Anime Time"/>
                     <p>Paragraph 1</p>
                     <p>Paragraph 2</p>
                 </div>
@@ -78,13 +78,14 @@
                     <p>Paragraph to introduce this section</p>
 
                     <ul>
-                        <li>Item 1</li>
-                        <p>item 1 has some features</p>
+                        <li>Item 1
+                            <p>item 1 has some features</p>
+                        </li>
                         <li>Item 2</li>
                         <li>Item 3</li>
                     </ul>
 
-                    <p>Paragraph to conclude this section</p>
+                    <a href="https://xiangivyli.com" rel="noopener noreferrer">Click to see article</a>
                     <a href="https://xiangivyli.com">Click to see article</a>
                 </div>
             </article>
@@ -104,7 +105,7 @@
 
         <!-- Footer Section -->
         <footer>
-            <p>Footer Section at the end of the page</p>
+            <p>&copy; 2025 Ivy's Website. All rights reserved. | Designed by Ivy Li</p>
         </footer>
     </body>
 </html>
