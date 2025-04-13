@@ -900,3 +900,214 @@ newParagraph.appendChild(textEl)
 ```
 
 The complete template can be found in the [post_website_template](./post_website_template/) , including the favicon image folder, javascript folder, images, css and html files. 
+
+
+## 1.5 Javascript Frameworks
+
+**A JavaScript framework is a structured foundation of pre-written code that provides developers with a way to build web applications more efficiently. Think of it as a blueprint for constructing buildings - instead of designing everything from scratch, the proven patterns and components are ready to use.**
+
+1. React.js (by Facebook)
+ - Component-based architecture
+ - Virtual DOM for performance
+ - Large ecosystem and community
+
+2. Vue.js
+ - Progressive framework
+ - Gentle learning curve
+ - Flexible integration options
+
+3. Angular.js (by Google)
+ - Full-featured framework
+ - Built-in tools and utilities
+ - Enterprise-level features
+
+### 1.5.1 Frameworks vs Libraries
+
+#### 1.5.1.1 Frameworks
+
+A whole guide or "framework"
+
+#### 1.5.1.2 Libraries
+##### Utility Libraries
+- Date handling (moment.js)
+- String manipulation (lodash)
+- Form validation (validator.js)
+
+##### UI Libraries
+- Date pickers
+- Modal windows
+- Navigation components
+
+#### Data Processing Libraries
+- Chart generation
+- Data visualisation
+- Mathematical operations
+
+## 1.5.2 Version Scheme
+**Semantic Versioning**
+- Three-part version number
+- Widely adopted version scheme
+
+for 3.2.40
+- 3 is the MAJOUR Version
+    - Big changes (features, bugfixes)
+    - **Incompatible changes** that affect apps that use older versions
+
+- 2 is the MINOR Version
+    - Minor changes (features, bugfixes)
+
+- 40 is the PATCH Version
+    - Usually only for bug fixes
+    - Which are backwards compatible
+
+## 1.5.3 NPM Registry
+
+npm registry is a **repository for JavaScript packages**
+
+### 1.5.3.1 Key Concepts for NPM Registry
+
+**Package Discovery**
+- Search functionality
+- Package information
+- Download statistics
+
+**Version Management**
+- Semantic versioning
+- Dependency resolution
+- Update mechanisms
+
+**Security**
+- Vulnerability scanning
+- Package signing
+- Security advisories
+
+### 1.5.3.2 Package Manager
+- npm stands for Node Package Manager
+- npm is a package manager
+
+
+- Manages software packages
+- Can be used to install (download), upgrade, configure packages
+- npm was created as a package manager for Node and became **standard way of managing packages for any JS package or JS framework**
+
+## 1.5.4 NPM CLI
+
+Used to interact with npm registry (a vast library)
+
+### 1.5.4.1 Common Commands for NPM CLI
+```bash
+# Initialise a new project
+npm init
+
+# Install a package
+npm install validator
+
+# Install specific version
+npm install validator@13.5.0
+
+# Install package and save as development dependency
+npm install --save-dev jest
+
+# Remove a package
+npm uninstall validator
+
+# List installed packages
+npm list
+
+# Update packages
+npm update
+```
+### 1.5.4.2 package.json
+
+**A configuration file used in Node.js projects to manage the metadata, dependencies, scripts, and configurations for the project, it acts as the central hub for defining and managing a project's setup, scripts, and external libraries**
+
+- Everytime the NPM CLI installs a package, the package.json updates automatically
+- This automatic synchronisation ensures that the project's dependencies are always accurately documented
+- When someone else clones the project, they can simply run npm install, and NPM CLI will read the package.json file and recreate the exact same dependency structure on their machine
+
+```json
+{
+    "name": "teamable",
+    "version": "1.0.0",
+    "descirption": "Team member profile management application",
+    "dependencies": {
+        "validator": "^13.7.0",
+        "datepicker-js": "~0.1.1"
+    }
+}
+```
+#### dependencies
+There are packages required for the application to run in **production**:
+- ^ means accept minor version updates (13.7.0 to 13.99.99)
+- ~ means accept only patch updates (0.1.1 to 0.1.99)
+- No prefix means use exactly this version
+
+For example, `express`, `lodash`, `moment`
+
+#### devDependencies
+These are packages only needed **during development**, such as:
+- Testing frameworks
+- Build tools
+- Development servers
+- Linters and formatters
+
+For example, `jest`, `nodemon`, `webpack`
+
+### 1.5.4.3 Basic CLI Commands
+
+**Navigation Commands**
+```bash
+# Show current directory
+pwd
+
+# List directory contents
+ls
+
+# Change directory
+cd directory_name
+
+# Go up one directory
+cd ..
+
+# Go to home directory
+cd ~
+```
+
+**File and Directory Operations**
+```bash
+# Create directory
+mkdir new_directory
+
+# Create file
+touch new_file.txt
+
+# Remove file
+rm file.text
+
+# Remove directory
+rm -r directory_name
+```
+
+**Copying and moving**
+```bash
+# Copy file
+cp source.txt destination.txt
+
+# Move/rename file
+mv old_name.txt new_name.txt
+```
+
+**File Permissions**
+```bash
+# View permissions
+# r = 4, w = 2, x = 1
+ls -l
+-rw-r--r-- 1 user group file.txt
+
+# Change permissions
+# 6 is rw for owner, 4 is r for group, 4 is r for others
+chmod 644 file.txt
+```
+
+
+

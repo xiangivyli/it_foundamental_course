@@ -45,7 +45,7 @@ footer {
 }
 
 footer * {
-    color: inherit; /* Ensures all child elements inherit the white color */
+    color: white; /* Ensures all child elements inherit the white color */
 }
 
 /* 1. The following CSS rules are for the log, search and create post section */
