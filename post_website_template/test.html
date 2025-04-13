@@ -4,8 +4,8 @@
     <head>
         <title>My First Website</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
-        <link rel="icon" type="image/png" href="favicon/favicon-96x96.png">
+        <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg"> 
+        <link rel="icon" type="image/png" href="favicon/favicon-96x96.png"> 
         <meta name="description" content="This is a test website">
         <meta name="keywords" content="HTML, CSS, JavaScript">
         <meta name="author" content="Ivy">
@@ -16,16 +16,16 @@
 
     <!-- Main Content -->
     <body>
-
+        
         <!-- Header Section -->
         <header>
         <h1><b>WELCOME TO MY WEBSITE</b></h1>
         </header>
 
         <!--Search Log Section -->
-        <div id="login-search-wrapper">
-            <div id="login-search-section">
-                <div id="logo-user-container">
+        <div id="logo-search-wrapper-wide">
+            <div id="logo-search-create">
+                <div id="logo-search-group">
                     <img id="logo-ai" src="ai.jpg"/>
                     <input type="text" placeholder="Search..."/>
                 </div>
@@ -33,6 +33,7 @@
             </div>
         </div>
 
+        <!-- Create Post Form -->
         <div id="post-form-container">
             <form>
                 <label for="title"><b>Title</b></label>
@@ -44,15 +45,14 @@
                 <button id="hide-btn" onclick="hidePostForm()">Hide form</button>
                 <button id="save-btn">Save form</button>
             </form>
-
         </div>
 
-        <!-- List Information -->
+        <!-- Article Information -->
         <div id="author-info">
-            <h2>Name of the list</h2>
-            <h3><i>Short information on the list</i></h3>
-            <p class="article-info"><i>Written by Ivy</i> | <i>Date: Today</i></p>
-            <p class="article-info"><i>Department: UWE</i></p>
+            <h2>Ivy Li</h2>
+            <h3><i>A passionate data engineer who also loves software development</i></h3>
+            <p class="author-info-detail"><i>Written by Ivy</i> | <i>Date: Today</i></p>
+            <p class="author-info-detail"><i>Department: UWE</i></p>
         </div>
 
         <!-- Content Section -->
@@ -99,8 +99,5 @@
         <footer>
             <p>Footer Section at the end of the page</p>
         </footer>
-
-
     </body>
-
 </html>

@@ -32,7 +32,6 @@
             - 1.3.2.1 [Flexbox Positioning](#1321-flexbox-positioning)
         - 1.3.3 [Background Colors](#133-background-colors)
         - 1.3.4 [Semantic Elements](#134-semantic-elements)
-        - 1.3.5 [Comprehensive Template for the main body](#135-comprehensive-template)
     - 1.4 [Add JavaScript to HTML](#14-add-javascript-to-html)
         - 1.4.1 [OnClick Event](#141-onclick-event)
             - 1.4.1.1 [Write Create Post Form](#1411-write-create-post-form)
@@ -697,14 +696,14 @@ The typical layout for a website
 **Parent container**
 The `<div>` is a flexible container
 
-**Flex items (child elements)**
-The flex container properties are:
+**The flex container properties for flexbox (parent container)** are:
+(these attributes will also be applied to children elements)
 - flex-direction: horizontally (by default) or vertically (row, column, row-reverse, column-reverse)
 - flex-wrap (nowrap, wrap)
 - align-content
-    - align flex items vertically
+    - align flex items **vertically**
 - justify-content
-    - align flex items horizontally
+    - align flex items **horizontally**
 - align-items (center, flex-start, flex-end, stretch, baseline)
 
 ```css
@@ -717,9 +716,9 @@ The flex container properties are:
     <img src="./src/google_chrome_flex_editor.png">
 </div>
 
-**Attributes for flex items**
+**Attributes for flex items (children elements)**
 - order
-- flex-grow
+- **flex-grow**
     - Defines **how much space** it should take **relative to the rest** of the flex items
     - Value is a number, default is 0
 - flex-shrink
@@ -740,214 +739,10 @@ The flex container properties are:
 - `<aside>` Element
     - Defines content aside from the page content
 
-### 1.3.5 Comprehensive Template
-  
-```html
-<!-- Main Content -->
-<body>
-
-    <!-- Header Section -->
-    <header>
-    <h1><b>WELCOME TO MY WEBSITE</b></h1>
-    </header>
-
-    <!--Search Log Section -->
-    <div id="login-search-wrapper">
-        <div id="login-search-section">
-            <div id="logo-user-container">
-                <img id="logo-ai" src="ai.jpg"/>
-                <input type="text" placeholder="Search..."/>
-            </div>
-            <button>Log In</button>
-        </div>
-    </div>
-
-    <!-- List Information -->
-    <div id="author-info">
-        <h2>Name of the list</h2>
-        <h3><i>Short information on the list</i></h3>
-        <p class="article-info"><i>Written by Ivy</i> | <i>Date: Today</i></p>
-        <p class="article-info"><i>Department: UWE</i></p>
-    </div>
-
-    <!-- Content Section -->
-    <div id="main-section-container">
-        <article>
-        <!-- Section 1 -->
-            <div>
-                <img id="anime-time" src="anime_time.jpg"/>
-                <p>Paragraph 1</p>
-                <p>Paragraph 2</p>
-            </div>
-
-        <!-- Subsection -->
-            <div>
-                <h4>Section Header</h4>
-                <p>Paragraph to introduce this section</p>
-
-                <ul>
-                    <li>Item 1</li>
-                    <p>item 1 has some features</p>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                </ul>
-
-                <p>Paragraph to conclude this section</p>
-                <a href="https://xiangivyli.com">Click to see article</a>
-            </div>
-        </article>
-
-        <aside>
-            <!-- Aside Section -->
-            <h4>Aside Section</h4>
-            <p>Filter</p>
-
-            <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-            </ul>
-        </aside>
-    </div>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>Footer Section at the end of the page</p>
-    </footer>
-
-
-</body>
-
-<style>
-    header {
-        background-color: rgb(71, 125, 71);
-        color: white;
-        text-align: center;
-        padding: 10px;
-        margin: 1% auto;
-    }
-
-    body {
-        background-color: lightgrey;
-        margin: 0;
-
-    }
-
-    p {
-        color: black;
-    }
-
-    a {
-        color: blue;
-        font-size: 10px;
-    }
-
-    div {
-        border: 1px dotted black;
-        padding: 10px;
-        margin: 8px 20px;
-    }
-
-    #login-search-wrapper {
-        background-color: white;
-        margin: 0;
-    }
-
-    #login-search-section {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 80%;
-        height: 60px;
-        padding: 0%;
-        margin: auto;
-    }
-
-    #logo-user-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        width: 80%;
-    }
-
-    #logo-ai {
-        width: 50px;
-        max-width: 10%;
-        height: auto;
-    }
-
-    #login-search-section input {
-        width: 85%;
-        height: 70%;
-        margin-left: 10px;
-        font-size: 20px;
-        border: 1px solid black;
-        border-radius: 5px;
-    }
-
-    #login-search-section button {
-        font-size: 25px;  
-        background-color: skyblue;
-        border:0cap;
-        color: white;
-        align-self: center;
-        padding: 5px 10px;
-    }
-
-    #author-info {
-        text-align: center;
-        width: 80%;
-        margin: 10px auto;
-        background-color: white;
-    }
-
-    .article-info {
-        color: skyblue;
-        font-size: 20px;
-    }
-
-    #main-section-container {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        width: 80%;
-        margin: auto;
-    }
-
-    article {
-        width: 70%;
-        background-color: white;
-        padding: 10px;
-    } 
-
-    #anime-time {
-        width: 30%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    aside {
-        width: 30%;
-        background-color: white;
-        padding: 0% 5%;
-        margin-left: 10px;
-    }
-
-    footer p{
-        background-color: rgb(71, 125, 71);
-        text-align: center;
-        color: white;
-        padding: 10px;
-        margin: 1% auto;
-    }
-</style>
-```
-
-
 ## 1.4 Add javascript to html
 - add `<script>` in the `<head>`
 - **Function invocation**
-    - The code inside a function **executes only when "something" involes (calls) the function**
+    - The code inside a function **executes only when "something" invokes (calls) the function**
     - 1. When it is invoked from JS code
     - 2. When an **event occurs (like a user clicks on a button)**
         - Events are **things that happen** to HTML elements
@@ -960,7 +755,7 @@ The flex container properties are:
 The event occurs when the user clicks on the element
 
 #### 1.4.1.1 Write "Create Post" Form
-The form element is a **container for different types of input elements**
+The form element is a **container for different types of input elements**  
 `<form>`
 - `<input>`
     - Associate the `<label>` with the `<input>`
@@ -971,9 +766,6 @@ The form element is a **container for different types of input elements**
 - `<textarea>`
     - Define a multi-line text input field
     - Usually used to collect user input like comments or reviews
-```html
-<textarea type="text" placeholder="Your Content..." required></textarea>
-```
 
 - `<label>`
     - Defines a text label for the `<input>` tag
@@ -983,11 +775,47 @@ The form element is a **container for different types of input elements**
 Some attributes for `<form>`
 - required attribute: a boolean attribute, when present, it specifies that input field **must be filled out** before submitting the form
 
+```html
+<div id="post-form-container">
+    <form>
+        <label for="title"><b>Title</b></label>
+        <input name="title" type="text" placeholder="Enter Title" required>
+        <label for="description"><b>Description</b></label>
+        <input name="description" type="text" placeholder="Add Description">
+        <label><b>Post</b></label>
+        <textarea type="text" placeholder="Your Content..." required></textarea>
+        <button id="hide-btn" onclick="hidePostForm()">Hide form</button>
+        <button id="save-btn">Save form</button>
+    </form>
+</div>
+```
+
 Some attributes for `<form>` style
 - max-width: define the maximum width of an element, if content is larger, then max-width applies, if smaller, then the max-width has no effect
 
 #### 1.4.1.2 Add buttons to the Form
 
+The logic should be the form shows up when click the "Create Post" button and hide the form when click the "Hide Form" button, the `display:none` will help the action.
+
+Button 1: Show the form
+```html
+<button onClick="handleCreatePost()">Create Post</button>
+```
+```javascript
+function handleCreatePost() {
+    document.getElementById("post-form-container").style.display = "block";
+}
+```
+
+Button 2: Hide the form
+```html
+<button id="hide-btn" onclick="hidePostForm()">Hide form</button>
+```
+```javascript
+function hidePostForm() {
+    document.getElementById("post-form-container").style.display = "none";
+}
+```
 
 ### 1.4.2 Style Button on Hover
 :hover Selector
@@ -1035,7 +863,6 @@ can put it in the function and invoke it with button, change the display from "n
             </div>
         </div>
 ```
-
 
 2. `document.getElementByTagName("h4")`
 get an array of this tag and can get the element by index

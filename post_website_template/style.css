@@ -1,15 +1,16 @@
+/* General styles for the website */
 header {
-    background-color: rgb(71, 125, 71);
+    background-color: lightblue;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     margin: 1% auto;
 }
 
+/* Background color for the body */
 body {
     background-color: lightgrey;
     margin: 0;
-
 }
 
 p {
@@ -22,67 +23,86 @@ a {
 }
 
 div {
-    border: 1px dotted black;
     padding: 10px;
-    margin: 8px 20px;
+    margin: 8px 10px;
 }
 
-#login-search-wrapper {
-    background-color: white;
-    margin: 0;
-}
-
-#login-search-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    height: 80%;
-    padding: 0%;
-    margin: auto;
-}
-
-#logo-user-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 90%;
-}
-
-#logo-ai {
-    width: 50px;
-    max-width: 10%;
-    height: auto;
-}
-
-#login-search-section input {
-    width: 80%;
-    height: 70%;
-    margin-left: 10px;
-    font-size: 20px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-button {
-    font-size: 20px;  
-    background-color: white;
-    border:1px splid black;
-    color: blue;
-    padding: 10px 5px;
-    border-radius: 5px;
-}
-
-#hide-btn {
-    color: darkred;
-    border: 1px solid darkred;
+article div {
+    background-color: whitesmoke;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: rgb(71, 125, 71);
+    background-color: lightblue;
 }
 
+footer {
+    background-color: lightblue;
+    text-align: center;
+    padding: 10px;
+    margin: 1% auto;
+}
+
+footer * {
+    color: inherit; /* Ensures all child elements inherit the white color */
+}
+
+/* 1. The following CSS rules are for the log, search and create post section */
+/* 1.1 Remove the default margin and padding from the body */
+/* Set the background color for the header */
+#logo-search-wrapper-wide {
+    background-color: white;
+    margin: 0;
+    padding: 0%;
+}
+
+
+/* 1.1.1 Include three items horizontally */
+#logo-search-create {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    padding: 0%;
+    margin: auto;
+}
+
+/* 1.1.1.1 Logo and search bar */
+#logo-search-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    height: 30px;
+    margin-left: 0%;
+    padding: 0%;
+}
+
+/* logo image */
+#logo-ai {
+    width: 3cap;
+    max-width: 10%;
+    height: auto;
+}
+
+/* Search bar */
+#logo-search-group input {
+    width: 80%;
+    height: 70%;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Create post button */
+button {
+    font-size: 1.25vw;  
+    background-color: white;
+    color: rgb(31, 31, 113);
+    padding: 5px 3px;
+    border-radius: 4px;
+}
+
+/* Create post form */
 #post-form-container {
     max-width: 300px;
     padding: 10px;
@@ -96,49 +116,54 @@ button:hover {
     padding: 10px;
 }
 
+/* Create post form button */
+#hide-btn {
+    color: darkred;
+    border: 1px solid darkred;
+}
+
+/* 2. Author info */
 #author-info {
     text-align: center;
-    width: 80%;
-    margin: 10px auto;
+    width: 90%;
+    margin: 5px auto;
+    padding: 5px;
     background-color: white;
 }
 
-.article-info {
+.author-info-detail {
     color: skyblue;
     font-size: 20px;
 }
 
+/* 3. The following CSS rules are for the main section of the website */
+/* 3.1 Main section, 1st layer */
 #main-section-container {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
+/* 3.1.1 Main section, 2nd layer for main section and subsection */
 article {
-    width: 70%;
+    width: 80%;
     background-color: white;
     padding: 10px;
 } 
 
+/* Anime image */
 #anime-time {
-    width: 30%;
+    width: 20%;
     max-width: 300px;
     height: auto;
 }
 
+/* 3.1.2 Aside section container */
 aside {
     width: 30%;
     background-color: white;
     padding: 0% 5%;
     margin-left: 10px;
-}
-
-footer p{
-    background-color: rgb(71, 125, 71);
-    text-align: center;
-    color: white;
-    padding: 10px;
-    margin: 1% auto;
 }
