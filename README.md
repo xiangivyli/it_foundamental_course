@@ -841,10 +841,13 @@ In the style.css file, the following code achieves
 **Document Object Method**
 - With it I can access and modify all document content
 
-1. `document.getElementById("author-info")`
-get div part from the whole document object
+1. `document.getElementById("post-form-container")`
+get div part from the whole document object, even can assign the div to a variable
+```javascript
+var formEl = document.getElementById("post-form-container")
+```
 
-1.1 `document.getElementById("author-info").style`
+1.1 `document.getElementById("post-form-container").style`
 
 1.2 `document.getElementById("post-form-container").style.display = "block"`
 can put it in the function and invoke it with button, change the display from "none" to "block"
@@ -861,7 +864,7 @@ can put it in the function and invoke it with button, change the display from "n
                 ...
                 <button onClick="handleCreatePost()">Create Post</button>
             </div>
-        </div>
+</div>
 ```
 
 2. `document.getElementByTagName("h4")`
@@ -871,8 +874,18 @@ get an array of this tag and can get the element by index
 
 4. `document.createTextNode("some text")`
 
+```javascript
+var newParagraph = document.createElement("p")
+
+var textEl = document.createTextNode("some text adding to new paragraph")
+
+newParagraph.appendChild(textEl)
+```
+
 ### 1.4.4 Extract JS code into own JS file
 
 ```html
 <script src="javascript/app.js"></script>
 ```
+
+The complete template can be found in the [post_website_template](./post_website_template/) , including the favicon image folder, javascript folder, images, css and html files. 
