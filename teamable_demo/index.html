@@ -4,6 +4,10 @@
         <title>Teamable</title>
         <link rel="stylesheet" href="style.css">
         <script src="javascript/app.js"></script>
+        <meta charset="UTF-8" />
+        <script src="node_modules/validator/validator.min.js"></script>
+        <script src="node_modules/datepicker.js/datepicker.js"></script>
+        <link rel="stylesheet" href="node_modules/datepicker.js/datepicker.css">
     </head>
     <body>
         <div id="display-profile">
@@ -13,6 +17,8 @@
             <span>Name: </span><b id="name">Ivy Li</b>
             <hr />
             <span>Email: </span><b id="email">xiangivyli@gmail.com</b>
+            <hr />
+            <span>Date of Birth: </span><b>13/02/2000</b>
             <hr />
             <span>Position: </span><b id="position">Software Engineer</b>
             <hr />      
@@ -32,6 +38,9 @@
             <hr />
             <span>Email: </span>
             <input type="text" placeholder="xiangivyli@gmail.com"/>
+            <hr />
+            <span>Date of Birth: </span>
+            <input type="text" id="birthday" placeholder="13/02/2000"/>
             <hr />
             <span>Position: </span>
             <input type="text" placeholder="Software Engineer"/>

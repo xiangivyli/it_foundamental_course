@@ -957,10 +957,13 @@ A whole guide or "framework"
 
 ### Logic Flow
 1. Include library in the application  
-Option 1: Public URL and reference it directly in the brower
-`<script src="https://unpkg.com/validator@latest/validator.min.js"></script>`
+Option 1: Public URL and reference it directly in the brower  
+`<script src="https://unpkg.com/validator@latest/validator.min.js"></script>`  
 Option 2: Download it with npm CLI
-`npm i datepicker.js`
+`npm i datepicker.js` and the package (module) will be in the node_modules folder  
+`<script src="node_modules/validator/validator.min.js"></script>`  
+Remember set the character encoding method `<meta charset="UTF-8" />`
+
 2. Use the pre-defined function
 
 ## 1.5.2 Version Scheme
@@ -1042,10 +1045,13 @@ brew install node
 
 Step 3: Install libraries
 ```bash
-npm i validator
+npm i validator@13.15.0
 ```
 
 **When the MacOS takes the long time to install npm, there is nvm method to do so**  
+Node Version Manager (NVM) is a tool for managing multiple versions of Node.js and npm.  
+
+
 Step 0: Run the Installation Script
 ```shell
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
