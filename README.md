@@ -957,7 +957,10 @@ A whole guide or "framework"
 
 ### Logic Flow
 1. Include library in the application  
+Option 1: Public URL and reference it directly in the brower
 `<script src="https://unpkg.com/validator@latest/validator.min.js"></script>`
+Option 2: Download it with npm CLI
+`npm i datepicker.js`
 2. Use the pre-defined function
 
 ## 1.5.2 Version Scheme
@@ -986,6 +989,13 @@ npm registry is a **repository for JavaScript packages**
 
 The official website is [npm](https://www.npmjs.com/)
 
+- npm stands for Node Package Manager
+- npm is a package manager
+
+- Manages software packages
+- Can be used to install (download), upgrade, configure packages
+- npm was created as a package manager for Node and became **standard way of managing packages for any JS package or JS framework**
+
 ### 1.5.3.1 Key Concepts for NPM Registry
 
 **Package Discovery**
@@ -1004,19 +1014,78 @@ The official website is [npm](https://www.npmjs.com/)
 - Security advisories
 
 ### 1.5.3.2 Package Manager
-- npm stands for Node Package Manager
-- npm is a package manager
 
+#### Each Programming language has its own package manager (application level)
 
-- Manages software packages
-- Can be used to install (download), upgrade, configure packages
-- npm was created as a package manager for Node and became **standard way of managing packages for any JS package or JS framework**
+#### Each operating system has its own package maanger (operating system level)
+
+Mac - [Homebrew](https://brew.sh/)  
+Linux - apt  
+Windows - Chocolatey  
+
+Step 1: Install homwbrew
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Actually, I can install Homebrew without administrator role.
+It installs Homebrew in your home directory ($HOME) rather than a system-wide location that typically requires sudo access. 
+```bash
+mkdir -p $HOME/homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/homebrew
+export PATH=$HOME/homebrew/bin:$PATH
+```
+Step 2: Install npm
+```
+brew install node
+```
+
+Step 3: Install libraries
+```bash
+npm i validator
+```
+
+**When the MacOS takes the long time to install npm, there is nvm method to do so**  
+Step 0: Run the Installation Script
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+```
+
+Step 1: Create the .zshrc file
+```shell
+touch ~/.zshrc
+```
+
+Step 2: Open the file
+```shell
+nano ~/.zshrc
+```
+
+Step 3: Add NVM Initialisation Commands
+```shell
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+Step 4: Save and Exit, press Ctrl + X, then Y, then Enter to save and exit
+
+Step 5: Source the file to reload 
+```shell
+source ~/.zshrc
+```
+Step 6: Install a Specific Node.js Version
+```shell
+nvm install 23
+```
 
 ## 1.5.4 NPM CLI
 
 Used to interact with npm registry (a vast library)
 
 ### 1.5.4.1 Common Commands for NPM CLI
+
+The npm Registry is the package repository for JS packages, and npm CLI is the CLI tool to **interact with the registry** to install, upgrade, remove, publish packages.
+
 ```bash
 # Initialise a new project
 npm init
@@ -1130,6 +1199,7 @@ ls -l
 # 6 is rw for owner, 4 is r for group, 4 is r for others
 chmod 644 file.txt
 ```
+
 
 
 
