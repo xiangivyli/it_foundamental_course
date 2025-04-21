@@ -955,6 +955,11 @@ A whole guide or "framework"
 - Data visualisation
 - Mathematical operations
 
+### Logic Flow
+1. Include library in the application  
+`<script src="https://unpkg.com/validator@latest/validator.min.js"></script>`
+2. Use the pre-defined function
+
 ## 1.5.2 Version Scheme
 **Semantic Versioning**
 - Three-part version number
