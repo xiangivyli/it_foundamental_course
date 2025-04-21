@@ -39,6 +39,18 @@
         - 1.4.2 [Style Button on Hover](#142-style-button-on-hover)
         - 1.4.3 [DOM - Document Object Model](#143-dom---document-object-model)
         - 1.4.4 [Extract JS code into own JS file](#144-extract-js-code-into-own-js-file)
+    - 1.5 [JavaScript Framework](#15-javascript-frameworks)
+        - 1.5.1[Framework vs Libraries](#151-frameworks-vs-libraries)
+            - 1.5.1.1[Frameworks](#1511-frameworks)
+            - 1.5.1.2[Libraries](#1512-libraries)
+        - 1.5.2[Version Scheme](#152-version-scheme)
+        - 1.5.3[npm Registry](#153-npm-registry)
+            - 1.5.3.1[Key Concepts for npm Registry](#1531-key-concepts-for-npm-registry)
+            - 1.5.3.2[Package Manager](#1532-package-manager)
+        - 1.5.4[npm CLI](#154-npm-cli)
+            - 1.5.4.1[Key Conceptys for npm Registry](#1531-key-concepts-for-npm-registry)
+            - 1.5.4.2[Package json](#1542-packagejson)
+            - 1.5.4.3[Basic CLI commands](#1543-basic-cli-commands)
 
 # 0. Backlog and Scrum Board in Jira
 <div style="text-align: center;">
@@ -963,6 +975,11 @@ for 3.2.40
 ## 1.5.3 NPM Registry
 
 npm registry is a **repository for JavaScript packages**
+
+- Registry = the service that makes all packages available (collection of repositories)
+- Repository = the actual storage
+
+The official website is [npm](https://www.npmjs.com/)
 
 ### 1.5.3.1 Key Concepts for NPM Registry
 
