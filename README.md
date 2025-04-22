@@ -51,6 +51,11 @@
             - 1.5.4.1[Key Conceptys for npm Registry](#1531-key-concepts-for-npm-registry)
             - 1.5.4.2[Package json](#1542-packagejson)
             - 1.5.4.3[Basic CLI commands](#1543-basic-cli-commands)
+        - 1.5.5 [vue.js](#155-vuejs)
+            - 1.5.5.1 [Basic Components Required](#1551-basic-components-required)
+            - 1.5.5.2 [Essential VueJS Dependencies](#1552-essential-vuejs-dependencies)
+            - 1.5.5.3 [Vue Component Structure](#1553-vue-component-structure)
+            - 1.5.5.4 [Key VueJS Features](#1554-key-vuejs-features)
 
 # 0. Backlog and Scrum Board in Jira
 <div style="text-align: center;">
@@ -1206,6 +1211,81 @@ ls -l
 chmod 644 file.txt
 ```
 
+
+## 1.5.5 Vue.js
+
+### 1.5.5.1 Basic Components Required
+- **Package.json**: Defines project dependencies and scripts
+- **index.html**: Contains a single root div element
+- **main.js**: Entry point that connects Vue components to HTML
+- **.vue files**: Components containing template, script, and style sections
+
+### 1.5.5.2 Essential VueJS Dependencies
+- **vue**: The Vue.js framework itself
+- **core-js**: For JavaScript version compatibility
+- **@vue/compiler-sfc**: Compiles vue components
+- **@vue/cli-service**: Provides development server and build tools
+
+### 1.5.5.3 Vue Component Structure
+
+<u>Components split the UI into independent and reusable pieces, known as a **Single-File Component**</u>
+
+<div style="text-align: center;">
+    <img src="./src/single_file_component.png" alt="sfc">
+</div>
+
+**Three Main Sections**:
+- `<template>`: Contains the HTML markup
+- `<script>`: Contains component logic and data
+- `<style>`: Contains component-specific CSS
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0)
+</script>
+
+<template>
+    <button @click="count++">You clicked me {{ count }} times.</button>
+</template>
+```
+
+### 1.5.5.4 Key VueJS Features
+
+#### Data Binging
+- Use v-model for two-way data binding with form inputs
+- Use {{ variableName }} for text interpolation
+- Use :attribute syntax for binding to HTML attributes
+
+<div style="text-align: center;">
+    <img src="./src/data_binding.png" alt="sfc">
+</div>
+
+#### Event Handing
+- Use @click instead of onclick
+- Define methods in the methods section of component
+
+### Conditional Rendering
+- Use v-show for toggling element visibility
+- Controlled through boolean variables in component data
+
+### Data Management
+- Define data in the `data()` function
+- Access component data using `this` keyword in methods
+- Export components using `export` default
+
+### Development Server
+- Use npm run serve to start development server
+- Automatic hot-reloading when files change
+- Compilation of Vue files to brower-compatible JavaScript
+
+### Best Practices
+- Break down large components into smaller, resusable ones
+- Use component-scoped styling
+- Keep components focused on a single responsibility
+- Utilise Vue's built-in directives instead of manual DOM manipulation
+- Follow Vue's naming convention (PascalCase for components)
 
 
 
