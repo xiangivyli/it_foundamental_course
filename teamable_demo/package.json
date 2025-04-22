@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "datepicker.js": "^0.0.1-beta1",
     "validator": "^13.15.0"
   }
 }

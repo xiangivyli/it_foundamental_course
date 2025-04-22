@@ -11,20 +11,16 @@ function handleEditProfile() {
     var emailInput = document.getElementsByTagName("input")[1]
     emailInput.value = email
 
-    
-    var datepickerElement = document.getElementById("birthday");
-    new Datepicker(datepickerElement);
-
     var position = document.getElementById("position").textContent
-    var positionInput = document.getElementsByTagName("input")[3]
+    var positionInput = document.getElementsByTagName("input")[2]
     positionInput.value = position
 
     var location = document.getElementById("location").textContent
-    var locationInput = document.getElementsByTagName("input")[4]
+    var locationInput = document.getElementsByTagName("input")[3]
     locationInput.value = location
     
     var skills = document.getElementById("skills").textContent
-    var skillsInput = document.getElementsByTagName("input")[5]
+    var skillsInput = document.getElementsByTagName("input")[4]
     skillsInput.value = skills
 }
 
@@ -45,15 +41,15 @@ function handleUpdateProfile() {
         alert("Please enter a valid email address")
     }
 
-    var updatePosition = document.getElementsByTagName("input")[3].value
+    var updatePosition = document.getElementsByTagName("input")[2].value
     var position = document.getElementById("position")
     position.textContent = updatePosition
 
-    var updateLocation = document.getElementsByTagName("input")[4].value
+    var updateLocation = document.getElementsByTagName("input")[3].value
     var location = document.getElementById("location")
     location.textContent = updateLocation
 
-    var updateSkills = document.getElementsByTagName("input")[5].value
+    var updateSkills = document.getElementsByTagName("input")[4].value
     var skills = document.getElementById("skills")
     skills.textContent = updateSkills
 }
