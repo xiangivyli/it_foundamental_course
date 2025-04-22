@@ -56,6 +56,7 @@
             - 1.5.5.2 [Essential VueJS Dependencies](#1552-essential-vuejs-dependencies)
             - 1.5.5.3 [Vue Component Structure](#1553-vue-component-structure)
             - 1.5.5.4 [Key VueJS Features](#1554-key-vuejs-features)
+            - 1.5.5.5 [Transpiling with Vue CLI and Compiler sfc](#1555-transpiling-with-vue-cli-and-compiler-sfc)
 
 # 0. Backlog and Scrum Board in Jira
 <div style="text-align: center;">
@@ -1226,6 +1227,8 @@ chmod 644 file.txt
 - **@vue/compiler-sfc**: Compiles vue components
 - **@vue/cli-service**: Provides development server and build tools
 
+Find the package.json to check the dependencies [here](./vuejs-tutorial/package.json)
+
 ### 1.5.5.3 Vue Component Structure
 
 <u>Components split the UI into independent and reusable pieces, known as a **Single-File Component**</u>
@@ -1239,7 +1242,7 @@ chmod 644 file.txt
 - `<script>`: Contains component logic and data
 - `<style>`: Contains component-specific CSS
 
-```html
+```vue
 <script setup>
 import { ref } from 'vue'
 
@@ -1261,6 +1264,37 @@ const count = ref(0)
 <div style="text-align: center;">
     <img src="./src/data_binding.png" alt="sfc">
 </div>
+
+Step 1: Export from the vue module
+```vue
+<template>
+    <div>
+        <h1>My Cool Vue app</h1>
+        <button>Add tasks</button>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'App'
+}
+</script>
+
+<style>
+</style>
+```
+Step 2: Import into the main.js file, import createApp function binds all modules  
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App).mount('#app')
+```
+Step 3: Every Vue app starts by creating a new **application instance** with the "createApp" function, "App" is the root component, eveny Vue app requires a "root component" that can contain other components as its children
+
+Step 4: mount the #app which belongs to the id in the `index.html` file and mount the APP imported from the `App.vue` file to the id.
+- An application instance won't render anything until its `.mount()` method is called
+
 
 #### Event Handing
 - Use @click instead of onclick
@@ -1287,5 +1321,21 @@ const count = ref(0)
 - Utilise Vue's built-in directives instead of manual DOM manipulation
 - Follow Vue's naming convention (PascalCase for components)
 
+### 1.5.5.5 Transpiling with Vue CLI and Compiler-sfc
 
+#### The function of serve command
+- Compiles or transpiles Vue.js to vanilla JavaScript
+- Starts a dev server and serves the application to the brower
 
+Step 1: Structure teh Basic Folder to match the default, cause the cli is looking for files in the folders with the default names
+- node_modules: auto-generated folder, containing all installed libraries for the app
+- src: source folder, it contains all the Vue.js components and JS files
+- public: public folder, `.index` file is located here as well as any other static assets
+
+Step 2: Because the CLI is not installed in the operating system, use the location to start the binary file (CLI library)
+```bash
+node_modules/@vue/cli-service/bin/vue-cli-service.js serve
+```
+Step 3: Check the app with the local http: (http://localhost:8080/)
+- Resource get requested via http
+- Resource can come from my own computer (localhost) or from anywhere on the web
