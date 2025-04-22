@@ -1256,7 +1256,7 @@ const count = ref(0)
 
 ### 1.5.5.4 Key VueJS Features
 
-#### Data Binging
+#### Data Binding
 - Use v-model for two-way data binding with form inputs
 - Use {{ variableName }} for text interpolation
 - Use :attribute syntax for binding to HTML attributes
@@ -1336,6 +1336,22 @@ Step 2: Because the CLI is not installed in the operating system, use the locati
 ```bash
 node_modules/@vue/cli-service/bin/vue-cli-service.js serve
 ```
+Options for Step 2: Add scripts in the package.json
+- Convenient way to **bundle common shell commands** for your project
+- Benefit: Commands are shared amongst everyone using the codebase, **ensuring that everyone is using the same command with same configuration options**
+- npm knows where to find the vue-cli-service, so do not need to point out the route
+
+```json
+"scripts": {
+        "serve": "vue-cli-service serve"
+    }
+```
+
+And then npm run <the name of the script>
+```bash
+npm run serve
+```
+
 Step 3: Check the app with the local http: (http://localhost:8080/)
 - Resource get requested via http
 - Resource can come from my own computer (localhost) or from anywhere on the web
