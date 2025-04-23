@@ -1283,20 +1283,32 @@ export default {
 <style>
 </style>
 ```
-Step 2: Import into the main.js file, import createApp function binds all modules  
+Step 2: Import into the main.js file, import createApp function and create a new **application instance** with the "createApp" function; import App from the App.vue and as the parameter to be the root component of the application
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
 
 createApp(App).mount('#app')
 ```
-Step 3: Every Vue app starts by creating a new **application instance** with the "createApp" function, "App" is the root component, eveny Vue app requires a "root component" that can contain other components as its children
+Step 3:  mounts the Vue application to id app in the index.html file, an application instance won't render anything until its `.mount()` method is called
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Vue.js demo app</title>
+    </head>
+    <body>
+        <div id="app"></div> 
+    </body>
+</html>
+```
 
-Step 4: mount the #app which belongs to the id in the `index.html` file and mount the APP imported from the `App.vue` file to the id.
-- An application instance won't render anything until its `.mount()` method is called
+<div style="text-align: center;">
+    <img src="./src/vue-logic.png" alt="sfc">
+</div>
 
 
-#### Event Handing
+### Event Handing
 - Use @click instead of onclick
 - Define methods in the methods section of component
 
@@ -1327,7 +1339,7 @@ Step 4: mount the #app which belongs to the id in the `index.html` file and moun
 - Compiles or transpiles Vue.js to vanilla JavaScript
 - Starts a dev server and serves the application to the brower
 
-Step 1: Structure teh Basic Folder to match the default, cause the cli is looking for files in the folders with the default names
+Step 1: Structure the name of folders and locations of index.html, main.js, App.vue and Header.vue to match the default, cause the cli is looking for files in the folders with the default names
 - node_modules: auto-generated folder, containing all installed libraries for the app
 - src: source folder, it contains all the Vue.js components and JS files
 - public: public folder, `.index` file is located here as well as any other static assets

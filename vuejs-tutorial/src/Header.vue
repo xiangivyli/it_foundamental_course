@@ -23,7 +23,8 @@ export default {
 </script>
 
 <style>
-button {background-color: #4CAF50;
+button {
+    background-color: aquamarine;
     border: none;
     color: white;
     padding: 15px 32px;
