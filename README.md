@@ -1296,8 +1296,7 @@ createApp(App).mount('#app')
     <img src="./src/vue-logic.png" alt="sfc">
 </div>
 
-#### 1. Data Binding (Parameterise the components)
-- Use v-model for two-way data binding with form inputs
+#### 1. Parameterise the components
 - Use {{ variableName }} for text interpolation
 
 #### 2. Styling Binding
@@ -1353,6 +1352,9 @@ button {
 h1 {color: chocolate}
 </style>
 ```
+
+#### 4. v-model 
+- Use v-model for two-way data binding with form inputs
 
 #### Conditional Rendering
 - Use v-show for toggling element visibility

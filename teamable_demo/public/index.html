@@ -2,50 +2,10 @@
 <html>
     <head>
         <title>Teamable</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="javascript/app.js"></script>
         <meta charset="UTF-8" />
-        <script src="node_modules/validator/validator.min.js"></script>
     </head>
     <body>
-        <div id="display-profile">
-            <h1>Member Profile</h1>
-            <img class="background-image" src="src/team_background.jpg" alt="Profile Background"/>
-            
-            <span>Name: </span><b id="name">Ivy Li</b>
-            <hr />
-            <span>Email: </span><b id="email">xiangivyli@gmail.com</b>
-            <hr />
-            <span>Position: </span><b id="position">Data Engineer</b>
-            <hr />      
-            <span>Location: </span><b id="location">Bristol, the United Kingdom</b>
-            <hr />
-            <span>Skills: </span><b id="skills">Python, JavaScript, SQL, Cloud</b>
-            <hr />
-            <button type="button" onClick="handleEditProfile()">Edit Profile</button>
-        </div>
-
-        <div id="update-profile" style="display:none;">
-            <h1>Member Profile</h1>
-            <img class="background-image" src="src/team_background.jpg" alt="Profile Background"/>
-            
-            <span>Name: </span>
-            <input type="text" placeholder="Ivy Li"/>
-            <hr />
-            <span>Email: </span>
-            <input type="text" placeholder="xiangivyli@gmail.com"/>
-            <hr />
-            <span>Position: </span>
-            <input type="text" placeholder="Software Engineer"/>
-            <hr />      
-            <span>Location: </span>
-            <input type="text" placeholder="Bristol, the United Kingdom"/>
-            <hr />
-            <span>Skills: </span>
-            <input type="text" placeholder="Python, JavaScript, SQL, Cloud"/>
-            <hr />
-            <button type="button" onClick="handleUpdateProfile()">Update Profile</button>
-        </div>
+        <div id="app">  </div>
 
     </body>
 </html>
