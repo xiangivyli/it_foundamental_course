@@ -1256,7 +1256,7 @@ const count = ref(0)
 
 ### 1.5.5.4 Key VueJS Features
 
-### Nested Components
+#### Nested Components
 - Components allow us to **split the UI into independent and reusable pieces**
 - Allow us to think about each piece in isolation
 - A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template
@@ -1296,11 +1296,16 @@ createApp(App).mount('#app')
     <img src="./src/vue-logic.png" alt="sfc">
 </div>
 
-#### Data Binding (Parameterise the components)
+#### 1. Data Binding (Parameterise the components)
 - Use v-model for two-way data binding with form inputs
 - Use {{ variableName }} for text interpolation
+
+#### 2. Styling Binding
 - Use :attribute syntax for binding to HTML attributes
-- Cleanly list all passed parameterised properties in the `props` with expected data type
+
+#### 3. Event Handing
+- Use @click instead of onclick
+- Define methods in the methods section of component
 
 <div style="text-align: center;">
     <img src="./src/data_binding.png" alt="sfc">
@@ -1349,30 +1354,27 @@ h1 {color: chocolate}
 </style>
 ```
 
-### Event Handing
-- Use @click instead of onclick
-- Define methods in the methods section of component
-
-### Conditional Rendering
+#### Conditional Rendering
 - Use v-show for toggling element visibility
 - Controlled through boolean variables in component data
 
-### Data Management
+#### Data Management
 - Define data in the `data()` function
 - Access component data using `this` keyword in methods
 - Export components using `export` default
 
-### Development Server
+#### Development Server
 - Use npm run serve to start development server
 - Automatic hot-reloading when files change
 - Compilation of Vue files to brower-compatible JavaScript
 
-### Best Practices
+#### Best Practices
 - Break down large components into smaller, resusable ones
 - Use component-scoped styling
 - Keep components focused on a single responsibility
 - Utilise Vue's built-in directives instead of manual DOM manipulation
 - Follow Vue's naming convention (PascalCase for components)
+- Cleanly list all passed parameterised properties in the `props` with expected data type
 
 ### 1.5.5.5 Transpiling with Vue CLI and Compiler-sfc
 
