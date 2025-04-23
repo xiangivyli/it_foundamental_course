@@ -1256,57 +1256,98 @@ const count = ref(0)
 
 ### 1.5.5.4 Key VueJS Features
 
-#### Data Binding
-- Use v-model for two-way data binding with form inputs
-- Use {{ variableName }} for text interpolation
-- Use :attribute syntax for binding to HTML attributes
+### Nested Components
+- Components allow us to **split the UI into independent and reusable pieces**
+- Allow us to think about each piece in isolation
+- A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template
 
-<div style="text-align: center;">
-    <img src="./src/data_binding.png" alt="sfc">
-</div>
-
-Step 1: Export from the vue module
-```vue
-<template>
-    <div>
-        <h1>My Cool Vue app</h1>
-        <button>Add tasks</button>
-    </div>
-</template>
-
-<script>
+Step 1: Export Header with properties in the Header.vue
+```js
 export default {
-    name: 'App'
+    name: 'Header',
+    props: {
+        title: String,
+        action: String,
+        color: String,
+        bgColor: String
+    }
 }
-</script>
-
-<style>
-</style>
 ```
-Step 2: Import into the main.js file, import createApp function and create a new **application instance** with the "createApp" function; import App from the App.vue and as the parameter to be the root component of the application
+Step 2: Import Header and export App with components in the App.vue
+```js
+import Header from './Header.vue'
+export default {
+    name: 'App',
+    components: {
+        Header
+    }
+}
+```
+
+Step 3: create the app instance and mount to div of index.html
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
 
 createApp(App).mount('#app')
 ```
-Step 3:  mounts the Vue application to id app in the index.html file, an application instance won't render anything until its `.mount()` method is called
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Vue.js demo app</title>
-    </head>
-    <body>
-        <div id="app"></div> 
-    </body>
-</html>
-```
 
 <div style="text-align: center;">
     <img src="./src/vue-logic.png" alt="sfc">
 </div>
 
+#### Data Binding (Parameterise the components)
+- Use v-model for two-way data binding with form inputs
+- Use {{ variableName }} for text interpolation
+- Use :attribute syntax for binding to HTML attributes
+- Cleanly list all passed parameterised properties in the `props` with expected data type
+
+<div style="text-align: center;">
+    <img src="./src/data_binding.png" alt="sfc">
+</div>
+
+```js
+<template>
+    <header>
+        <h1 :style="{ color: color }">{{ title }}</h1>
+        <button @click="handleClick()" :style="{ backgroundColor: bgColor }">{{ action }}</button>
+    </header>
+</template>
+
+<script>
+export default {
+    name: 'Header',
+    props: {
+        title: String,
+        action: String,
+        color: String,
+        bgColor: String
+    },
+    methods: {
+        handleClick() {
+            alert(`You clicked the ${this.action} button!`);
+        }
+    }
+}
+</script>
+
+<style>
+button {
+    background-color: aquamarine;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;}
+
+h1 {color: chocolate}
+</style>
+```
 
 ### Event Handing
 - Use @click instead of onclick
