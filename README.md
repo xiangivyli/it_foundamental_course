@@ -1353,14 +1353,22 @@ h1 {color: chocolate}
 </style>
 ```
 
-#### 4. v-model 
+#### 4. `data()` Function
+- Used to declare the reactive state of a component. Return the **initial state**.
+- It's a JS object that will be made reactive by Vuw, when the function is called on creation of the component.
+
+#### 5. v-bind or ":"
+- One of a number of **built-in special attributes (also called directives)** that vue provides
+- Start with the "v-" predix. Colon ":" is shorthand for "v-bind" 
+
+#### 5. v-model 
 - Use v-model for two-way data binding with form inputs
 
-#### Conditional Rendering
+#### 5. Conditional Rendering
 - Use v-show for toggling element visibility
 - Controlled through boolean variables in component data
 
-#### Data Management
+#### 6. Data Management
 - Define data in the `data()` function
 - Access component data using `this` keyword in methods
 - Export components using `export` default

@@ -1,7 +1,7 @@
  <template>   
     <div id="display-profile">
         <h1>Member Profile</h1>
-        <img class="background-image" src="src/team_background.jpg" alt="Profile Background"/>
+        <img :src="img" alt="Profile Background"/>
         
         <span>Name: </span><b id="name">Ivy Li</b>
         <hr />
@@ -40,8 +40,14 @@
 </template>
 
 <script>
+import image from "./team_background.jpg"
 export default {
-    name: 'App'
+    name: 'App',
+    data () {
+        return {
+            img: image,
+        }
+    },
 }
 </script>
 
@@ -72,7 +78,7 @@ div {
     width: 30%;
 }
 
-.background-image {
+img {
     display: block;
     width: auto;
     height: 30vh;
