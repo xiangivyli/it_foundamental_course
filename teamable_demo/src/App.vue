@@ -3,15 +3,15 @@
         <h1>Member Profile</h1>
         <img :src="img" alt="Profile Background"/>
         
-        <span>Name: </span><b id="name">{{ name }}</b>
+        <span>Name: </span><b>{{ name }}</b>
         <hr />
-        <span>Email: </span><b id="email">{{ email }}</b>
+        <span>Email: </span><b>{{ email }}</b>
         <hr />
-        <span>Position: </span><b id="position">{{ position }}</b>
+        <span>Position: </span><b>{{ position }}</b>
         <hr />      
-        <span>Location: </span><b id="location">{{ location }}</b>
+        <span>Location: </span><b>{{ location }}</b>
         <hr />
-        <span>Skills: </span><b id="skills">{{ skills }}</b>
+        <span>Skills: </span><b id>{{ skills }}</b>
         <hr />
         <button @click="handleEditProfile">Edit Profile</button>
     </div>
