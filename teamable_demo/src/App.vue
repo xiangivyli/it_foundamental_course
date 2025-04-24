@@ -25,6 +25,7 @@
         <hr />
         <span>Email: </span>
         <input type="text" v-model="email"/>
+        <span v-if="emailError" style="color: red;">{{ emailError }}</span>
         <hr />
         <span>Position: </span>
         <input type="text" v-model="position"/>
@@ -52,6 +53,7 @@ export default {
             location: "Bristol, the United Kingdom",
             skills: "Python, JavaScript, SQL, Cloud",
             isEditMode: false,
+            emailError: null
         }
     },
     methods: {
@@ -59,6 +61,17 @@ export default {
             this.isEditMode = !this.isEditMode
         },
         handleUpdateProfile () {
+            if (!this.email.includes('@')) {
+                this.emailError = "Please enter a valid email address"
+                return
+            } else {
+                this.emailError = null
+            }
+            if (this.name === "" || this.email === "" || this.position === "" || this.location === "" || this.skills === "") {
+                alert("Please fill in all fields")
+                return
+            }
+            alert("Profile updated successfully")
             this.isEditMode = !this.isEditMode
         }
     },

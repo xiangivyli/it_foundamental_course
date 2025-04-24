@@ -1386,29 +1386,60 @@ export default {
 <img :src="img" alt="Profile Background"/>
 ```
 
-#### Text Interpolation
-- Use Mustache syntax to bind the values
-
-#### 1. Parameterise the components
+#### Text Interpolation, Parameterise the components
+- To bind the values
 - Use {{ variableName }} for text interpolation
 
-#### 2. v-model 
+#### v-model 
 - Use v-model for two-way data binding with form inputs
+- Updates the template whenever **the model (data)** changes and updates the model whenever **the template** changes
+- It **reduces the complexity of keeping user input consistent** with the application data model
 
-#### 3. Conditional Rendering
+```js
+<span>Name: </span><b id="name">{{ name }}</b> //this is the template
+
+<span>Name: </span>
+<input type="text" v-model="name"/> //this is the model (data)
+
+export default {
+    name: 'App',
+    data () {
+        return {
+            name: "Ivy Li",//this is the default value for the template
+        }
+    }}
+```
+
+#### Conditional Rendering, v-show
 - Use v-show for toggling element visibility
 - Controlled through boolean variables in component data
+- Access component data using `this` keyword in methods
+    - "this" refers to the component instance
+    - All data object properties of the component can be accessed with "this"
 
-#### Development Server
-- Use npm run serve to start development server
-- Automatic hot-reloading when files change
-- Compilation of Vue files to brower-compatible JavaScript
+```js
+<div v-show="!isEditMode">
 
-#### Best Practices
+export default {
+    name: 'App',
+    data () {
+        return {
+            isEditMode: false,//this is the default value for the template
+        }
+    },
+    methods: {
+        handleEditProfile () {
+            this.isEditMode = !this.isEditMode //"this" means 
+        }
+    },
+}
+```
+
+#### Summarise Best Practices
 - Break down large components into smaller, resusable ones
 - Use component-scoped styling
 - Keep components focused on a single responsibility
-- Utilise Vue's built-in directives instead of manual DOM manipulation
+- Utilise Vue's built-in directives like v-model instead of manual DOM manipulation
 - Follow Vue's naming convention (PascalCase for components)
 - Cleanly list all passed parameterised properties in the `props` with expected data type
 
@@ -1446,3 +1477,8 @@ npm run serve
 Step 3: Check the app with the local http: (http://localhost:8080/)
 - Resource get requested via http
 - Resource can come from my own computer (localhost) or from anywhere on the web
+
+#### Wrap Up for Development Server
+- Use npm run serve to start development server
+- Automatic hot-reloading when files change
+- Compilation of Vue files to brower-compatible JavaScript
