@@ -1316,7 +1316,7 @@ createApp(App).mount('#app')
 <template>
     <header>
         <h1 :style="{ color: color }">{{ title }}</h1>
-        <button @click="handleClick()" :style="{ backgroundColor: bgColor }">{{ action }}</button>
+        <button @click="handleClick" :style="{ backgroundColor: bgColor }">{{ action }}</button>
     </header>
 </template>
 
