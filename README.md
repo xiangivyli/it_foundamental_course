@@ -1374,9 +1374,10 @@ export default {
 - One of a number of **built-in special attributes (also called directives)** that vue provides
 - Start with the "v-" predix. Colon ":" is shorthand for "v-bind" 
 - Declare that "img" is a variable or reference rather than a string
+
 ```js
 <img :src="img" alt="Profile Background"/>
-``
+```
 
 
 #### 5. v-model 
