@@ -1296,17 +1296,21 @@ createApp(App).mount('#app')
     <img src="./src/vue-logic.png" alt="sfc">
 </div>
 
-#### 1. Parameterise the components
-- Use {{ variableName }} for text interpolation
+### Attribute Bindings: to bind attributes, we use v-bind, v-on
 
-#### 2. Styling Binding
+#### 1. Styling Binding
 - Use :attribute syntax for binding to HTML attributes
 
-#### 3. Event Handing, v-on or "@"
+#### 2. Event Handing, v-on or "@"
 - Use @click instead of onclick
 - Define methods in the methods section of component
 - "@" is shorthand for "v-on"
 - **Attaches an event listener** to the element
+
+#### 3. v-bind or ":"
+- One of a number of **built-in special attributes (also called directives)** that vue provides
+- Start with the "v-" predix. Colon ":" is shorthand for "v-bind" 
+- Declare that "img" is a variable or reference rather than a string
 
 <div style="text-align: center;">
     <img src="./src/data_binding.png" alt="sfc">
@@ -1357,7 +1361,10 @@ h1 {color: chocolate}
 
 #### 4. `data()` Function to return reference outside of script
 - Used to declare the reactive state of a component. Return the **initial state**.
-- It's a JS object that will be made reactive by Vuw, when the function is called on creation of the component.
+- It's a JS object that will be made reactive by Vue, when the function is called on creation of the component.
+- Define data in the `data()` function
+- Access component data using `this` keyword in methods
+- Export components using `export` default
 ```js
 import image from "./team_background.jpg"
 export default {
@@ -1379,18 +1386,18 @@ export default {
 <img :src="img" alt="Profile Background"/>
 ```
 
+#### Text Interpolation
+- Use Mustache syntax to bind the values
 
-#### 5. v-model 
+#### 1. Parameterise the components
+- Use {{ variableName }} for text interpolation
+
+#### 2. v-model 
 - Use v-model for two-way data binding with form inputs
 
-#### 5. Conditional Rendering
+#### 3. Conditional Rendering
 - Use v-show for toggling element visibility
 - Controlled through boolean variables in component data
-
-#### 6. Data Management
-- Define data in the `data()` function
-- Access component data using `this` keyword in methods
-- Export components using `export` default
 
 #### Development Server
 - Use npm run serve to start development server
