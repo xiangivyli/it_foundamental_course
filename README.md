@@ -1302,9 +1302,11 @@ createApp(App).mount('#app')
 #### 2. Styling Binding
 - Use :attribute syntax for binding to HTML attributes
 
-#### 3. Event Handing
+#### 3. Event Handing, v-on or "@"
 - Use @click instead of onclick
 - Define methods in the methods section of component
+- "@" is shorthand for "v-on"
+- **Attaches an event listener** to the element
 
 <div style="text-align: center;">
     <img src="./src/data_binding.png" alt="sfc">
@@ -1353,13 +1355,29 @@ h1 {color: chocolate}
 </style>
 ```
 
-#### 4. `data()` Function
+#### 4. `data()` Function to return reference outside of script
 - Used to declare the reactive state of a component. Return the **initial state**.
 - It's a JS object that will be made reactive by Vuw, when the function is called on creation of the component.
+```js
+import image from "./team_background.jpg"
+export default {
+    name: 'App',
+    data () {
+        return {
+            img: image,
+        }
+    },
+}
+```
 
 #### 5. v-bind or ":"
 - One of a number of **built-in special attributes (also called directives)** that vue provides
 - Start with the "v-" predix. Colon ":" is shorthand for "v-bind" 
+- Declare that "img" is a variable or reference rather than a string
+```js
+<img :src="img" alt="Profile Background"/>
+``
+
 
 #### 5. v-model 
 - Use v-model for two-way data binding with form inputs
