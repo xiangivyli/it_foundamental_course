@@ -57,6 +57,7 @@
             - 1.5.5.3 [Vue Component Structure](#1553-vue-component-structure)
             - 1.5.5.4 [Key VueJS Features](#1554-key-vuejs-features)
             - 1.5.5.5 [Transpiling with Vue CLI and Compiler sfc](#1555-transpiling-with-vue-cli-and-compiler-sfc)
+    - 1.6 [NodeJS](#16-nodejs)
 
 # 0. Backlog and Scrum Board in Jira
 <div style="text-align: center;">
@@ -1482,3 +1483,27 @@ Step 3: Check the app with the local http: (http://localhost:8080/)
 - Use npm run serve to start development server
 - Automatic hot-reloading when files change
 - Compilation of Vue files to brower-compatible JavaScript
+
+
+## 1.6 NodeJS
+
+### 1.6.1 Port
+- Ports are **virtual places within an operating system**, where network connections start and end
+    - Every machine has a range of ports available
+    - These ports can be allocated to specific applications
+    - Every application or service, runs and is available on a specific port
+
+### 1.6.2 HTTP Communication
+HTTP provides the foundation for frontend-backend communication:
+- **HTTP requests** from frontend to backend are called "requests"
+- **HTTP responses** from backend to frontend are called "responses"
+- **HTTP URLs** consist of protocols (http/https), hostname, port, and endpoint
+
+> [!IMPORTANT]
+> HTTP Protocol
+> - System of rules that define how data is exchanged over internet
+> - HTTP stands for **Hyper Text Transfer Protocol
+> - HTTP was originally created to send HTML files
+
+
+
