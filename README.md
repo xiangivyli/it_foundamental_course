@@ -1502,8 +1502,26 @@ HTTP provides the foundation for frontend-backend communication:
 > [!IMPORTANT]
 > HTTP Protocol
 > - System of rules that define how data is exchanged over internet
-> - HTTP stands for **Hyper Text Transfer Protocol
+> - HTTP stands for **Hyper Text Transfer Protocol**
 > - HTTP was originally created to send HTML files
+> HTTPS is HTTP with **encryption** and verification
+
+
+<div style="text-align: center;">
+    <img src="./src/http_communication.png" alt="sfc">
+</div>
+
+### 1.6.3 URL
+**Uniform Resource Locator** It is a reference to web resource, and combined with HTTP protocal, Hostname and File name (or port)
+
+### 1.6.4 IP Addresses
+- Address of the server that is hosting the web application
+- A host or website on the internet is identified by a **host name**
+- Host names are mapped to IP addresses automatically
+
+> [!NOTE]
+> IP address is a **unique address** that **identifies a device on the internet**
+> Every machine on the internet has an IP address
 
 
 
