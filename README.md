@@ -1520,7 +1520,7 @@ HTTP provides the foundation for frontend-backend communication:
 - Host names are mapped to IP addresses automatically
 
 > [!NOTE]
-> IP address is a **unique address** that **identifies a device on the internet**
+> IP address is a **unique address** that **identifies a device on the internet** 
 > Every machine on the internet has an IP address
 
 
