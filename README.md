@@ -1487,11 +1487,19 @@ Step 3: Check the app with the local http: (http://localhost:8080/)
 
 ## 1.6 NodeJS
 
+### 1.6.0 Localhost
+- The hostname or the **computer that is currently in use to run the program**
+- So it means "this computer" in a network
+- Used for testing purposes in development, not in actual production
+
 ### 1.6.1 Port
 - Ports are **virtual places within an operating system**, where network connections start and end
     - Every machine has a range of ports available
     - These ports can be allocated to specific applications
     - Every application or service, runs and is available on a specific port
+
+**Standard Port**
+**Port 80** is the standard port used by web servers
 
 ### 1.6.2 HTTP Communication
 HTTP provides the foundation for frontend-backend communication:
@@ -1538,10 +1546,15 @@ JSON serves as the **universal language between frontend and backend**:
 NodeJS provides a powerful platform for building backend applications:
 - Express.js is a popular NodeJS framework that simplifies backend development
 - Backend serves frontend files (HTML, CSS, JS) when users first access the application
-- The `require()` function in NodeJS is equivalent to `import` in frontend JavaScript
+- **The `require()` function in NodeJS is equivalent to `import` in frontend JavaScript**
+
+**Express**
+- A web application framework
+- Provides a set of features for web apps
+- Helps to manage a server and routes
 
 ```js
-// Import required modules
+// Import required modules, const means value can't be updated
 const express = require('express')
 const bodyParser = require('body-parser')
 
