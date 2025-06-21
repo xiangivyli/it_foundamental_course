@@ -1508,7 +1508,7 @@ HTTP provides the foundation for frontend-backend communication:
 
 
 <div style="text-align: center;">
-    <img src="./src/http_communication.png" alt="sfc">
+    <img src="./src/http_communication.png" alt="http">
 </div>
 
 ### 1.6.3 URL
@@ -1520,8 +1520,91 @@ HTTP provides the foundation for frontend-backend communication:
 - Host names are mapped to IP addresses automatically
 
 > [!NOTE]
-> IP address is a **unique address** that **identifies a device on the internet** 
-> Every machine on the internet has an IP address
+> - IP address is a **unique address** that **identifies a device on the internet** 
+> - Every machine on the internet has an IP address
 
 
+### 1.6.4 JSON Data Exchange
+JSON serves as the **universal language between frontend and backend**:
+- JSON (JavaScript Object Notation) is the standard format for data exchange
+- All programming languages can understand and process JSON
 
+<div style="text-align: center;">
+    <img src="./src/json_example.png" alt="json">
+</div>
+
+
+### 1.6.5 NodeJS (Backend Implementation)
+NodeJS provides a powerful platform for building backend applications:
+- Express.js is a popular NodeJS framework that simplifies backend development
+- Backend serves frontend files (HTML, CSS, JS) when users first access the application
+- The `require()` function in NodeJS is equivalent to `import` in frontend JavaScript
+
+```js
+// Import required modules
+const express = require('express')
+const bodyParser = require('body-parser')
+
+// Create Express application
+const app = express();
+
+// Configure middleware
+app.use(bodyParser.json()); // Parse JSON request bodies
+app.use(express.static(_dirname)); // Serve static files
+
+// Create an endpoint
+app.get('/api/hello', (req, res) => {
+    res.json({ message: 'Hello from the backend!' });
+});
+
+// Start the server
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+```
+
+>[!NOTE]
+> Backend endpoints **define the API interface for frontend communication**:
+> - Endpoints are URLs that handle specific frontend requests
+> - End endpoints serves a specific purpose (e.g., /get-profile, /update-profile)
+
+<div style="text-align: center;">
+    <img src="./src/endpoint_create.png" alt="endpoint">
+</div>
+
+#### 1.6.5.1 Middleware
+Sit between a request and a response, acting as a processing layer in the application workflow.
+
+```js
+app.use(bodyParser.json())
+app.use('/', express.static(_dirname + '/'))
+```
+
+### 1.7 Common Debugging Tools
+**Browser Developer Tools**
+- Network tab for monitoring HTTP requests/responses
+- Console for JavaScript errors and logs
+- Source tab for debugging JavaScript code
+
+**Server-side logging**
+- Console.log statements in NodeJS
+- Error handling and stack traces
+- Request/response monitoring
+
+**API testing tools**
+- Postman for testing endpoints
+- curl for command-line testing
+- Brower extensions for API development
+
+### 1.8 Best Practices
+- Always validate data on the backend before processing
+- Use appropriate HTTP methods for different operations
+- Include proper error handling and status codes
+- Implement security meansures:
+    - Use HTTPS for data encryption, Validate and sanitise all input data, Implement proper authentication/authorisation, Use enironment variables for sensitive configuration
+- Keep frontend and backend concerns separate
+- Use meaningful endpoint names and consistent API design
+- Implement proper logging and monitoring
+- Handle CORS (Cross-Origin Resource Sharing) appropriately
+- Document your API endpoints and expected data formats
