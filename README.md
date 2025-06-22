@@ -1805,3 +1805,61 @@ async handleUpdateProfile () {
 - Document your API endpoints and expected data formats
 
 
+### 1.9 MongoDB
+
+#### 1.9.1 Database Type
+**Key-Value** Database
+- Best for simple, fast data storage
+- Store data as key-value pairs
+- Primarily used as cache databases
+- Limited in schema complexity
+- Data stored in memory for quick access  
+
+For example: Redis, Memcached, etcd from Kubernetes  
+
+**Column** Databases
+- Suitable for handling unstructured data
+- Values divided into multiple columns
+- No predefined schema required
+- Excellent for time series data and loT applications
+- Easily scalable across multiple servers  
+
+For example: Cassandra, HBase  
+
+**Document-Oriented** Databases
+- Perfect for general-purpose applications
+- Store data in documents (JSON-like format)
+- Schema-less structure
+- Good for mobile apps, games, content management
+- Faster read operations but slower updates  
+
+For example: MongoDB, DynamoDB, CouchDB  
+
+**Relational** Databases
+- Most widely used database type
+- Data organised in tables with rows and columns
+- Requires strict schema upfront
+- **ACID Compliant** (Atomic, Consistent, Isolated, Durable)
+- Excellent for structured data and complex relationships  
+
+For example: MySQL, Postgresql  
+
+**Graph** Databases
+- Optimal for handling complex relationships
+- Perfect for social networks, recommendation engines
+- Uses edges to connect records directly
+- Efficient for detecting patterns in data  
+
+For example: Neo4j, Dgraph  
+
+**Search** Databases
+- Specialised for full-text search capabilities
+- Creates indexes for efficient searching
+- Often used alongside primary databases
+- Optimised for fast search operations  
+
+For example: ElasticSearch, Solr  
+
+
+
+
