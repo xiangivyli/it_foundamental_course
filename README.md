@@ -58,6 +58,15 @@
             - 1.5.5.4 [Key VueJS Features](#1554-key-vuejs-features)
             - 1.5.5.5 [Transpiling with Vue CLI and Compiler sfc](#1555-transpiling-with-vue-cli-and-compiler-sfc)
     - 1.6 [NodeJS](#16-nodejs)
+        - 1.6.0 [Localhost](#160-localhost)
+        - 1.6.1 [Port](#161-port)
+        - 1.6.2 [HTTP Communication](#162-http-communication)
+        - 1.6.3 [URL/URI](#163-url)
+        - 1.6.4 [IP Addresses](#164-ip-addresses)
+        - 1.6.5 [JSON Data Exchange](#165-json-data-exchange)
+        - 1.6.6 [NodeJS Backend Implementation](#166-nodejs-backend-implementation)
+            - 1.6.6.1 [Middleware](#1661-middleware)
+        
 
 # 0. Backlog and Scrum Board in Jira
 <div style="text-align: center;">
@@ -1519,8 +1528,28 @@ HTTP provides the foundation for frontend-backend communication:
     <img src="./src/http_communication.png" alt="http">
 </div>
 
+**HTTP Response Status Codes**
+- Indicate whether a specific HTTP request has been successfully completed
+    - 200 OK 
+        - Request **succeeded**
+    - 304 Not Modified
+        - Indicates to the brower that there is **no need to retransmit** the requested resources
+        - It's an implicit redirection to a cached resource
+    - 404 Not Found
+        - Server cannot find the requested resource
+    - 400 Bad Request
+        - HTTP Request must be fixed
+    - 500 Internal Server Error
+        - Some error on the server side
+        - Best to retry
+
+<div style="text-align: center;">
+    <img src="./src/http_response_status_codes.png" alt="http">
+</div>
+
+
 ### 1.6.3 URL
-**Uniform Resource Locator** It is a reference to web resource, and combined with HTTP protocal, Hostname and File name (or port)
+**Uniform Resource Locator** It is a reference to web resource, and combined with HTTP protocal, Hostname and File name (or port), or **URI Uniform Resources Identifier**
 
 ### 1.6.4 IP Addresses
 - Address of the server that is hosting the web application
@@ -1532,17 +1561,20 @@ HTTP provides the foundation for frontend-backend communication:
 > - Every machine on the internet has an IP address
 
 
-### 1.6.4 JSON Data Exchange
+### 1.6.5 JSON Data Exchange
 JSON serves as the **universal language between frontend and backend**:
 - JSON (JavaScript Object Notation) is the standard format for data exchange
 - All programming languages can understand and process JSON
+
+- `JSON.parse()` Convert to JS object
+- `JSON.stringify()` Convert JS object into JSON string
 
 <div style="text-align: center;">
     <img src="./src/json_example.png" alt="json">
 </div>
 
 
-### 1.6.5 NodeJS (Backend Implementation)
+### 1.6.6 NodeJS (Backend Implementation)
 NodeJS provides a powerful platform for building backend applications:
 - Express.js is a popular NodeJS framework that simplifies backend development
 - Backend serves frontend files (HTML, CSS, JS) when users first access the application
@@ -1586,7 +1618,7 @@ app.listen(PORT, () => {
     <img src="./src/endpoint_create.png" alt="endpoint">
 </div>
 
-#### 1.6.5.1 Middleware
+#### 1.6.6.1 Middleware
 Sit between a request and a response, acting as a processing layer in the application workflow.
 
 ```js
