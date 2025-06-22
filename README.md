@@ -66,6 +66,8 @@
         - 1.6.5 [JSON Data Exchange](#165-json-data-exchange)
         - 1.6.6 [NodeJS Backend Implementation](#166-nodejs-backend-implementation)
             - 1.6.6.1 [Middleware](#1661-middleware)
+            - 1.6.6.2[POST Send data to backend](#1662-post---sending-data-to-backend)
+            - 1.6.6.3[GET Frontend asks for data](#1663-get---frontend-asking-for-data)
         
 
 # 0. Backlog and Scrum Board in Jira
@@ -1593,7 +1595,7 @@ app.use(express.json())
 app.use('/', express.static(_dirname + '/'))
 ```
 
-##### 1.6.6.2 POST - Sending data to backend
+#### 1.6.6.2 POST - Sending data to backend
 List to achieve 
 1. index.html
 **HTTP Messages (Request and Responses) consist of Header and Body**
