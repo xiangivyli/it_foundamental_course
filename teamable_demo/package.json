@@ -5,9 +5,12 @@
     "vue": "3.5.17",
     "@vue/cli-service": "5.0.8",
     "@vue/compiler-sfc": "3.5.17",
-    "core-js": "3.43.0"
+    "core-js": "3.43.0",
+    "express": "5.1.0"
   },
   "scripts": {
-    "serve": "vue-cli-service serve"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "start": "node server.js"
   }
 }
