@@ -1597,7 +1597,7 @@ app.use('/', express.static(_dirname + '/'))
 
 #### 1.6.6.2 POST - Sending data to backend
 List to achieve 
-1. index.html
+1. index.html  
 **HTTP Messages (Request and Responses) consist of Header and Body**
 - Metadata is in the HTTP Header
 - "Payload" is the information or data sent in the HTTP message body
@@ -1648,7 +1648,7 @@ step 6: set as **asynchronous** with `await`, it will not block the frontend whe
 
 
 #### 1.6.6.3 GET - Frontend Asking for Data
-list to achieve
+List to achieve
 1. index.html
 ```js
 async function loadTasks() {
@@ -1670,7 +1670,7 @@ async function loadTasks() {
         }
 ```
 ```js
-<body onload="loadTasks()"> //
+<body onload="loadTasks()"> //After loading the entire page, run the function
 ```
 2. server.js
 Set the same endpoint `get-tasks` and use `get` to provide some data like an array
@@ -1683,6 +1683,12 @@ app.get('/get-tasks', function(req, res) {
     res.send({tasks: tasks}); //response sends the data and print it in the respoonse
 })
 ```
+
+step 1: Set the endpoint on the server using `app.get('/get-tasks')`, defines where the client can request data from
+step 2: On the frontend, use `fetch()` to make a request to that endpoint
+step 3: The server sends back data using `res.send()`
+step 4: The frontend read the data with `res.json()` to parse the response into a JavaScript object
+step 5: Always makes the fetch call **asynchronous**, so it does not block the rest of the code, with `await` and `async`
 
 >[!NOTE]
 > Backend endpoints **define the API interface for frontend communication**:
