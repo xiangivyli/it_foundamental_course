@@ -1585,6 +1585,68 @@ NodeJS provides a powerful platform for building backend applications:
 - Provides a set of features for web apps
 - Helps to manage a server and routes
 
+#### 1.6.6.1 Middleware
+Sit between a request and a response, acting as a processing layer in the application workflow.
+
+```js
+app.use(express.json())
+app.use('/', express.static(_dirname + '/'))
+```
+
+##### 1.6.6.2 POST - Sending data to backend
+List to achieve 
+1. index.html
+**HTTP Messages (Request and Responses) consist of Header and Body**
+- Metadata is in the HTTP Header
+- "Payload" is the information or data sent in the HTTP message body
+```js
+payload = {
+    task: inputValue
+}
+
+res = await fetch('/save-task', {  //first parameter is the endpoint (URL)
+    method: 'POST', //indicate the desired action o be performed for a given resource
+    headers: {
+        'Accept': 'application/json', //we understand json language
+        'Content-Type': 'application/json' //we speak json language
+    },
+    body: JSON.stringify(payload) //transform payload to json format
+})
+
+josnRes = await res.json()
+console.log(jsonRes);
+```
+2. server.js
+- set the route with `express.static(__dirname + '/')`
+- register middleware to parse JSON bodies
+- set the http method is post
+- grab data with `req.body`
+- response sends frontend the log
+- local server can also print the log
+
+```js
+app.use(express.json()); //register middleware to parse JSON bodies
+app.use('/', express.static(__dirname + '/'))
+
+app.post('/save-task', function(req, res) {
+    const taskObj = req.body //get data from payload (body)
+    // next step is to connect to the database and save the task
+    console.log('Task received:', taskObj.task);
+    res.send({savedTask: taskObj.task}); // send back the response to claim the success
+})
+```
+
+step 1: grab data from input, and turn it to json format with `stringify`
+step 2: set the endpoint (route) in the `fetch()` call at which the client can get access to it, endpoint is not a file path.
+step 3: set the method in the `fetch()` call means that Send data to the server (POST)
+step 4: the sever can get data from the body, translate json to javascript object first with `app.use(express.json())` and print it in the console of server and also send back a response for confirmation
+step 5: when the server send back with the **response**, the frontend parses it as JSON with `.json()`
+optional step 5: console.log() print the results
+step 6: set as **asynchronous** with `await`, it will not block the frontend when `fetch` data, meanwhile, remember to set related parent function `async` as well
+
+
+#### 1.6.6.3 GET - Frontend Asking for Data
+
 ```js
 // Import required modules, const means value can't be updated
 const express = require('express')
@@ -1618,13 +1680,6 @@ app.listen(PORT, () => {
     <img src="./src/endpoint_create.png" alt="endpoint">
 </div>
 
-#### 1.6.6.1 Middleware
-Sit between a request and a response, acting as a processing layer in the application workflow.
-
-```js
-app.use(bodyParser.json())
-app.use('/', express.static(_dirname + '/'))
-```
 
 ### 1.7 Common Debugging Tools
 **Browser Developer Tools**

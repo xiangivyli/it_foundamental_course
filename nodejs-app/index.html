@@ -5,11 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node.js App</title>
     <script>
-        async function handleSaveTask() {
+        async function loadTasks() {
+            res = await fetch('get-tasks', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'  
+            }})
+            jsonRes = await res.json();
+            
+            // Load prepared tasks into the list
             ulEl = document.getElementById('tasks');
+            for (task of jsonRes.tasks) {
+                const li = document.createElement('li');
+                li.textContent = task;
+                ulEl.appendChild(li);
+            }
+        }
+        async function handleSaveTask() {
             const inputField = document.getElementById('inputField');
-            const li = document.createElement('li');
             const inputValue = inputField.value.trim();
+
+            // Add the input value to the list if it's not empty
+            ulEl = document.getElementById('tasks');
+            const li = document.createElement('li');
             li.textContent = inputField.value;
             ulEl.appendChild(li);
 
@@ -17,6 +36,7 @@
             // Optionally, you can also log the input value or perform other actions
             console.log('Task saved:', li.textContent);
 
+            // Send the input value to the server
             payload = {
                 task: inputValue
             }
@@ -29,14 +49,14 @@
                 },
                 body: JSON.stringify(payload)
             })
-
-            josnRes = await res.json()
+            // Check if the response is ok
+            jsonRes = await res.json()
             console.log(jsonRes);
         }
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="loadTasks()">
     <div>
         <h1>Welcome to Node.js App</h1>
         <p>This is a basic HTML template.</p>
