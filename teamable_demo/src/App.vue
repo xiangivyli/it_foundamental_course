@@ -68,7 +68,17 @@ export default {
         handleEditProfile () {
             this.isEditMode = !this.isEditMode
         },
-        handleUpdateProfile () {
+        async handleUpdateProfile () {
+            const payload = {
+                name: this.name,
+                email: this.email,
+                position: this.position,
+                location: this.location,
+                skills: this.skills
+            }
+            const resJson = await this.updateUserProfile(payload)
+            console.log(resJson)
+
             if (!this.email.includes('@')) {
                 this.emailError = "Please enter a valid email address"
                 return
@@ -85,6 +95,18 @@ export default {
 
         async fetchUserProfile() {
             const res = await fetch('/get-profile')
+            return await res.json()
+        },
+
+        async updateUserProfile(payload) {
+            const res = await fetch('/update-profile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
             return await res.json()
         }
     },

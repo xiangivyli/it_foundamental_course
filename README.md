@@ -1710,6 +1710,71 @@ The good thing is that it can use package.json together, add `express` in the pa
 ```
 The compiled frontend files will be in the `dist` folder and can change the endpoint in the server.js, `app.use('/', express.static(__dirname + '/dist'));`
 
+The second thing is to grab inital value from server.js and send it to app.vue
+for the `App.vue`  
+Have a method nanmed  
+```js
+async fetchUserProfile() {
+            const res = await fetch('/get-profile')
+            return await res.json()
+        }
+```
+and then `created()` call when load the full page
+```js
+async created () { //is called when the component instance was created
+        const userData = await this.fetchUserProfile()
+        this.name = userData.name || ""
+        this.email = userData.email || ""
+        this.position = userData.position || ""
+        this.location = userData.location || ""
+        this.skills = userData.skills || ""
+    },
+```
+for `server.js`, provide the data with `send`, always use the same endpoint
+```js
+app.get('/get-profile', function(req, res) {
+  // Get data from the database
+  const response = {
+    name: "Ivy Li",
+    email: "xiangivyli@gmail.com",
+    position: "Data Engineer with full stack experience",
+    location: "Bristol, UK",
+    skills: "Problem Solving"
+  }
+  res.send(response);
+});
+```
+
+The third thing is to send updated data from Frontend to Backend.
+For `App.vue` file  
+step 1 point the endpoint, and method is `POST`, imaging it is the post office ready to send out parcel
+```js
+async updateUserProfile(payload) {
+    const res = await fetch('/update-profile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload)
+    })
+    return await res.json()
+    }
+```
+step 2 where to get the parcel, using the update function to get payload, parameters are from the inputs, and also log the new data in console of browser  
+```js
+async handleUpdateProfile () {
+    const payload = {
+            name: this.name,
+            email: this.email,
+            position: this.position,
+            location: this.location,
+            skills: this.skills
+            }
+    const resJson = await this.updateUserProfile(payload)
+    console.log(resJson)
+    ...}
+```
 
 ### 1.7 Common Debugging Tools
 **Browser Developer Tools**
@@ -1738,3 +1803,5 @@ The compiled frontend files will be in the `dist` folder and can change the endp
 - Implement proper logging and monitoring
 - Handle CORS (Cross-Origin Resource Sharing) appropriately
 - Document your API endpoints and expected data formats
+
+
