@@ -1638,13 +1638,13 @@ app.post('/save-task', function(req, res) {
 })
 ```
 
-step 1: grab data from input, and turn it to json format with `stringify`
-step 2: set the endpoint (route) in the `fetch()` call at which the client can get access to it, endpoint is not a file path.
-step 3: set the method in the `fetch()` call means that Send data to the server (POST)
-step 4: the sever can get data from the body, translate json to javascript object first with `app.use(express.json())` and print it in the console of server and also send back a response for confirmation
-step 5: when the server send back with the **response**, the frontend parses it as JSON with `.json()`
-optional step 5: console.log() print the results
-step 6: set as **asynchronous** with `await`, it will not block the frontend when `fetch` data, meanwhile, remember to set related parent function `async` as well
+step 1: grab data from input, and turn it to json format with `stringify`  
+step 2: set the endpoint (route) in the `fetch()` call at which the client can get access to it, endpoint is not a file path  
+step 3: set the method in the `fetch()` call means that Send data to the server (POST)  
+step 4: the sever can get data from the body, translate json to javascript object first with `app.use(express.json())` and print it in the console of server and also send back a response for confirmation  
+step 5: when the server send back with the **response**, the frontend parses it as JSON with `.json()`  
+optional step 5: console.log() print the results  
+step 6: set as **asynchronous** with `await`, it will not block the frontend when `fetch` data, meanwhile, remember to set related parent function `async` as well  
 
 
 #### 1.6.6.3 GET - Frontend Asking for Data
@@ -1684,11 +1684,11 @@ app.get('/get-tasks', function(req, res) {
 })
 ```
 
-step 1: Set the endpoint on the server using `app.get('/get-tasks')`, defines where the client can request data from
-step 2: On the frontend, use `fetch()` to make a request to that endpoint
-step 3: The server sends back data using `res.send()`
-step 4: The frontend read the data with `res.json()` to parse the response into a JavaScript object
-step 5: Always makes the fetch call **asynchronous**, so it does not block the rest of the code, with `await` and `async`
+step 1: Set the endpoint on the server using `app.get('/get-tasks')`, defines where the client can request data from  
+step 2: On the frontend, use `fetch()` to make a request to that endpoint  
+step 3: The server sends back data using `res.send()`  
+step 4: The frontend read the data with `res.json()` to parse the response into a JavaScript object  
+step 5: Always makes the fetch call **asynchronous**, so it does not block the rest of the code, with `await` and `async` 
 
 >[!NOTE]
 > Backend endpoints **define the API interface for frontend communication**:
