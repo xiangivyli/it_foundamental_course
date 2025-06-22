@@ -1815,13 +1815,13 @@ async handleUpdateProfile () {
 - Limited in schema complexity
 - Data stored in memory for quick access  
 
-For example: Redis, Memcached, etcd from Kubernetes  
+For example: Redis, Memcached, etcd from Kubernetes (store cluster status in real-time)    
 
 **Column** Databases
 - Suitable for handling unstructured data
 - Values divided into multiple columns
 - No predefined schema required
-- Excellent for time series data and loT applications
+- Excellent for **time series** data and loT applications
 - Easily scalable across multiple servers  
 
 For example: Cassandra, HBase  
@@ -1842,7 +1842,7 @@ For example: MongoDB, DynamoDB, CouchDB
 - **ACID Compliant** (Atomic, Consistent, Isolated, Durable)
 - Excellent for structured data and complex relationships  
 
-For example: MySQL, Postgresql  
+For example: MySQL, Postgresql, Cockroach DB (designed to solve the scalability issue)  
 
 **Graph** Databases
 - Optimal for handling complex relationships
@@ -1854,11 +1854,47 @@ For example: Neo4j, Dgraph
 
 **Search** Databases
 - Specialised for full-text search capabilities
-- Creates indexes for efficient searching
+- Creates **indexes** for efficient searching
 - Often used alongside primary databases
 - Optimised for fast search operations  
 
 For example: ElasticSearch, Solr  
+
+#### 1.9.2 MongoDB
+- **NoSQL** database
+- Data stored in JSON format
+- **Schema-less** design offers flexibility
+- Default port is 27017
+
+### 1.9.3 Connect Backend to Database
+- Each programming language has a **library/module for DB connection**
+- Tell the library, **WHICH DB** to talk and **HOW** to **AUTHENTICATE** with that DB  
+
+
+For MongoDB
+- Uses Mongodb Protocol for communication
+- Connection string includes protocal, host, and port
+- MongoDB Driver acts as a translator
+
+**Basic Operations**
+- CRUD operations (Create, Read, Update, Delete)
+- Insert documents with `insertOne()`
+- Update documents with `updateOne()`
+- Query documents with `findOne()`
+- Delete documents with `deleteOne()`
+
+**Unique id Field**
+- Each document stored in a collection requires a unique_id field 
+- If not provided, the MongoDB driver automatically generates an id for the _id field  
+
+**Best Practices for Managing Database Connections**
+- Connections should be closed after operations complete
+- Use **try-catch** blocks for error handling
+- Implement proper connection cleanup:
+    - Consider connection pooling for production applications
+    - Each request should ideally have its own connection lifecycle
+    - Avoid keeping connections open indefinitely
+
 
 
 
