@@ -1646,29 +1646,40 @@ step 6: set as **asynchronous** with `await`, it will not block the frontend whe
 
 
 #### 1.6.6.3 GET - Frontend Asking for Data
-
+list to achieve
+1. index.html
 ```js
-// Import required modules, const means value can't be updated
-const express = require('express')
-const bodyParser = require('body-parser')
-
-// Create Express application
-const app = express();
-
-// Configure middleware
-app.use(bodyParser.json()); // Parse JSON request bodies
-app.use(express.static(_dirname)); // Serve static files
-
-// Create an endpoint
-app.get('/api/hello', (req, res) => {
-    res.json({ message: 'Hello from the backend!' });
-});
-
-// Start the server
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+async function loadTasks() {
+            res = await fetch('get-tasks', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'  
+            }})
+            jsonRes = await res.json();
+            
+            // Load prepared tasks into the list
+            ulEl = document.getElementById('tasks');
+            for (task of jsonRes.tasks) {
+                const li = document.createElement('li');
+                li.textContent = task;
+                ulEl.appendChild(li);
+            }
+        }
+```
+```js
+<body onload="loadTasks()"> //
+```
+2. server.js
+Set the same endpoint `get-tasks` and use `get` to provide some data like an array
+```js
+app.get('/get-tasks', function(req, res) {
+    const tasks = [
+        "Write JS code",
+        "Write HTML code",
+    ]
+    res.send({tasks: tasks}); //response sends the data and print it in the respoonse
+})
 ```
 
 >[!NOTE]
