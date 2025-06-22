@@ -47,14 +47,22 @@ export default {
     data () {
         return {
             img: image,
-            name: "Ivy Li",
-            email: "xiangivyli@gmail.com",
-            position: "Data Engineer",
-            location: "Bristol, the United Kingdom",
-            skills: "Python, JavaScript, SQL, Cloud",
+            name: "",
+            email: "",
+            position: "",
+            location: "",
+            skills: "",
             isEditMode: false,
             emailError: null
         }
+    },
+    async created () { //is called when the component instance was created
+        const userData = await this.fetchUserProfile()
+        this.name = userData.name || ""
+        this.email = userData.email || ""
+        this.position = userData.position || ""
+        this.location = userData.location || ""
+        this.skills = userData.skills || ""
     },
     methods: {
         handleEditProfile () {
@@ -73,6 +81,11 @@ export default {
             }
             alert("Profile updated successfully")
             this.isEditMode = !this.isEditMode
+        },
+
+        async fetchUserProfile() {
+            const res = await fetch('/get-profile')
+            return await res.json()
         }
     },
 }

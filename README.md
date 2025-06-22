@@ -1453,7 +1453,7 @@ export default {
 - Keep components focused on a single responsibility
 - Utilise Vue's built-in directives like v-model instead of manual DOM manipulation
 - Follow Vue's naming convention (PascalCase for components)
-- Cleanly list all passed parameterised properties in the `props` with expected data type
+- Clearly list all passed parameterised properties in the `props` with expected data type
 
 ### 1.5.5.5 Transpiling with Vue CLI and Compiler-sfc
 
@@ -1698,6 +1698,17 @@ step 5: Always makes the fetch call **asynchronous**, so it does not block the r
 <div style="text-align: center;">
     <img src="./src/endpoint_create.png" alt="endpoint">
 </div>
+
+#### 1.6.6.4 Combine vue.js and node.js with the same serve
+The good thing is that it can use package.json together, add `express` in the package list then use `build` to compile vue.js to vanilla js which are the final static files (HTML, CSS, JS) 
+```json
+"scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "start": "node server.js"
+  }
+```
+The compiled frontend files will be in the `dist` folder and can change the endpoint in the server.js, `app.use('/', express.static(__dirname + '/dist'));`
 
 
 ### 1.7 Common Debugging Tools
