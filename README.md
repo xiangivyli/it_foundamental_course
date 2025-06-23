@@ -1866,6 +1866,96 @@ For example: ElasticSearch, Solr
 - **Schema-less** design offers flexibility
 - Default port is 27017
 
+
+#### 1.9.2.1 Install MongoDB Community with Docker
+
+The list is:
+- The `mongod` server
+- The `mongos` shared cluster query router
+- The MongoDB Shell, `mongosh`
+
+<div style="text-align: center;">
+    <img src="./src/mongodb_installation.png" alt="mongodb">
+</div>
+
+
+Step 1: Install the MongoDB Shell, `mognosh`. 
+1. MongoDB Shell Download from the official website: https://www.mongodb.com/try/download/shell, choose the platform
+2. Extract the ZIP file
+```shell
+cd ~/Downloads
+unzip mongosh-2.5.3-darwin-arm64.zip
+```
+3. Move it to a Local Directory
+```shell
+mkdir -p ~/tools
+mv mongosh-2.5.3-darwin-arm64 ~/tools/mongosh
+```
+4. Add `mongosh` to PATH
+```shell
+nano ~/.zshrc
+```
+5. Add the PATH 
+```shell
+export PATH="$HOME/tools/mongosh/bin:$PATH"
+```
+6. save and refresh
+```shell
+source ~/.zshrc
+```
+7. Test
+```shell
+mongosh
+```
+You will see the MongoDB Shell start up with a prompt like Current Mongosh Log ID:.... Connecting to: ...  
+
+Step 2: Install Docker with Colima
+1. `brew` install 
+```shell
+brew install colima docker
+```
+2. Start the `colima`
+```shell
+colima start
+```
+3. Test docker
+```shell
+docker run hello-world
+```
+
+Step 3: Install MongoDB with Docker
+1. Pull the MongoDB Docker Image
+```shell
+docker pull mongodb/mongodb-community-server:latest
+```
+2. Run the Image as a Container, add command line options
+```shell
+docker run -p 27017:27017 -d mongodb/mongodb-community-server:latest --name mongodb --replSet myReplicaSet
+```
+
+3. Connect to the Mongodb Deployment with `mongosh`
+```shell
+mongosh --port 27017
+```
+
+4. Validate the Deployment
+```shell
+db.runCommand(
+   {
+      hello: 1
+   }
+)
+```
+
+5. View logs Directly from the Container
+```shell
+docker logs mongodb
+```
+
+>[!NOTE]
+> However, we will connect to the Mongo database with the Node Backend, do not need the `mongosh`
+
+
 ### 1.9.3 Connect Backend to Database
 - Each programming language has a **library/module for DB connection**
 - Tell the library, **WHICH DB** to talk and **HOW** to **AUTHENTICATE** with that DB  
@@ -1894,6 +1984,9 @@ For MongoDB
     - Consider connection pooling for production applications
     - Each request should ideally have its own connection lifecycle
     - Avoid keeping connections open indefinitely
+
+
+
 
 
 
