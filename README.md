@@ -1776,7 +1776,7 @@ async handleUpdateProfile () {
     ...}
 ```
 
-### 1.7 Common Debugging Tools
+### 1.6.7 Common Debugging Tools
 **Browser Developer Tools**
 - Network tab for monitoring HTTP requests/responses
 - Console for JavaScript errors and logs
@@ -1792,7 +1792,7 @@ async handleUpdateProfile () {
 - curl for command-line testing
 - Brower extensions for API development
 
-### 1.8 Best Practices
+### 1.6.8 Best Practices
 - Always validate data on the backend before processing
 - Use appropriate HTTP methods for different operations
 - Include proper error handling and status codes
@@ -1805,9 +1805,9 @@ async handleUpdateProfile () {
 - Document your API endpoints and expected data formats
 
 
-### 1.9 MongoDB
+### 1.7 MongoDB
 
-#### 1.9.1 Database Type
+#### 1.7.1 Database Type
 **Key-Value** Database
 - Best for simple, fast data storage
 - Store data as key-value pairs
@@ -1860,14 +1860,14 @@ For example: Neo4j, Dgraph
 
 For example: ElasticSearch, Solr  
 
-#### 1.9.2 MongoDB
+#### 1.7.2 MongoDB
 - **NoSQL** database
 - Data stored in JSON format
 - **Schema-less** design offers flexibility
 - Default port is 27017
 
 
-#### 1.9.2.1 Install MongoDB Community with Docker
+#### 1.7.2.1 Install MongoDB Community with Docker
 
 The list is:
 - The `mongod` server
@@ -1930,7 +1930,11 @@ docker pull mongodb/mongodb-community-server:latest
 ```
 2. Run the Image as a Container, add command line options
 ```shell
-docker run -p 27017:27017 -d mongodb/mongodb-community-server:latest --name mongodb --replSet myReplicaSet
+docker run -d \
+  --name mongodb \
+  -p 27017:27017 \
+  mongodb/mongodb-community-server:latest \
+  --replSet myReplicaSet
 ```
 
 3. Connect to the Mongodb Deployment with `mongosh`
@@ -1956,7 +1960,7 @@ docker logs mongodb
 > However, we will connect to the Mongo database with the Node Backend, do not need the `mongosh`
 
 
-### 1.9.3 Connect Backend to Database
+### 1.7.3 Connect Backend to Database
 - Each programming language has a **library/module for DB connection**
 - Tell the library, **WHICH DB** to talk and **HOW** to **AUTHENTICATE** with that DB  
 
@@ -1965,6 +1969,10 @@ For MongoDB
 - Uses Mongodb Protocol for communication
 - Connection string includes protocal, host, and port
 - MongoDB Driver acts as a translator
+
+**MongoDB Node.js Driver**
+- Allow Node.js apps to connect to MongoDB and work with data
+- MongoDB Node Driver works with Node or JavaScript specifically
 
 **Basic Operations**
 - CRUD operations (Create, Read, Update, Delete)
@@ -1985,8 +1993,20 @@ For MongoDB
     - Each request should ideally have its own connection lifecycle
     - Avoid keeping connections open indefinitely
 
+#### Step 1
+Add `mongodb` to `package.json`
 
+#### Step 2
+Install the library
 
+#### Step 3 Create a new Mongo client
+- Creates a new client that can talk to the Mongo server on the URL we provide
+- We can use that client object and use its methods to connect and interact with the server
+
+```js
+const url = "mongodb://localhost:27017"; // MongoDB connection string
+const client = new MongoClient(url);
+```
 
 
 
