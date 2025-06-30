@@ -32,7 +32,7 @@ app.get('/get-profile', async function(req, res) {
   res.send(response);
 });
 
-app.get('/all-profiles', async (req, res) => {
+app.get('/all-profiles', async function(req, res) {
   await client.connect();
   const db = client.db(dbName);
   const collection = db.collection(collectionName);
@@ -60,6 +60,8 @@ app.post('/update-profile', async function(req, res) {
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Failed to update profile" });
+  } finally {
+    await client.close();
   }
 });
 
