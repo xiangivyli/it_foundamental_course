@@ -68,7 +68,13 @@
             - 1.6.6.1 [Middleware](#1661-middleware)
             - 1.6.6.2[POST Send data to backend](#1662-post---sending-data-to-backend)
             - 1.6.6.3[GET Frontend asks for data](#1663-get---frontend-asking-for-data)
-        
+            - 1.6.6.4[Combine VueJS and NodeJS with the Same Server](#1664-combine-vuejs-and-nodejs-with-the-same-serve)
+        - 1.6.7 [Common Debugging Tools](#167-common-debugging-tools)
+    - 1.7 [MongoDB](#17-mongodb)
+        - 1.7.1 [Database Type](#171-database-type)
+        - 1.7.2 [MongoDB](#172-mongodb)
+            - 1.7.2.1 [Install MongoDB Community with Docker](#1721-install-mongodb-community-with-docker)
+        - 1.7.3 [Connect Backend to Database](#173-connect-backend-to-database)
 
 # 0. Backlog and Scrum Board in Jira
 <div style="text-align: center;">
