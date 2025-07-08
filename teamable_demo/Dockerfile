@@ -4,7 +4,7 @@ FROM node:alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
-RUN npm install -g @vue/cli
+
 COPY . .
 RUN npm run build
 

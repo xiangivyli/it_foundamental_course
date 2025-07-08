@@ -1,4 +1,13 @@
+# Node modules and build artifacts
+
 ./node_modules
 Dockerfile
 .dockerignore
 docker-compose.yml
+
+# Build output
+dist
+build
+
+# Evironment variables
+.env

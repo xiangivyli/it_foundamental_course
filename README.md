@@ -2015,6 +2015,162 @@ const client = new MongoClient(url);
 ```
 
 
+# 2 Docker with the whole project
+
+Dockerise the node.js and mongodb can provide portable and stable features.
+# 2.1 Set the environment
+**Step 1 install Homebrew without administrator role, it installs Homwbrew in your home directory ($HOME) rather than a system-wide location that typically requires sudo access**
+```bash
+mkdir -p $HOME/homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/homebrew
+export PATH=$HOME/homebrew/bin:$PATH
+```
+**Step 2 Install npm with nvm method**
+1. Download nvm and install
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+```
+2. Create the .zshrc file
+```bash
+touch ~/.zshrc
+```
+3. Open the file
+```bash
+nano ~/.zshrc
+```
+4. Add NVM Initialisation Commands
+```bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+5. Save and Exit, press Ctrl + X, then Y, then Enter to save and exit
+6. Source the file to reload
+```bash
+source ~/.zshrc
+```
+7. Install a specific Node.js Version
+```bash
+nvm install 23
+```
+**Step 3 Install docker, colima with brew**
+1. `brew` install
+```bash
+brew install colima docker
+```
+2. Start the `colima`
+```bash
+colima start
+```
+3. Test docker
+```bash
+docker run hello-world
+```
+
+**Step 4 Build Node.js image with Dockerfile**
+- Multi-stage build: Keeps the final image lightweight.
+- npm ci: Ensures clean and reproducible installs.
+- Environment setup: PORT and EXPOSE are correctly configured.
+- Copying only necessary files: Keeps the runtime image clean.
+
+```dockerfile
+# Stage 1: Build the Vue app
+FROM node:alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+RUN npm install -g @vue/cli
+COPY . .
+RUN npm run build
+
+# Stage 2: Run the Node.js server
+FROM node:alpine
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy only the built files and server code
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/server.js ./
+
+# Set environment variables if needed
+ENV PORT=3000
+EXPOSE 3000
+CMD ["node", "server.js"]
+```
 
 
+**Step 5 Install MongoDB and Set App with Docker-Compose.yml**
+✅ Services Overview
+1. MongoDB
+Uses the official mongo:latest image.
+Persists data using a named volume mongo-data.
+Always restarts if it crashes.
+2. App (teamable_demo_app)
+Built from a local Dockerfile.
+Maps port 3000 on the host to 3000 in the container.
+Mounts the current directory into the container at /app.
+Sets environment variables for:
+PORT
+MONGO_URL (points to the mongodb service)
+DB_NAME
+Depends on MongoDB and includes a health check using curl.
+✅ Volumes
+mongo-data: Used to persist MongoDB data.
+```yml
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo-data:/data/db
 
+  app:
+    container_name: teamable_demo_app
+    build:
+      context: . 
+      dockerfile: Dockerfile # Specifies the Dockerfile to use
+    ports:
+      - "3000:3000" # Map host port 3000 to container port 3000
+    volumes:
+      - .:/app # Mount the current directory to /app in the container
+    environment:
+      PORT: "3000"
+      MONGO_URL: "mongodb://mongodb:27017"
+      DB_NAME: "teamable_demo"
+    depends_on:
+      - mongodb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+
+volumes:
+  mongo-data:
+```
+**Step 6 Add Artifact to .dockerignore**
+```yml
+# Node modules and build artifacts
+
+./node_modules
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Build output
+dist
+build
+
+# Evironment variables
+.env
+```
+# 2.2 Build Images and Run Containers
+```bash
+docker compose up
+```
