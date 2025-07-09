@@ -75,6 +75,9 @@
         - 1.7.2 [MongoDB](#172-mongodb)
             - 1.7.2.1 [Install MongoDB Community with Docker](#1721-install-mongodb-community-with-docker)
         - 1.7.3 [Connect Backend to Database](#173-connect-backend-to-database)
+2. [Docker with Wholde Project](#2-docker-with-the-whole-project)
+    - 2.1 [Set the Environment](#21-set-the-environment)
+    - 2.2 [Build Images and Run Containers](#22-build-images-and-run-containers)
 
 # 0. Backlog and Scrum Board in Jira
 <div style="text-align: center;">
@@ -2173,4 +2176,65 @@ build
 # 2.2 Build Images and Run Containers
 ```bash
 docker compose up
+```
+
+# 2.3 Project Structure
+- `Dockerfile` is to customise the `node.js` image
+- `docker-compose.yml` defines multi-containers
+- `package.json` defines project metadata adn dependencies
+- ` server.js` the backend server entry point
+
+Folders
+- `dist` is the compiled artifact for vue.app
+- `public` static files that are publicly accessible
+- `src` source code for the frontendß
+
+```txt
+.
+├── Dockerfile
+├── dist
+│   ├── img
+│   │   └── team_background.16fa9cd1.jpg
+│   ├── index.html
+│   └── js
+│       ├── app.js
+│       └── chunk-vendors.js
+├── docker-compose.yml
+├── package-lock.json
+├── package.json
+├── public
+│   └── index.html
+├── server.js
+└── src
+    ├── App.vue
+    ├── main.js
+    └── team_background.jpg
+```
+
+# 2.4 Connection between frontend and backend
+
+## 2.4.1 serve frontend artifact from backend
+- `vud-cli-service serve`compiles the code first but also create a simple server to serve the `index.html` file
+- `express` has a function `use` can set **endpoint** (location) for index.html file
+```js
+app.use('/', express.static(__dirname + '/dist')); //`/` is the very first context point with the backend, express.static() is a built-in function that **serves static files**, `__dirname` references the current directory to provide the absolute path
+```
+
+## 2.4.2 json data exchange between frontend and backend
+- `JSON.parse()` converts to JS object
+- `JSON.stringify()` converts JS object into JSON string
+
+### Case 1: Send Data to Backend (HTTP Request)
+Anytime when type into some data into the input field, the data can be transferred to backend via the network
+**Step 1: Create an area to accept the data in the index.html**
+```html
+<label for="inputField">Input:</label> // define a caption, `for` connects it to a specific form element using that element's id
+<input type="text" id="inputField" placeholder="Type something..."> // `id` is to uniquely identify, `name` is to label data
+<button onClick="handleSaveTask()" id="submitButton">Save</button> // it has a function to handle received data
+```
+
+**Step 2 Understand the "Payload" is the information or data sent in the HTTP message body**
+```html
+const inputField = document.getElementById('inputField');
+const inputValue = inputField.value.trim();
 ```
