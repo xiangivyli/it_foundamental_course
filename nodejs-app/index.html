@@ -5,53 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Node.js App</title>
     <script>
-        async function loadTasks() {
-            res = await fetch('get-tasks', {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'  
-            }})
-            jsonRes = await res.json();
-            
-            // Load prepared tasks into the list
-            ulEl = document.getElementById('tasks');
-            for (task of jsonRes.tasks) {
-                const li = document.createElement('li');
-                li.textContent = task;
-                ulEl.appendChild(li);
-            }
-        }
+
         async function handleSaveTask() {
-            const inputField = document.getElementById('inputField');
-            const inputValue = inputField.value.trim();
+            // the function includes, 1, sending out the request with input value to the backend, 
+            // 2, the body of request comes from the body: JSON.stringify(payload), 
+            // 3, server send back a response to the frontend, 
+            // 4, parse the response from the backend then log it to the console
+            // 5, show the input value in the table
+            const inputField = document.getElementById("inputField");
+            const taskText = inputField.value.trim();
+            
+            // for frontend validation
+            if (taskText === "") return;
 
-            // Add the input value to the list if it's not empty
-            ulEl = document.getElementById('tasks');
-            const li = document.createElement('li');
-            li.textContent = inputField.value;
-            ulEl.appendChild(li);
+            try {
+                const res = await fetch('save-task', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ task: taskText }) // 2. the body of request comes from the body: JSON.stringify(payload)
+                }); // 1. send out the request to the backend
+                const savedTask = await res.json(); // 5. parse the response from the backend
+                console.log('savedTask:', savedTask); // log the response to the console
+                
+                const tableBody = document.getElementById("taskList");
 
-            inputField.value = ''; // Clear the input field after saving
-            // Optionally, you can also log the input value or perform other actions
-            console.log('Task saved:', li.textContent);
+                const newRow = tableBody.insertRow();
+                newRow.insertCell(0).innerText = savedTask.id;;
+                newRow.insertCell(1).innerText = savedTask.task; // 5. show the input value in the table
 
-            // Send the input value to the server
-            payload = {
-                task: inputValue
+                inputField.value = ""; // clear the input field after saving the task
+            } catch (error) {
+                console.error('Error saving task:', error);
             }
 
-            res = await fetch('/save-task', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            })
-            // Check if the response is ok
-            jsonRes = await res.json()
-            console.log(jsonRes);
+            
+        }
+            
+            
+        async function loadTasks() {
+            // this function is called when the page loads
+            // it fetches the tasks from the backend and displays them in the table
+            try {
+                const res = await fetch('get-tasks', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                 }
+                }) // get1. send a GET request to the backend
+                const jsonRes = await res.json(); // get3. parse the response from the backend
+                console.log(jsonRes); 
+                
+                jsonRes.tasks.forEach(task => {
+                const tableBody = document.getElementById("taskList");
+                const newRow = tableBody.insertRow();
+                newRow.insertCell(0).innerText = task.id; // assuming task has an id property
+                newRow.insertCell(1).innerText = task.task; // assuming task has a task property
+            });
+            }catch (error) {
+                console.error('Error loading tasks:', error);
+            }
+
+            
         }
     </script>
     <link rel="stylesheet" href="styles.css">
@@ -63,7 +81,17 @@
         <label for="inputField">Input:</label>
         <input type="text" id="inputField" placeholder="Type something...">
         <button onClick="handleSaveTask()" id="submitButton">Save</button>
-    <ul id="tasks"></ul>
+    <table id="taskTable">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="taskList">
+            <!-- Tasks will be dynamically added here -->
+        </tbody>
+    </table>
     </div>
 </body>
 </html>

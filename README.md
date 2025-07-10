@@ -2214,6 +2214,22 @@ Folders
 # 2.4 Connection between frontend and backend
 
 ## 2.4.1 serve frontend artifact from backend
+### 2.4.1.1 Set express or say Import with require
+Express is 
+- A web application framework
+- Provides a set of features of web apps
+- Helps to manage a server and routes
+
+```js
+const express = require('express') // to include a module in an app
+const app = express() //return an Express application object, is stored in the variable `app`
+
+app.listen(3000,function (){
+    console.log('app listening on port 3000')
+}) //starts a server, listens for connections on the specified host and post, what should the app do when receiving the HTTP requesr
+```
+
+### 2.4.1.2 Register middleware with `use()`
 - `vud-cli-service serve`compiles the code first but also create a simple server to serve the `index.html` file
 - `express` has a function `use` can set **endpoint** (location) for index.html file
 ```js
@@ -2224,17 +2240,126 @@ app.use('/', express.static(__dirname + '/dist')); //`/` is the very first conte
 - `JSON.parse()` converts to JS object
 - `JSON.stringify()` converts JS object into JSON string
 
-### Case 1: Send Data to Backend (HTTP Request)
+### 2.4.2.1: Send Data to Backend (HTTP Request) with Payload
 Anytime when type into some data into the input field, the data can be transferred to backend via the network
+
 **Step 1: Create an area to accept the data in the index.html**
+
+index.html is **entrypoint** of every application
+
 ```html
 <label for="inputField">Input:</label> // define a caption, `for` connects it to a specific form element using that element's id
 <input type="text" id="inputField" placeholder="Type something..."> // `id` is to uniquely identify, `name` is to label data
 <button onClick="handleSaveTask()" id="submitButton">Save</button> // it has a function to handle received data
 ```
 
-**Step 2 Understand the "Payload" is the information or data sent in the HTTP message body**
-```html
+**Step 2 Understand that the "Payload" is the information or data sent in the HTTP message body**
+
+```js
 const inputField = document.getElementById('inputField');
-const inputValue = inputField.value.trim();
+const taskText = inputField.value.trim();
+
+payload = {
+    task: taskText
+}
 ```
+
+**Step 3 `fetch()` can send http request to backend**
+- first parameter is the endpoint
+- second parameter is the object in which set the request method, GET, POST, OR OTHERS
+- another function `JSON.stringify()` in the object can convert a JavaScript object into a JSON string
+- another setting is about Request Headers to define the communication method is JSON
+- `await` sets `fetch()` is asynchronous, and the parent function also needs `async`
+    - a "promise" is an object representing the eventual completion or failure of an asynchronous operation
+    - you will recieve a "promise" immediately, not the actual response
+    - with await keyword, the actual response is assigned to our variable **once the request completes**
+
+<div style="text-align: center;">
+    <img src="./src/asynchronous.png" alt="asynchronous">
+</div>
+
+```js
+res = await fetch ('save-task', {
+    method: 'POST',
+    body: JSON.stringify(payload)
+    headers: {
+        'Accept': 'application/json', // we understand JSON lanaguage
+        'Content-Type': 'application/json' // we speak JSON language
+    }
+        // Request Headers
+})
+```
+
+**Step 4 Create middleware in the backend**
+Middleware is a function that run before the final request handler
+- Parse Data
+- Authenticate users
+- Log requests
+- Handle errors
+
+app.use(middleware)
+- `app.use()` let you **register middleware** or chain of middlewares
+- These are **executed before the end route** (app.get, app.post etc.)
+- Every request goes through these middlewares
+
+```js
+app.use(express.json()); // middleware to parse json bodies
+```
+
+**Step 5 Create endpoints in the backend which is a web address (URL) at which the clients can gain access to it**
+- When the HTTP method is POST, the backend should also be POST
+- first parameter is the path
+- second parameter is handler which is the function executed when the route is matched
+    - a function, which is executed whenever a request is received on the specified path
+    - to handle the request, 2 parameters are provided: the **request** and **response object**
+
+<div style="text-align: center;">
+    <img src="./src/app_method.png" alt="appmethod">
+</div>
+
+```js
+app.post('/save-task', function(req, res) { //this is an endpoint that listen for POST requests to /save-task
+    const taskObj = req.body  // the body of request comes from the body: JSON.stringify(payload)
+    console.log('Task Recieved:', taskObj.task);
+    res.send({{saveTask: taskObj.task}}) // response is sent back to frontend
+
+})
+```
+
+**Step 6 Translate the response from JSON to JS obejct**
+```js
+const jsonRes = await res.json(); //frontend recieves the response, translate to JS object
+console.log(jsonRes); 
+```
+
+### 2.4.2.2: Get Data from Backend with Get
+
+**Step 1: Use `fetch()` to set the endpoints, methods and headers**
+
+```js
+async function loadTasks() {
+            const res = await fetch('get-tasks', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            })
+        
+        }
+```
+
+**Step 2: Prepare Data and send out**
+```js
+let taskList = [
+    {id: 1, task: "Install postgresql"},
+    {id: 2, task:"Store data in postgresql"},
+    {id: 3, task:"Connect to postgresql from nodejs"},
+]
+
+app.get('/get-tasks', function(req, res) {
+    res.send({tasks: taskList}); //get2. send back the tasks to the frontend
+})
+```
+
+## 2.5 Connection among frontend, backend and database
