@@ -2043,6 +2043,8 @@ nano ~/.zshrc
 ```
 4. Add NVM Initialisation Commands
 ```bash
+export PATH=$HOME/homebrew/bin:$PATH # Add homebrew path
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -2060,6 +2062,7 @@ nvm install 23
 1. `brew` install
 ```bash
 brew install colima docker
+brew install docker-compose
 ```
 2. Start the `colima`
 ```bash
@@ -2362,4 +2365,141 @@ app.get('/get-tasks', function(req, res) {
 })
 ```
 
-## 2.5 Connection among frontend, backend and database
+## 2.5 Connection among frontend, backend and database (postgresql)
+### 2.5.1 Set the docker-compose environment 
+- The project name will use the folder name in which the docker-compose.yml located
+- In a docker-compose.yml file, the db: section defines a "service", the name used inside the Docker Compose network
+- postgres_db is the actual container name, if no setting, Docker auto-names it based on the project and service name
+- Files in `/docker-entrypoint-initdb.d` will be executed automatically when the container starts **for the first time**, special behavior built into the official PostgreSQL Docker Image
+```yml
+services:
+  db:
+    container_name: postgres_db
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "teamable_demo"
+    ports:
+      - "5432:5432" # Map host port 5432 to container port 5432
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist data in a named volume
+      - ./initdb:/docker-entrypoint-initdb.d # Initialize the database with a script
+
+
+  app:
+    container_name: teamable_demo_app
+    build:
+      context: . 
+      dockerfile: Dockerfile # Specifies the Dockerfile to use
+    ports:
+      - "3000:3000" # Map host port 3000 to container port 3000
+    volumes:
+      - .:/app # Mount the current directory to /app in the container
+    environment:
+      DB_USER: "postgres"
+      DB_PASSWORD: "password"
+      DB_NAME: "teamable_demo"
+      DB_HOST: "db" # Use the service name as the host
+      DB_PORT: "5432"
+    depends_on:
+      - db
+
+
+volumes:  
+  postgres_data:
+```
+
+### 2.5.2 Customise the node app with Dockerfile
+- multi-stage builds to build vue app first then only include the /dist into the final lightweight image
+ - it only includes 1. Production dependencies, 2. /dist, 3. the server code (server.js)
+- `npm ci` means "clean install", only installs exactly what is in `package-lock.json` file, delete node_modules first
+
+
+<div style="text-align: center;">
+    <img src="./src/npm_ci.png" alt="npmci">
+</div>
+
+```dockerfile
+# Stage 1: Build the Vue app
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build
+
+# Stage 2: Run the Node.js server
+FROM node:20-alpine
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy only the built files and server code
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/server.js ./
+
+# Set environment variables if needed
+ENV PORT=3000
+EXPOSE 3000
+CMD ["node", "server.js"]
+```
+
+### 2.5.3 Add pg package (node-postgres)
+```json
+{
+  "name": "teamable_demo",
+  "version": "0.1.0",
+  "dependencies": {
+    "vue": "3.5.17",
+    "@vue/cli-service": "5.0.8",
+    "@vue/compiler-sfc": "3.5.17",
+    "core-js": "3.43.0",
+    "express": "5.1.0",
+    "pg": "8.11.0"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "start": "node server.js"
+  }
+}
+```
+
+### 2.5.4 Create pool to connect postgresql with node.js
+#### 2.5.4.1 Pool
+**Pool** is a class from the pg (node-postgres) library that manages a **pool of resuable database connections**. Instead of opening a new connection for every query, a pool keeps a set of open connections and reuses them
+```js
+const { pool } = require('pg') // the {} is destructuring assignment in JavaScript, only the Pool class from the pg module which can export multiple things
+```
+#### 2.5.4.2 Connection Settings
+- user
+- host
+- database
+- password
+- port
+
+
+#### 2.5.4.3 Interact with database using `pool.query()`
+- send a SQL query to the database
+- return a Promise (if using await) 
+- the result contains
+    - rows: the actual data
+    - rowCount: number of rows returned
+    - fields: metadata about the columns
+```js
+app.get('/get-profile', async function(req, res) {
+  // Get data from the database
+  try {
+    const result = await client.query('SELECT * FROM profiles.user_info LIMIT 1');
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('Error fetching profile:', err);
+    res.status(500).send({ error: "Failed to fetch profile" });
+  };
+});
+```

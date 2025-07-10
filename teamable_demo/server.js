@@ -1,14 +1,15 @@
 const express = require('express');
 const app = express();
-const { MongoClient } = require('mongodb');
+const { Pool } = require('pg');
 
-// Connect to MongoDB
-const url = process.env.MONGO_URL || "mongodb://localhost:27017";
-const client = new MongoClient(url);
-
-// Database and collection names
-const dbName = process.env.DB_NAME || "teamable_demo";
-const collectionName = "profiles";
+// Connect to db
+const client = new Pool({
+  user: process.env.DB_USER || "postgres",
+  host: process.env.DB_HOST || "db",
+  database: process.env.DB_NAME || "teamable_demo",
+  password: process.env.DB_PASSWORD || "password",
+  port: process.env.DB_PORT || 5432,
+});
 
 
 app.use(express.json());   
@@ -16,20 +17,13 @@ app.use('/', express.static(__dirname + '/dist'));
 
 app.get('/get-profile', async function(req, res) {
   // Get data from the database
-  const response = {
-    name: "Ivy Li",
-    email: "xiangivyli@gmail.com",
-    position: "Data Engineer with full stack experience",
-    location: "Bristol, UK",
-    skills: "Problem Solving"
-  }
-
-  // Connect to mongoDB database
-  await client.connect();
-  console.log("Connected to MongoDB");
-  // get data from mongoDB
-
-  res.send(response);
+  try {
+    const result = await client.query('SELECT * FROM profiles.user_info LIMIT 1');
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('Error fetching profile:', err);
+    res.status(500).send({ error: "Failed to fetch profile" });
+  };
 });
 
 app.get('/all-profiles', async function(req, res) {

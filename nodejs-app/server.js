@@ -16,7 +16,7 @@ app.post('/save-task', function(req, res) {
     if (!taskObj) {
         return res.status(400).json({ error: "Task text is required" });
     }
-    const newTask = { id: nextTaskID++, task: taskObj }; 
+    const newTask = { id: nextTaskID++, task: taskObj }; //post-increment operator to generate unique IDs
     console.log('Task received:', newTask);
     taskList.push(newTask); // 3. show the input value in the table
     res.send(newTask);

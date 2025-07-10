@@ -1,5 +1,5 @@
 # Stage 1: Build the Vue app
-FROM node:alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 COPY package*.json ./
@@ -9,7 +9,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Run the Node.js server
-FROM node:alpine
+FROM node:20-alpine
 
 WORKDIR /app
 COPY package*.json ./

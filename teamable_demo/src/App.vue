@@ -65,9 +65,38 @@ export default {
         this.skills = userData.skills || ""
     },
     methods: {
+        // Fetch user profile data from the server
+        // This function is called when the component is created
+        async fetchUserProfile() {
+            const res = await fetch('/get-profile')
+            return await res.json()
+        },
+
+
+        // Toggle edit mode
+        // This function is called when the user clicks the "Edit Profile" button
         handleEditProfile () {
             this.isEditMode = !this.isEditMode
         },
+
+        // Update user profile data on the server
+        // This function sends the updated profile data to the server
+        // It is called when the user clicks the "Update Profile" button
+        async updateUserProfile(payload) {
+            const res = await fetch('/update-profile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            return await res.json()
+        },
+
+        // Handle the update profile button click
+        // This function is called when the user clicks the "Update Profile" button
+        // It sends the updated profile data to the server
         async handleUpdateProfile () {
             const payload = {
                 name: this.name,
@@ -91,24 +120,7 @@ export default {
             }
             alert("Profile updated successfully")
             this.isEditMode = !this.isEditMode
-        },
-
-        async fetchUserProfile() {
-            const res = await fetch('/get-profile')
-            return await res.json()
-        },
-
-        async updateUserProfile(payload) {
-            const res = await fetch('/update-profile', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify(payload),
-            })
-            return await res.json()
-        }
+        },     
     },
 }
 </script>

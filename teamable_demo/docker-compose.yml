@@ -1,10 +1,17 @@
 services:
-  mongodb:
-    container_name: mongodb
-    image: mongo:latest
+  db:
+    container_name: postgres_db
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "teamable_demo"
+    ports:
+      - "5432:5432" # Map host port 5432 to container port 5432
     restart: always
     volumes:
-      - mongo-data:/data/db
+      - postgres_data:/var/lib/postgresql/data # Persist data in a named volume
+      - ./initdb:/docker-entrypoint-initdb.d # Initialize the database with a script
 
 
   app:
@@ -17,20 +24,17 @@ services:
     volumes:
       - .:/app # Mount the current directory to /app in the container
     environment:
-      PORT: "3000"
-      MONGO_URL: "mongodb://mongodb:27017"
+      DB_USER: "postgres"
+      DB_PASSWORD: "password"
       DB_NAME: "teamable_demo"
+      DB_HOST: "db" # Use the service name as the host
+      DB_PORT: "5432"
     depends_on:
-      - mongodb
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
-      interval: 1m30s
-      timeout: 30s
-      retries: 5
-      start_period: 30s
+      - db
 
 
-volumes:
-  mongo-data:
-    
+volumes:  
+  postgres_data:
+   
+ 
 
