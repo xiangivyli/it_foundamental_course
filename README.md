@@ -2021,13 +2021,18 @@ const client = new MongoClient(url);
 # 2 Docker with the whole project
 
 Dockerise the node.js and mongodb can provide portable and stable features.
-# 2.1 Set the environment
+# 2.1 Set the environment 
 **Step 1 install Homebrew without administrator role, it installs Homwbrew in your home directory ($HOME) rather than a system-wide location that typically requires sudo access**
 ```bash
 mkdir -p $HOME/homebrew
 curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/homebrew
-export PATH=$HOME/homebrew/bin:$PATH
 ```
+for some systems like macOS, use `.bash_profile` instead of `.bashrc`
+```bash
+echo 'export PATH=$HOME/homebrew/bin:$PATH' >> ~/.bash_profile
+source ~/.bash_profile
+```
+
 **Step 2 Install npm with nvm method**
 1. Download nvm and install
 ```bash
@@ -2035,16 +2040,14 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 ```
 2. Create the .zshrc file
 ```bash
-touch ~/.zshrc
+touch ~/.bash_profile
 ```
 3. Open the file
 ```bash
-nano ~/.zshrc
+nano ~/.bash_profile
 ```
 4. Add NVM Initialisation Commands
 ```bash
-export PATH=$HOME/homebrew/bin:$PATH # Add homebrew path
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -2052,7 +2055,7 @@ export NVM_DIR="$HOME/.nvm"
 5. Save and Exit, press Ctrl + X, then Y, then Enter to save and exit
 6. Source the file to reload
 ```bash
-source ~/.zshrc
+source ~/.bash_profile
 ```
 7. Install a specific Node.js Version
 ```bash
@@ -2061,8 +2064,7 @@ nvm install 23
 **Step 3 Install docker, colima with brew**
 1. `brew` install
 ```bash
-brew install colima docker
-brew install docker-compose
+brew install colima docker docker-compose
 ```
 2. Start the `colima`
 ```bash
@@ -2081,7 +2083,7 @@ docker run hello-world
 
 ```dockerfile
 # Stage 1: Build the Vue app
-FROM node:alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 COPY package*.json ./
@@ -2091,13 +2093,13 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Run the Node.js server
-FROM node:alpine
+FROM node:20-alpine
 
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
 
-# Copy only the built files and server code
+# Copy only the built files and server code, it is multi-staging build
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/server.js ./
 
