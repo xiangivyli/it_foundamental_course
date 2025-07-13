@@ -2066,9 +2066,9 @@ nvm install 23
 ```bash
 brew install colima docker docker-compose
 ```
-2. Start the `colima`
+2. Start the `colima`, make the VM's IP address accessible from the host, and Docker containers should be reachable via forwarded ports
 ```bash
-colima start
+colima start --network-address 
 ```
 3. Test docker
 ```bash
