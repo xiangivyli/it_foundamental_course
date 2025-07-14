@@ -2551,3 +2551,48 @@ const { isInvalidEmail, isEmptyPayload } = require('./validator')
 ```
 
 ### 3.3.3 Unit Test with Jest
+- Name the testing files with same name of the file I want to test plus .test
+- Jest uses "matchers" to let me test values in different ways
+- There are **different matchers available** (.toBe()) is the matcher in the example
+- Compare the output of the test with a value we expect the function to return
+- Use commands to run test which is `jest`
+
+```js
+const { isInvalidEmail, isEmptyPayload } = require('../validator')
+
+test('valid email', function() {
+    const testPayload = {
+        name: "test name",
+        email: "test.email@example.com",
+        interests: "testing"
+    }
+    const result = isInvalidEmail(testPayload)
+    expect(result).toBe(false)
+})
+
+test('invalid email', function() {
+    const testPayload = {
+        name: "test name",
+        email: "test.email",
+        interests: "testing"
+    }
+    const result = isInvalidEmail(testPayload)
+    expect(result).toBe(true)
+})
+
+test('empty payload', function() {
+    const testPayload = {}
+    const result = isEmptyPayload(testPayload)
+    expect(result).toBe(true)
+})
+
+test('non-empty payload', function() {
+    const testPayload = {
+        name: "test name",
+        email: "test.email@example.com",
+        interests: "testing"
+    }
+    const result = isEmptyPayload(testPayload)
+    expect(result).toBe(false)
+})
+```
