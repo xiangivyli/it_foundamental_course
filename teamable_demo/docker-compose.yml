@@ -1,17 +1,12 @@
 services:
-  db:
-    container_name: postgres_db_test
-    image: postgres:latest
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "password"
-      POSTGRES_DB: "teamable_demo"
-    ports:
-      - "5432:5432" # Map host port 5432 to container port 5432
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
     restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data # Persist data in a named volume
-      - ./initdb:/docker-entrypoint-initdb.d # Initialize the database with a script
+      - mongo-data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+
 
 
   app:
@@ -20,21 +15,23 @@ services:
       context: . 
       dockerfile: Dockerfile # Specifies the Dockerfile to use
     ports:
-      - "3000:3000" # Map host port 3000 to container port 3000
+      - "5000:5000" # Map host port 3000 to container port 3000
     volumes:
       - .:/app # Mount the current directory to /app in the container
     environment:
-      DB_USER: "postgres"
-      DB_PASSWORD: "password"
+      PORT: "5000"
+      MONGO_URL: "mongodb://mongodb:27017"
       DB_NAME: "teamable_demo"
-      DB_HOST: "db" # Use the service name as the host
-      DB_PORT: "5432"
     depends_on:
-      - db
+      - mongodb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
 
 
-volumes:  
-  postgres_data:
-   
- 
-
+volumes:
+  mongo-data:
+    

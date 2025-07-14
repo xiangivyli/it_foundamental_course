@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --only=production
 
 COPY . .
 RUN npm run build
@@ -20,6 +20,6 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/server.js ./
 
 # Set environment variables if needed
-ENV PORT=3000
-EXPOSE 3000
+ENV PORT=5000
+EXPOSE 5000
 CMD ["node", "server.js"]

@@ -2135,6 +2135,7 @@ services:
     restart: always
     volumes:
       - mongo-data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
 
   app:
     container_name: teamable_demo_app
@@ -2505,3 +2506,15 @@ app.get('/get-profile', async function(req, res) {
   };
 });
 ```
+# 3. Automated Tests
+The current project is using mongodb database
+## 3.1 Types of Tests
+- Unit Tests: test individual functions/units in isolation
+- Integration Test: test how multiple units work together, test integration between functions and systems
+- UI/End-to-End Tests: test complete user flows through the application, simulate actual user interactions, Selenium or Puppeteer
+
+## 3.2 Jest Testing Framework
+Jest is the primary testing framework used for JavaScript applications
+- Created by Facebook and open source
+- Can test NodeJS, React, Vue and other JS frameworks
+- Provides complete testing infrastructure and syntax
