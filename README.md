@@ -2687,4 +2687,66 @@ Step 7: Upload to a shared repo
 
 
 # 5. Deploy Application on Linux Server on Cloud
+Smaller Cloud Providers
+- DigitalOcean
+- Akamai
+- linode
 
+Common Services
+- Storage
+- Databases
+- Servers
+- Networking
+- Software
+
+Linux Distros are different versions of the Linux OS
+<div style="text-align: center;">
+    <img src="./src/linux.png" alt="linux">
+</div>
+
+Create a virtual server in DigitalOcean
+1. Public vs Private IP Address
+- Public = Identifies the machine on the Internet
+- Private = Identifies the machine on a local network. Unlike a public IP address, it can only be viewed by other devices on the local network
+
+## 5.1 SSH Secure Shell
+- SSH is a network protocal
+- Works in the **client-server model**
+- SSH runs on port 22 and provides secure terminal access to remote servers
+- Basic SSH command structure:
+    `ssh username@server_ip_address`
+- File transfer using SCP (Secure Copy):
+ - `scp local_file username@server_ip_address:/destination/path`
+
+ <div style="text-align: center;">
+    <img src="./src/ssh.png" alt="ssh">
+</div>
+
+
+```bash
+ssh root@server_public_ip_address
+```
+
+## 5.2 Firewall Configuration
+- Close all ports by default
+- Only open necessary ports
+- Restrict access to sensitive ports (like SSH) to specific IP addresses
+- Define which IP addresses can access that port
+
+Common ports to configure
+- SSH (22)
+- HTTP (80)
+- Application-specific ports (e.g. 3000 for node.js apps)
+
+Rules
+- Inbound rules (incoming traffic)
+- Outbound rules (outgoing traffic)
+
+ <div style="text-align: center;">
+    <img src="./src/common_ports.png" alt="port">
+</div>
+
+Step 1: get my IP address
+https://www.whatsmyip.org/
+
+Step 2: in the network, set the inbound rules to only accept my IP address
