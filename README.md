@@ -2518,3 +2518,36 @@ Jest is the primary testing framework used for JavaScript applications
 - Created by Facebook and open source
 - Can test NodeJS, React, Vue and other JS frameworks
 - Provides complete testing infrastructure and syntax
+
+## 3.3 Test Practice
+### 3.3.1 Create an isolate file to store test functions
+
+- validator.js
+- export functions at the end
+
+```js
+function isInvalidEmail(userObjECT) {
+    return !userObjECT.email.includes("@")
+}
+
+function isEmptyPayload(userObject) {
+    return Object.keys(userObject).length === 0
+}
+
+module.exports = {
+    isInvalidEmail,
+    isEmptyPayload
+}
+```
+
+### 3.3.2 Import functions to use in backend
+
+- server.js
+- import with destructuring
+    - makes it possible to unpack values from properties from objects or arrays into distinct variables
+
+```js
+const { isInvalidEmail, isEmptyPayload } = require('./validator')
+```
+
+### 3.3.3 Unit Test with Jest

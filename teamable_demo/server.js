@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const { MongoClient } = require('mongodb');
+const { isInvalidEmail, isEmptyPayload } = require('./validator')
 
 const url = process.env.MONGO_URL || "mongodb://localhost:27017";
 const client = new MongoClient(url);
@@ -29,25 +30,11 @@ app.get('/get-profile', async (req, res) => {
 });
 
 
-//currently, not in use
-app.get('/all-profiles', async (req, res) => {
-  try {
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-    const profiles = await collection.find().toArray();
-    res.send(profiles);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send({ error: "Failed to fetch profiles" });
-  }
-});
-
 app.post('/update-profile', async (req, res) => {
   const payload = req.body;
 
-  if (Object.keys(payload).length === 0) {
-    return res.status(400).send({ error: "Empty payload, could not update profile" });
+  if ( isEmptyPayload(payload) || isInvalidEmail(payload)) {
+    return res.status(400).send({ error: "invalid payload, could not update profile" });
   }
 
   try {
