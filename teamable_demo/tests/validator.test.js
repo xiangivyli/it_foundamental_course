@@ -1,10 +1,13 @@
-const { isInvalidEmail, isEmptyPayload } = require('./validator')
+const { isInvalidEmail, isEmptyPayload } = require('../validator')
 
 test('valid email', function() {
     const testPayload = {
         name: "test name",
         email: "test.email@example.com",
-        interests: "testing"
+        position: "testing",
+        location: "testing",
+        skills: "testing"
+
     }
     const result = isInvalidEmail(testPayload)
     expect(result).toBe(false)

@@ -2509,7 +2509,7 @@ app.get('/get-profile', async function(req, res) {
 # 3. Automated Tests
 The current project is using mongodb database
 ## 3.1 Types of Tests
-- Unit Tests: test individual functions/units in isolation
+- Unit Tests: test **individual functions/units** in isolation, to make sure the logic of functions are correct
 - Integration Test: test how multiple units work together, test integration between functions and systems
 - UI/End-to-End Tests: test complete user flows through the application, simulate actual user interactions, Selenium or Puppeteer
 
@@ -2520,7 +2520,7 @@ Jest is the primary testing framework used for JavaScript applications
 - Provides complete testing infrastructure and syntax
 
 ## 3.3 Test Practice
-### 3.3.1 Create an isolate file to store test functions
+### 3.3.1 Create an isolate file to store test functions 
 
 - validator.js
 - export functions at the end
@@ -2596,3 +2596,22 @@ test('non-empty payload', function() {
     expect(result).toBe(false)
 })
 ```
+
+the expected output is `Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total`
+
+### 3.3.4 Integration Test
+- Testing the interaction with the database or other services
+- Simulate the brower/frontend
+    - "mocking"
+    - simulates the behaviour of a real method/object in controlled ways
+    - simulate sending an HTTP request to backend
+
+
+requirements:
+1. stop the current app otherwise it will have conflict on the same port
+2. stop the node server
+
+### 3.3.5 Test intergration in the Docker Environment
+!!!
+
