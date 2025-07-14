@@ -2615,3 +2615,76 @@ requirements:
 ### 3.3.5 Test intergration in the Docker Environment
 !!!
 
+# 4. Packaging (Project Artifact)
+- The packaging process gets the software ready for deployment
+- How you intend to transport the software (package into zip file or create an installer etc.)
+
+
+Step 1: Build the lastest frontend  
+`npm run build`
+
+Step 2: `package.json`
+
+Step 3: Resulting File Type
+- A **zip** is a set of files packages together into a single file and compressed using teh gzip compression program
+- A **tar** is a set of files packaged together into a single file but not compressed
+
+step 4: Exclude unnecessary file with `.npmignore`
+- original frontend code
+- test files
+
+step 5: put dependencies only for development into `devDependencies`
+```json
+{
+  "name": "teamable_demo",
+  "version": "0.1.0",
+  "dependencies": {
+    "vue": "3.5.17",
+    "core-js": "3.43.0",
+    "express": "5.1.0",
+    "mongodb": "5.7.0"
+    
+  },
+  "devDependencies": {
+    "@vue/cli-service": "5.0.8",
+    "@vue/compiler-sfc": "3.5.17",
+    "jest":"30.0.4",
+    "supertest":"7.1.3"
+  },
+
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "start": "node server.js",
+    "test": "jest"
+  }
+}
+```
+
+Step 6: `npm pack`
+- name
+- version
+- tgz
+
+Step 7: Upload to a shared repo
+
+
+<div style="text-align: center;">
+    <img src="./src/create_package.png" alt="package">
+</div>
+
+<div style="text-align: center;">
+    <img src="./src/uncessary_files.png" alt="unncessary">
+</div>
+
+<div style="text-align: center;">
+    <img src="./src/running_application.png" alt="running">
+</div>
+
+<div style="text-align: center;">
+    <img src="./src/artifact.png" alt="artifact">
+</div>
+
+
+# 5. Deploy Application on Linux Server on Cloud
+
